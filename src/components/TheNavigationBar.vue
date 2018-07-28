@@ -53,8 +53,10 @@ export default {
   components: {
     TheNavigationBarMenuButton
   },
-  computed: {
-    currentUser: () => currentUser
+  data() {
+    return {
+      currentUser
+    };
   }
 };
 </script>
@@ -63,6 +65,7 @@ export default {
 $navbar-height = 50px
 
 #nav
+  display flex
   height $navbar-height
   font-size $font-size--small
   color white
@@ -73,7 +76,7 @@ $navbar-height = 50px
   display inline-block
 
 .right
-  float right
+  margin-left auto
 
 ul
   display inline-block
@@ -102,12 +105,12 @@ li
 
   .user
     position relative
-    padding-right 40px
+    padding 0 40px 0 60px
 
     &:before
       content ""
       position absolute
-      left -50px
+      left 10px
       width 40px
       height 40px
       background url("../assets/icons/user.png") no-repeat center/contain
