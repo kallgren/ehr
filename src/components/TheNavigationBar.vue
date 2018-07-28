@@ -66,7 +66,7 @@ $navbar-height = 50px
   height $navbar-height
   font-size $font-size--small
   color white
-  background $green-dark
+  background $color-green-dark
 
 .left
 .right
@@ -98,7 +98,7 @@ li
     text-align center
     text-decoration none
     &.router-link-exact-active
-      background $green-light
+      background $color-green-medium
 
   .user
     position relative
