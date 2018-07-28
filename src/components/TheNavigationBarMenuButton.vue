@@ -17,4 +17,6 @@
     margin-bottom 5px
     background white
     border-radius 2px
+    &:last-child
+      margin 0
 </style>

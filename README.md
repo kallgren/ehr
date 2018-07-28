@@ -17,4 +17,4 @@ Master thesis project.
 
 ## Instructions
 - Install dependencies: `yarn install`
-- Run development server: `yarn serve`
+- Run development server (with linting, hot reloading, etc.): `yarn serve`
