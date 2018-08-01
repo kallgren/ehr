@@ -1,5 +1,19 @@
 <template>
   <div class="journal">
-    <h1>This is your journal.</h1>
+    <LayoutSidebar heading="Journal">
+      <template slot="sidebar"></template>
+      <template slot="content"></template>
+    </LayoutSidebar>
   </div>
 </template>
+
+<script>
+import LayoutSidebar from "@/layouts/LayoutSidebar.vue";
+
+export default {
+  name: "Journal",
+  components: {
+    LayoutSidebar
+  }
+};
+</script>
