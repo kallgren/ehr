@@ -24,12 +24,12 @@ export default {
 <style scoped lang="stylus">
 .layout-sidebar
   display flex
-  height 1030px
+  height 1030px // Hard coded temporarily to match design
 
 .sidebar
+  base-border()
   width 300px
   background $color-almost-white
-  border 3px solid $color-green-dark
   box-sizing border-box
 
 .content
