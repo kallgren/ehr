@@ -36,24 +36,17 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import TheNavigationBarMenuButton from "@/components/TheNavigationBarMenuButton.vue";
-
-const currentUser = {
-  first_name: "Alma",
-  last_name: "Karlsson",
-  role: "Orthopedic, surgeon"
-};
 
 export default {
   name: "TheNavigationBar",
   components: {
     TheNavigationBarMenuButton
   },
-  data() {
-    return {
-      currentUser
-    };
-  }
+  computed: mapState({
+    currentUser: state => state.currentUser
+  })
 };
 </script>
 
