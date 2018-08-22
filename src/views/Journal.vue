@@ -1,7 +1,9 @@
 <template>
   <div class="journal">
     <LayoutSidebar heading="Journal">
-      <template slot="sidebar"></template>
+      <template slot="sidebar">
+        <PatientSelector/>
+      </template>
       <template slot="content">
         <div class="content-inner">
           <BasePane title="Problem list" class="pane--problem-list">
@@ -25,12 +27,14 @@
 <script>
 import LayoutSidebar from "@/layouts/LayoutSidebar.vue";
 import BasePane from "@/components/BasePane.vue";
+import PatientSelector from "@/components/PatientSelector.vue";
 
 export default {
   name: "Journal",
   components: {
     LayoutSidebar,
-    BasePane
+    BasePane,
+    PatientSelector
   }
 };
 </script>

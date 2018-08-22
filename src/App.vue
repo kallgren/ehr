@@ -20,6 +20,19 @@ export default {
 @require 'assets/styl/common'
 
 #app
-  font-family Arial, sans-serif
+button
+input
+  font-family $font-family
+
+#app
   font-size $font-size--base
+
+button
+input
+  font-size $font-size--smaller
+
+button
+  padding 0
+  border 0
+  cursor pointer
 </style>
