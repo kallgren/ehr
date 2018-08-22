@@ -3,14 +3,14 @@
     <ul>
       <li><a href="#"><TheNavigationBarMenuButton/></a></li>
     </ul>
-    <div class="divider"></div>
+    <div class="divider"/>
     <ul>
       <li><a href="#">Your inbox</a></li>
       <li><a href="#">Notes to sign</a></li>
       <li><a href="#">Your schedule</a></li>
       <li><a href="#">Referrals to you</a></li>
     </ul>
-    <div class="divider"></div>
+    <div class="divider"/>
     <ul>
       <li><router-link to="/">Dashboard</router-link></li>
       <li><router-link to="/journal">Journal</router-link></li>
@@ -26,7 +26,7 @@
           <span class="user-name">
             {{ currentUser.first_name }} {{ currentUser.last_name }}
           </span>
-          <br />
+          <br >
           {{ currentUser.role }}
         </div>
         <a href="#">Log out</a>

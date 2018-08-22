@@ -6,17 +6,26 @@
       </template>
       <template slot="content">
         <div class="content-inner">
-          <BasePane title="Problem list" class="pane--problem-list">
-            <template slot="controls"></template>
-            <template slot="content"></template>
+          <BasePane
+            title="Problem list"
+            class="pane--problem-list"
+          >
+            <template slot="controls"/>
+            <template slot="content"/>
           </BasePane>
-          <BasePane title="Notes" class="pane--notes">
-            <template slot="controls"></template>
-            <template slot="content"></template>
+          <BasePane
+            title="Notes"
+            class="pane--notes"
+          >
+            <template slot="controls"/>
+            <template slot="content"/>
           </BasePane>
-          <BasePane title="Attachments" class="pane--attachments">
-            <template slot="controls"></template>
-            <template slot="content"></template>
+          <BasePane
+            title="Attachments"
+            class="pane--attachments"
+          >
+            <template slot="controls"/>
+            <template slot="content"/>
           </BasePane>
         </div>
       </template>

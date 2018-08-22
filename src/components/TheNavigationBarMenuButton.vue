@@ -1,8 +1,8 @@
 <template>
   <div class="menu-button">
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
+    <div class="line"/>
+    <div class="line"/>
+    <div class="line"/>
   </div>
 </template>
 

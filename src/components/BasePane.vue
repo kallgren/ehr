@@ -5,11 +5,11 @@
         {{ title }}
       </span>
       <div class="pane-controls">
-        <slot name="controls"></slot>
+        <slot name="controls"/>
       </div>
     </div>
     <div class="pane-content">
-      <slot name="content"></slot>
+      <slot name="content"/>
     </div>
   </div>
 </template>
@@ -18,7 +18,10 @@
 export default {
   name: "BasePane",
   props: {
-    title: String
+    title: {
+      type: String,
+      default: ""
+    }
   }
 };
 </script>

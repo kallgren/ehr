@@ -1,13 +1,13 @@
 <template>
   <div class="layout-sidebar">
     <aside class="sidebar">
-      <slot name="sidebar"></slot>
+      <slot name="sidebar"/>
     </aside>
     <section class="content">
       <h1 class="content-heading">
         {{ heading }}
       </h1>
-      <slot name="content"></slot>
+      <slot name="content"/>
     </section>
   </div>
 </template>
@@ -16,7 +16,10 @@
 export default {
   name: "LayoutSidebar",
   props: {
-    heading: String
+    heading: {
+      type: String,
+      default: ""
+    }
   }
 };
 </script>
