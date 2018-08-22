@@ -44,9 +44,7 @@ export default {
   components: {
     TheNavigationBarMenuButton
   },
-  computed: mapState({
-    currentUser: state => state.currentUser
-  })
+  computed: mapState(["currentUser"])
 };
 </script>
 
