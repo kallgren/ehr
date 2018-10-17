@@ -16,13 +16,15 @@ export default new Vuex.Store({
         id: 1,
         first_name: "Sven",
         last_name: "Svensson",
-        ssn: "19750613-2937",
-        date_of_birth: "1975-06-13",
+        ssn: "750613-2937",
+        date_of_birth: "1975-06-13T02:34:00Z",
         sex: "male",
         height_cm: 178,
         weight_kg: 90,
-        blood_type: "a",
         allergies: ["peanuts"],
+        blood_problems: false,
+        other_warnings: false,
+        admitted: false,
         important_remarks: [
           "Heart bypass in 2012",
           "Family history of prostate cancer"
@@ -31,22 +33,35 @@ export default new Vuex.Store({
       {
         id: 2,
         first_name: "Anna",
-        last_name: "Annasson"
+        last_name: "Annasson",
+        ssn: "810222-3861",
+        allergies: [],
+        date_of_birth: "1981-02-22T11:49:00Z",
+        sex: "female",
+        height_cm: 156,
+        weight_kg: 67,
+        blood_problems: true,
+        other_warnings: false,
+        admitted: true,
+        important_remarks: []
       },
       {
         id: 3,
         first_name: "Karl",
-        last_name: "Karlsson"
+        last_name: "Karlsson",
+        allergies: []
       },
       {
         id: 4,
         first_name: "Johan",
-        last_name: "Johansson"
+        last_name: "Johansson",
+        allergies: []
       },
       {
         id: 5,
         first_name: "Anders",
-        last_name: "Andersson"
+        last_name: "Andersson",
+        allergies: []
       }
     ],
     todaysAppointments: [

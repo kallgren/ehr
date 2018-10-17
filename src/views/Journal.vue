@@ -3,6 +3,7 @@
     <LayoutSidebar heading="Journal">
       <template slot="sidebar">
         <PatientSelector/>
+        <PatientInfo :patient="selectedPatient"/>
       </template>
       <template slot="content">
         <div class="content-inner">
@@ -34,17 +35,21 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import LayoutSidebar from "@/layouts/LayoutSidebar.vue";
 import BasePane from "@/components/BasePane.vue";
 import PatientSelector from "@/components/PatientSelector.vue";
+import PatientInfo from "@/components/PatientInfo.vue";
 
 export default {
   name: "Journal",
   components: {
     LayoutSidebar,
     BasePane,
-    PatientSelector
-  }
+    PatientSelector,
+    PatientInfo
+  },
+  computed: mapState(["selectedPatient"])
 };
 </script>
 
