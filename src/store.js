@@ -28,6 +28,84 @@ export default new Vuex.Store({
         important_remarks: [
           "Heart bypass in 2012",
           "Family history of prostate cancer"
+        ],
+        events: [
+          {
+            id: 1,
+            date: "2018-04-30T07:30:00Z",
+            type: "visit",
+            clinic: "Physiotherapy"
+          },
+          {
+            id: 2,
+            date: "2018-05-10T09:00:00Z",
+            type: "visit",
+            clinic: "Physiotherapy"
+          },
+          {
+            id: 3,
+            date: "2018-05-20T12:00:00Z",
+            type: "X-Ray",
+            clinic: "Radiology"
+          },
+          {
+            id: 4,
+            date: "2018-05-20T08:00:00Z",
+            type: "visit",
+            clinic: "Orthopedics"
+          }
+        ],
+        medicines: [
+          {
+            id: 1,
+            name: "Medicine One",
+            intake: "2 pills every morning"
+          },
+          {
+            id: 2,
+            name: "Medicine Two",
+            intake: "before meals"
+          },
+          {
+            id: 3,
+            name: "Painkiller",
+            intake: "When needed"
+          },
+          {
+            id: 4,
+            name: "Medicine One",
+            intake: "2 pills every morning"
+          },
+          {
+            id: 5,
+            name: "Medicine Two",
+            intake: "before meals"
+          },
+          {
+            id: 6,
+            name: "Painkiller",
+            intake: "When needed"
+          },
+          {
+            id: 7,
+            name: "Medicine One",
+            intake: "2 pills every morning"
+          },
+          {
+            id: 8,
+            name: "Medicine Two",
+            intake: "before meals"
+          },
+          {
+            id: 9,
+            name: "Painkiller",
+            intake: "When needed"
+          },
+          {
+            id: 10,
+            name: "Medicine One",
+            intake: "2 pills every morning"
+          }
         ]
       },
       {

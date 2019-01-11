@@ -2,7 +2,7 @@
   <div class="patient-info">
     <div
       v-if="!patient"
-      class="patient-info-placeholder"
+      class="placeholder-text"
     >
       Please select a patient
     </div>
@@ -47,6 +47,69 @@
           >{{ remark }}</li>
         </ul>
       </div>
+      <div>
+        <h3 class="section-heading">Upcoming events:</h3>
+        <div
+          v-if="patient.events"
+          class="info-table">
+          <table class="info-table-header">
+            <tr>
+              <th style="width: 20%">Date</th>
+              <th style="width: 40%">Type</th>
+              <th style="width: 40%">Clinic</th>
+            </tr>
+          </table>
+          <div class="info-table-content-container">
+            <table class="info-table-content">
+              <tr
+                v-for="event in patient.events"
+                :key="event.id">
+                <td style="width: 20%">{{ event.date | moment("DD.M.YY") }}</td>
+                <td style="width: 40%">{{ event.type }}</td>
+                <td style="width: 40%">{{ event.clinic }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <p
+          v-if="!patient.medicines"
+          class="placeholder-text">
+          No upcoming events.
+        </p>
+      </div>
+      <div class="section-medicine">
+        <h3 class="section-heading">Medicine:</h3>
+        <div
+          v-if="patient.medicines"
+          class="info-table">
+          <table class="info-table-header">
+            <tr>
+              <th style="width: 50%">Name</th>
+              <th style="width: 50%">Intake</th>
+            </tr>
+          </table>
+          <div class="info-table-content-container">
+            <table class="info-table-content">
+              <tr
+                v-for="medicine in patient.medicines"
+                :key="medicine.id">
+                <td style="width: 50%">{{ medicine.name }}</td>
+                <td style="width: 50%">{{ medicine.intake }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <button
+          v-if="patient.medicines"
+          class="button">
+          All medication
+        </button>
+        <p
+          v-if="!patient.medicines"
+          class="placeholder-text">
+          No medicines.
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -69,12 +132,12 @@ export default {
 };
 </script>
 
-<style lang="stylus">
+<style scoped lang="stylus">
 .patient-info
   padding 7px
   font-size $font-size--small
 
-.patient-info-placeholder
+.placeholder-text
   color $color-grey-dark
   font-style italic
 
@@ -110,9 +173,47 @@ export default {
 .section-heading
   margin 0
   font-size $font-size--base
-  font-weight normal
+  font-weight bold
 
 .info-list
   margin 0
+  margin-bottom 30px
   padding-left 28px
+
+.info-table
+  margin-top 8px
+
+.info-table-header
+.info-table-content
+  width 100%
+  font-size $font-size--smaller
+  text-align center
+  background white
+  border-collapse collapse
+
+  th
+    width 100%
+    font-weight normal
+    color white
+    background $color-green-dark
+    border 1px solid $color-green-dark
+
+  td
+    border 1px solid $color-green-dark
+    border-top 2px solid $color-green-dark
+
+  tr:last-child td
+      border-bottom 0
+
+.info-table-content-container
+  max-height 93px
+  border-bottom 1px solid $color-green-dark
+  overflow-y auto
+
+.section-medicine
+  margin-top 70px
+
+.button
+  display block
+  margin 10px auto
 </style>

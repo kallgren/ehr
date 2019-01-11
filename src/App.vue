@@ -37,6 +37,12 @@ button
   border 0
   cursor pointer
 
+.button
+  background $color-green-medium
+  padding 4px 30px
+  color white
+  border-radius 5px
+
 /* Icons */
 i
   display inline-block
