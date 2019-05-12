@@ -11,18 +11,34 @@
             title="Problem list"
             class="pane--problem-list"
           >
-            <template slot="controls"/>
+            <template slot="controls">
+              <div class="controls">
+                <div
+                  v-for="department in departments"
+                  :key="department"
+                  class="radio-button-wrapper"
+                >
+                  <input
+                    :id="department.toLowerCase()"
+                    v-model="selectedDepartment"
+                    :value="department.toLowerCase()"
+                    type="radio"
+                  >
+                  <label :for="department.toLowerCase()">{{ department }}</label>
+                </div>
+              </div>
+            </template>
             <template slot="content">
               <div v-if="selectedPatient">
                 <div class="counters">
-                  <span>Threads:<b>{{ problems.length }}</b></span>
+                  <span>Threads:<b>{{ filteredProblems.length }}</b></span>
                   <span>Progress notes:<b>{{ noteCount }}</b></span>
                   <span>Surgeries:<b>{{ surgeryCount }}</b></span>
                   <span>Epicrises:<b>{{ epicrisisCount }}</b></span>
                 </div>
                 <ul class="problem-list">
                   <ProblemListItem
-                    v-for="problem in problems"
+                    v-for="problem in filteredProblems"
                     :key="problem.id"
                     :problem="problem"
                   />
@@ -67,8 +83,16 @@ export default {
     PatientInfo,
     ProblemListItem
   },
+  data() {
+    return {
+      selectedDepartment: "all"
+    };
+  },
   computed: {
-    ...mapState(["selectedPatient"]),
+    ...mapState({
+      departments: state => ["All", ...state.currentUser.departments],
+      selectedPatient: "selectedPatient"
+    }),
     problems() {
       if (!this.selectedPatient) return [];
 
@@ -76,20 +100,27 @@ export default {
         id: this.selectedPatient.id
       });
     },
+    filteredProblems() {
+      if (this.selectedDepartment === "all") return this.problems;
+
+      return this.problems.filter(
+        problem => problem.department.toLowerCase() === this.selectedDepartment
+      );
+    },
     noteCount() {
-      return this.problems.reduce(
+      return this.filteredProblems.reduce(
         (acc, problem) => acc + problem.note_count,
         0
       );
     },
     surgeryCount() {
-      return this.problems.reduce(
+      return this.filteredProblems.reduce(
         (acc, problem) => acc + problem.surgery_count,
         0
       );
     },
     epicrisisCount() {
-      return this.problems.reduce(
+      return this.filteredProblems.reduce(
         (acc, problem) => acc + problem.epicrisis_count,
         0
       );
@@ -112,6 +143,15 @@ export default {
 
 .pane--attachments
   width 345px
+
+.controls
+  margin-right 5px
+  font-size $font-size--xsmall
+
+.radio-button-wrapper
+  display inline-block
+  margin-right 5px
+  margin-left 23px
 
 .counters
   display flex

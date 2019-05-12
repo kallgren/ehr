@@ -8,7 +8,8 @@ export default new Vuex.Store({
     currentUser: {
       first_name: "Alma",
       last_name: "Karlsson",
-      role: "Orthopedic, surgeon"
+      role: "Orthopedic, surgeon",
+      departments: ["Orthopedics"]
     },
     selectedPatient: null,
     patients: [
@@ -311,15 +312,18 @@ export default new Vuex.Store({
     diagnoses: [
       {
         code: "I49.9",
-        description: "Cardiac Arrythmia"
+        description: "Cardiac Arrythmia",
+        department: "Cardiology"
       },
       {
         code: "M25.562",
-        description: "Left knee pain"
+        description: "Left knee pain",
+        department: "Orthopedics"
       },
       {
         code: "G80",
-        description: "Cerebral Palsy"
+        description: "Cerebral Palsy",
+        department: "Neurology"
       }
     ],
     surgeries: [
