@@ -59,7 +59,7 @@
               <th style="width: 40%">Clinic</th>
             </tr>
           </table>
-          <div class="info-table-content-container">
+          <div class="info-table-content-wrapper">
             <table class="info-table-content">
               <tr
                 v-for="event in patient.events"
@@ -88,7 +88,7 @@
               <th style="width: 50%">Intake</th>
             </tr>
           </table>
-          <div class="info-table-content-container">
+          <div class="info-table-content-wrapper">
             <table class="info-table-content">
               <tr
                 v-for="medicine in patient.medicines"
@@ -205,7 +205,7 @@ export default {
   tr:last-child td
       border-bottom 0
 
-.info-table-content-container
+.info-table-content-wrapper
   max-height 93px
   border-bottom 1px solid $color-green-dark
   overflow-y auto
