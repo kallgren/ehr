@@ -1,7 +1,5 @@
 <template>
-  <li
-    :class="[ageClass]"
-    class="problem-item">
+  <li :class="['problem-item', ageClass]">
     <b class="code">
       {{ problem.icd10_code }}
       <i
