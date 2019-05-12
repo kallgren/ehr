@@ -82,7 +82,7 @@ export default {
 .tab
   display inline-block
   width 25%
-  font-size $font-size--smaller
+  font-size $font-size--xsmall
   text-align center
   line-height 30px
   border-bottom 1px solid $color-green-dark
@@ -106,7 +106,7 @@ export default {
 
 .table
   width 100%
-  font-size $font-size--smaller
+  font-size $font-size--xsmall
   line-height 1.4
   border-collapse collapse
 
@@ -118,7 +118,7 @@ export default {
     background $color-blue
 
 .patient-search
-  font-size $font-size--smaller
+  font-size $font-size--xsmall
   font-style italic
   margin-bottom 4px
 </style>

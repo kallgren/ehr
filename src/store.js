@@ -273,6 +273,82 @@ export default new Vuex.Store({
         },
         reason: "ankle fracture repair"
       }
+    ],
+    problems: [
+      {
+        id: 1,
+        patient_id: 1,
+        icd10_code: "M25.562",
+        start_date: "2017-02-22T10:00:00Z",
+        chronic: false,
+        epicrisis_count: 1
+      },
+      {
+        id: 2,
+        patient_id: 1,
+        icd10_code: "I49.9",
+        start_date: "2008-02-03T15:30:00Z",
+        chronic: false,
+        epicrisis_count: 0
+      },
+      {
+        id: 3,
+        patient_id: 1,
+        icd10_code: "G80",
+        start_date: "1975-06-13T02:34:00Z",
+        chronic: true,
+        epicrisis_count: 0
+      },
+      {
+        id: 4,
+        patient_id: 2,
+        icd10_code: "M25.562",
+        start_date: "2017-09-29T14:19:00Z",
+        chronic: false,
+        epicrisis_count: 0
+      }
+    ],
+    diagnoses: [
+      {
+        code: "I49.9",
+        description: "Cardiac Arrythmia"
+      },
+      {
+        code: "M25.562",
+        description: "Left knee pain"
+      },
+      {
+        code: "G80",
+        description: "Cerebral Palsy"
+      }
+    ],
+    surgeries: [
+      {
+        id: 1,
+        problem_id: 1
+      }
+    ],
+    notes: [
+      {
+        id: 1,
+        problem_id: 1,
+        date: "2019-02-08T09:37:00Z"
+      },
+      {
+        id: 2,
+        problem_id: 2,
+        date: "2009-11-22T14:12:00Z"
+      },
+      {
+        id: 3,
+        problem_id: 2,
+        date: "2018-10-16T14:26:00Z"
+      },
+      {
+        id: 4,
+        problem_id: 4,
+        date: "2017-09-29T14:28:00Z"
+      }
     ]
   },
   mutations: {
@@ -282,5 +358,33 @@ export default new Vuex.Store({
       );
     }
   },
-  actions: {}
+  getters: {
+    getProblemsByPatientId(state, getters) {
+      return payload =>
+        state.problems
+          .filter(problem => problem.patient_id === payload.id)
+          .map(problem => ({
+            ...problem,
+            ...state.diagnoses.find(
+              diagnose => diagnose.code === problem.icd10_code
+            ),
+            note_count: getters.getNotesByProblemId(problem).length,
+            surgery_count: getters.getSurgeriesByProblemId(problem).length,
+            last_activity_date: Math.max(
+              new Date(problem.start_date),
+              ...getters
+                .getNotesByProblemId(problem)
+                .map(note => new Date(note.date))
+            )
+          }));
+    },
+    getSurgeriesByProblemId(state) {
+      return payload =>
+        state.surgeries.filter(surgery => surgery.problem_id === payload.id);
+    },
+    getNotesByProblemId(state) {
+      return payload =>
+        state.notes.filter(note => note.problem_id === payload.id);
+    }
+  }
 });

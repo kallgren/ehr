@@ -186,7 +186,7 @@ export default {
 .info-table-header
 .info-table-content
   width 100%
-  font-size $font-size--smaller
+  font-size $font-size--xsmall
   text-align center
   background white
   border-collapse collapse
