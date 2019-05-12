@@ -18,7 +18,7 @@
       <div class="patient-symbols">
         <i
           :class="['patient-symbol', 'icon-a', {'active': patient.allergies.length}]"
-          :title="patient.allergies ? 'Allergic to ' + patient.allergies.join(', ') : 'No allergies'"
+          :title="patient.allergies.length ? 'Allergic to ' + patient.allergies.join(', ') : 'No allergies'"
         />
         <i
           :class="['patient-symbol', 'icon-drop', {'active': patient.blood_problems}]"
