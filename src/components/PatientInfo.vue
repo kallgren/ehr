@@ -9,7 +9,7 @@
     <div v-if="patient">
       <div class="patient-basics">
         <h2 class="name">{{ patient.last_name }}, {{ patient.first_name }}</h2>
-        <i :class="['sex', {'icon-male': patient.sex === 'male', 'icon-female': patient.sex === 'female'}]"/>
+        <i :class="['sex', patient.sex === 'male' ? 'icon-male' : 'icon-female']"/>
         <div>
           <span class="ssn">{{ patient.ssn }}</span>
           <span class="age">{{ age }} years old</span>
@@ -151,8 +151,7 @@ export default {
   font-style italic
   margin 0 0 3px
 
-.icon-male
-.icon-female
+.sex
   margin-left 13px
   vertical-align text-bottom
 
