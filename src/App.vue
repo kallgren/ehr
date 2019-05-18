@@ -59,7 +59,7 @@ button
 
 .button
   background $color-green-medium
-  padding 4px 30px
+  padding 4px 30px 5px
   color white
   border-radius 5px
 

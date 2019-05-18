@@ -43,6 +43,14 @@
                     :problem="problem"
                   />
                 </ul>
+                <div class="select-all-button-wrapper">
+                  <button
+                    class="button"
+                    @click="selectAllProblems()"
+                  >
+                    Select all
+                  </button>
+                </div>
               </div>
             </template>
           </BasePane>
@@ -67,7 +75,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 import LayoutSidebar from "@/layouts/LayoutSidebar.vue";
 import BasePane from "@/components/BasePane.vue";
 import PatientSelector from "@/components/PatientSelector.vue";
@@ -125,6 +133,14 @@ export default {
         0
       );
     }
+  },
+  methods: {
+    ...mapMutations(["selectProblemsByIds"]),
+    selectAllProblems() {
+      this.selectProblemsByIds({
+        ids: this.filteredProblems.map(problem => problem.id)
+      });
+    }
   }
 };
 </script>
@@ -135,6 +151,7 @@ export default {
   height calc(100% - 32px) // Quick fix to match design, 32px is .content-heading height
 
 .pane--problem-list
+  position relative
   width 390px
 
 .pane--notes
@@ -159,10 +176,24 @@ export default {
   padding 7px
   font-size $font-size--xxsmall
   background white
-  border 1px solid $color-grey-darker
+  border 1px solid $color-grey-dark
 
 .problem-list
   margin 0
   padding 0
   list-style-type none
+
+.select-all-button-wrapper
+  position absolute
+  bottom 0
+  width 100%
+  padding-top 7px
+  padding-bottom 5px
+  text-align center
+  background white
+  border-top 1px solid $color-grey-dark
+
+  .button
+    padding-left 45px
+    padding-right 45px
 </style>

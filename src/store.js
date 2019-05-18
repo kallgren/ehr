@@ -12,6 +12,7 @@ export default new Vuex.Store({
       departments: ["Orthopedics"]
     },
     selectedPatient: null,
+    selectedProblems: [],
     patients: [
       {
         id: 1,
@@ -360,6 +361,23 @@ export default new Vuex.Store({
       state.selectedPatient = state.patients.find(
         patient => patient.id === payload.id
       );
+
+      state.selectedProblems = [];
+    },
+    selectProblemById(state, payload) {
+      state.selectedProblems = [payload.id];
+    },
+    selectProblemsByIds(state, payload) {
+      state.selectedProblems = [...payload.ids];
+    },
+    toggleAddProblemToSelectById(state, payload) {
+      if (state.selectedProblems.includes(payload.id)) {
+        state.selectedProblems = state.selectedProblems.filter(
+          id => id !== payload.id
+        );
+      } else {
+        state.selectedProblems.push(payload.id);
+      }
     }
   },
   getters: {

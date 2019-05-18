@@ -1,48 +1,56 @@
 <template>
-  <li :class="['problem-item', ageClass]">
-    <b class="code">
-      {{ problem.icd10_code }}
-      <i
-        v-if="problem.chronic"
-        class="icon-chronic"/>
-    </b>
-    {{ problem.description }}
-    <div class="problem-info">
-      <div class="time-container">
-        <div class="time-col">
-          <span class="time-label">Start:</span>
-          {{ problem.start_date | moment("from", "now", true) }}
+  <li>
+    <a
+      :class="['problem-item', ageClass, {'selected': isSelected}]"
+      href="javascript:void"
+      @click="selectProblem($event)"
+    >
+      <b class="code">
+        {{ problem.icd10_code }}
+        <i
+          v-if="problem.chronic"
+          class="icon-chronic"/>
+      </b>
+      {{ problem.description }}
+      <div class="problem-info">
+        <div class="time-container">
+          <div class="time-col">
+            <span class="time-label">Start:</span>
+            {{ problem.start_date | moment("from", "now", true) }}
+          </div>
+          <div class="time-col">
+            <span class="time-label">Last:</span>
+            {{ problem.last_activity_date | moment("from", "now", true) }}
+          </div>
         </div>
-        <div class="time-col">
-          <span class="time-label">Last:</span>
-          {{ problem.last_activity_date | moment("from", "now", true) }}
+        <div class="counter-container">
+          <div class="counter">
+            <div v-if="problem.note_count">
+              <i :class="[notesIconClass]"/>
+              <span>{{ problem.note_count }}</span>
+            </div>
+          </div>
+          <div class="counter">
+            <div v-if="problem.surgery_count">
+              <i :class="[surgeriesIconClass]"/>
+              <span>{{ problem.surgery_count }}</span>
+            </div>
+          </div>
+          <div class="counter">
+            <div v-if="problem.epicrisis_count">
+              <i :class="[epicrisesIconClass]"/>
+              <span>{{ problem.epicrisis_count }}</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="counter-container">
-        <div class="counter">
-          <div v-if="problem.note_count">
-            <i :class="[notesIconClass]"/>
-            <span>{{ problem.note_count }}</span>
-          </div>
-        </div>
-        <div class="counter">
-          <div v-if="problem.surgery_count">
-            <i :class="[surgeriesIconClass]"/>
-            <span>{{ problem.surgery_count }}</span>
-          </div>
-        </div>
-        <div class="counter">
-          <div v-if="problem.epicrisis_count">
-            <i :class="[epicrisesIconClass]"/>
-            <span>{{ problem.epicrisis_count }}</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    </a>
   </li>
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
+
 export default {
   name: "ProblemListItem",
   props: {
@@ -52,6 +60,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(["selectedProblems"]),
     lastActivityAgeMonths() {
       return Math.ceil(
         this.$moment().diff(this.problem.last_activity_date, "months", true)
@@ -80,6 +89,19 @@ export default {
       if (this.problem.epicrisis_count > 1) return "icon-charts-two";
 
       return "icon-charts-one";
+    },
+    isSelected() {
+      return this.selectedProblems.includes(this.problem.id);
+    }
+  },
+  methods: {
+    ...mapMutations(["selectProblemById", "toggleAddProblemToSelectById"]),
+    selectProblem(e) {
+      if (e.shiftKey) {
+        this.toggleAddProblemToSelectById({ id: this.problem.id });
+      } else {
+        this.selectProblemById({ id: this.problem.id });
+      }
     }
   }
 };
@@ -87,18 +109,34 @@ export default {
 
 <style scoped lang="stylus">
 .problem-item
+  display block
+  position relative
   height 56px
   padding 3px 15px
   font-size $font-size--small
+  color inherit
+  text-decoration none
   background white
-  border-bottom 1px solid $color-grey-darker
+  border-bottom 1px solid $color-grey-dark
   box-sizing border-box
+
+  &:focus
+    z-index 1
 
 .age--old
   background $color-grey-light
 
 .age--older
   background $color-grey
+
+.selected::before
+  content ""
+  position absolute
+  top -1px
+  right -3px
+  bottom -1px
+  left -3px
+  border 4px solid $color-blue
 
 .code
   display inline-block
