@@ -176,7 +176,7 @@ export default {
   padding 7px
   font-size $font-size--xxsmall
   background white
-  border 1px solid $color-grey-dark
+  border 1px solid $color-grey-darker
 
 .problem-list
   margin 0
