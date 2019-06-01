@@ -55,11 +55,20 @@
             </template>
           </BasePane>
           <BasePane
+            :scrollable="true"
             title="Notes"
             class="pane--notes"
           >
             <template slot="controls"/>
-            <template slot="content"/>
+            <template slot="content">
+              <ul class="note-list">
+                <NoteListItem
+                  v-for="note in filteredNotes"
+                  :key="note.id"
+                  :note="note"
+                />
+              </ul>
+            </template>
           </BasePane>
           <BasePane
             title="Attachments"
@@ -75,12 +84,13 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapGetters, mapMutations } from "vuex";
 import LayoutSidebar from "@/layouts/LayoutSidebar.vue";
 import BasePane from "@/components/BasePane.vue";
 import PatientSelector from "@/components/PatientSelector.vue";
 import PatientInfo from "@/components/PatientInfo.vue";
 import ProblemListItem from "@/components/ProblemListItem.vue";
+import NoteListItem from "@/components/NoteListItem.vue";
 
 export default {
   name: "Journal",
@@ -89,7 +99,8 @@ export default {
     BasePane,
     PatientSelector,
     PatientInfo,
-    ProblemListItem
+    ProblemListItem,
+    NoteListItem
   },
   data() {
     return {
@@ -100,6 +111,9 @@ export default {
     ...mapState({
       departments: state => ["All", ...state.currentUser.departments],
       selectedPatient: "selectedPatient"
+    }),
+    ...mapGetters({
+      filteredNotes: "getNotesForSelectedProblems"
     }),
     problems() {
       if (!this.selectedPatient) return [];
@@ -152,14 +166,16 @@ export default {
 
 .pane--problem-list
   position relative
-  width 390px
+  width 387px
+  min-width 387px
 
 .pane--notes
   flex-grow 1
-  margin 0 15px
+  margin 0 15px 0 17px
 
 .pane--attachments
   width 345px
+  min-width 345px
 
 .controls
   margin-right 5px
@@ -196,4 +212,9 @@ export default {
   .button
     padding-left 45px
     padding-right 45px
+
+.note-list
+  margin 0
+  padding 13px 26px 3px 10px
+  list-style-type none
 </style>

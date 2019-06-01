@@ -336,23 +336,137 @@ export default new Vuex.Store({
     notes: [
       {
         id: 1,
-        problem_id: 1,
-        date: "2019-02-08T09:37:00Z"
+        id_for_patient: 1,
+        problem_id: 2,
+        date: "2009-11-22T14:12:00Z",
+        is_starred: false
       },
       {
         id: 2,
-        problem_id: 2,
-        date: "2009-11-22T14:12:00Z"
+        id_for_patient: 1,
+        problem_id: 4,
+        date: "2017-09-29T14:28:00Z",
+        is_starred: false
       },
       {
         id: 3,
-        problem_id: 2,
-        date: "2018-10-16T14:26:00Z"
+        id_for_patient: 2,
+        problem_id: 1,
+        date: "2018-09-14T09:01:00Z",
+        is_starred: false,
+        chief_complaint: "Persistant pain in left knee",
+        history_of_present_illness:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.",
+        physical_examination:
+          "Nullam condimentum et dolor id ullamcorper. Aliquam leo velit, finibus sit amet eros et, sodales cursus tortor. Nulla sagittis tincidunt pharetra.",
+        assessment:
+          "M25.562 Donec vitae pellentesque quam. Nullam dapibus, erat ac efficitur consectetur, enim metus elementum nibh, vitae convallis turpis justo vitae massa.",
+        plan:
+          "Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
       },
       {
         id: 4,
-        problem_id: 4,
-        date: "2017-09-29T14:28:00Z"
+        id_for_patient: 3,
+        problem_id: 2,
+        date: "2018-10-16T14:26:00Z",
+        is_starred: false
+      },
+      {
+        id: 5,
+        id_for_patient: 4,
+        problem_id: 1,
+        date: "2019-01-27T08:24:00Z",
+        is_starred: false,
+        chief_complaint: "",
+        history_of_present_illness: "Sed tincidunt velit dignissim ut.",
+        physical_examination: "Fusce suscipit eleifend sapien.",
+        assessment: "",
+        plan: "Quisque non nulla ornare velit mattis tincidunt"
+      },
+      {
+        id: 6,
+        id_for_patient: 5,
+        problem_id: 1,
+        date: "2019-02-02T08:20:00Z",
+        is_starred: true,
+        chief_complaint: "Patient experiencing palpitations",
+        history_of_present_illness:
+          "Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.",
+        physical_examination: "Integer ornare est ac magna tempus accumsan.",
+        assessment:
+          "I49.9 In sapien leo, eleifend at faucibus vel, lobortis ac est. Sed nisl sapien, pharetra quis bibendum nec, ullamcorper sit amet nisl.",
+        plan:
+          "Fusce sodales, ante at pharetra volutpat, est quam consectetur nulla, at hendrerit sem ante quis arcu."
+      },
+      {
+        id: 7,
+        id_for_patient: 6,
+        problem_id: 1,
+        date: "2019-02-10T11:13:00Z",
+        is_starred: false,
+        chief_complaint: "Pain and swelling in the left leg",
+        history_of_present_illness:
+          "Knee has been hurting intermittently for past 3 months, swollen for a past week",
+        physical_examination:
+          "General: no immediate distress. Skin: There is an area of abrasion on the right lower leg, no erythema over painful area Lymph Nodes: There is no inguinal lymphadenopathy. Musculoskeletal: The right leg is swollen about 1 cm more than the left leg",
+        assessment:
+          "M25. 562 Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+        plan:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo."
+      },
+      {
+        id: 8,
+        id_for_patient: 7,
+        problem_id: 1,
+        date: "2019-02-18T09:37:00Z",
+        is_starred: true,
+        chief_complaint: "Persistant pain in left knee",
+        history_of_present_illness:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.",
+        physical_examination:
+          "Nullam condimentum et dolor id ullamcorper. Aliquam leo velit, finibus sit amet eros et, sodales cursus tortor. Nulla sagittis tincidunt pharetra.",
+        assessment:
+          "M25.562 Donec vitae pellentesque quam. Nullam dapibus, erat ac efficitur consectetur, enim metus elementum nibh, vitae convallis turpis justo vitae massa.",
+        plan:
+          "Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+      }
+    ],
+    attachments: [
+      {
+        id: 1,
+        note_id: 3,
+        name: "Referral, incoming",
+        date: "2018-09-06"
+      },
+      {
+        id: 2,
+        note_id: 6,
+        name: "CT",
+        date: "2019-02-01"
+      },
+      {
+        id: 3,
+        note_id: 6,
+        name: "Referral",
+        date: "2019-02-02"
+      },
+      {
+        id: 4,
+        note_id: 7,
+        name: "X-Ray",
+        date: "2019-02-12"
+      },
+      {
+        id: 5,
+        note_id: 8,
+        name: "Sick leave",
+        date: "2019-02-17"
+      },
+      {
+        id: 6,
+        note_id: 8,
+        name: "X-Ray",
+        date: "2019-02-18T09:16:00Z"
       }
     ]
   },
@@ -378,6 +492,25 @@ export default new Vuex.Store({
       } else {
         state.selectedProblems.push(payload.id);
       }
+    },
+    starNoteById(state, payload) {
+      const note = state.notes.find(note => note.id === payload.id);
+      note.is_starred = true;
+    },
+    unStarNoteById(state, payload) {
+      const note = state.notes.find(note => note.id === payload.id);
+      note.is_starred = false;
+    }
+  },
+  actions: {
+    toggleStarNoteById({ commit, state }, payload) {
+      const note = state.notes.find(note => note.id === payload.id);
+
+      if (note.is_starred) {
+        commit("unStarNoteById", note);
+      } else {
+        commit("starNoteById", note);
+      }
     }
   },
   getters: {
@@ -387,9 +520,7 @@ export default new Vuex.Store({
           .filter(problem => problem.patient_id === payload.id)
           .map(problem => ({
             ...problem,
-            ...state.diagnoses.find(
-              diagnose => diagnose.code === problem.icd10_code
-            ),
+            ...getters.getDiagnosisByICD10Code(problem),
             note_count: getters.getNotesByProblemId(problem).length,
             surgery_count: getters.getSurgeriesByProblemId(problem).length,
             last_activity_date: Math.max(
@@ -407,6 +538,29 @@ export default new Vuex.Store({
     getNotesByProblemId(state) {
       return payload =>
         state.notes.filter(note => note.problem_id === payload.id);
+    },
+    getDiagnosisByICD10Code(state) {
+      return payload =>
+        state.diagnoses.find(diagnose => diagnose.code === payload.icd10_code);
+    },
+    getAttachmentsByNoteId(state) {
+      return payload =>
+        state.attachments
+          .filter(attachment => attachment.note_id === payload.id)
+          .sort((a, b) => new Date(b.date) - new Date(a.date));
+    },
+    getNotesForSelectedProblems(state, getters) {
+      return state.selectedProblems
+        .map(id => getters.getNotesByProblemId({ id }))
+        .flat()
+        .map(note => ({
+          ...note,
+          attachments: getters.getAttachmentsByNoteId(note),
+          diagnosis_description: getters.getDiagnosisByICD10Code(
+            state.problems.find(problem => problem.id === note.problem_id)
+          ).description
+        }))
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
     }
   }
 });

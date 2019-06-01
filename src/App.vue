@@ -130,6 +130,26 @@ i
     height 25px
     background-image url("assets/icons/charts-two.png")
 
+  &.icon-paperclip
+    width 30px
+    height 30px
+    background-image url("assets/icons/paperclip.png")
+
+  &.icon-paper-plane
+    width 21px
+    height 21px
+    background-image url("assets/icons/paper-plane.png")
+
+  &.icon-star-empty
+    width 21px
+    height 21px
+    background-image url("assets/icons/star-empty.png")
+
+  &.icon-star-filled
+    width 21px
+    height 21px
+    background-image url("assets/icons/star-filled.png")
+
   &.icon-a
     font-family $font-family--black
     font-size 28px

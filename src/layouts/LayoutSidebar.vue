@@ -32,6 +32,7 @@ export default {
 .sidebar
   base-border()
   width 300px
+  min-width 300px
   background $color-almost-white
   box-sizing border-box
 

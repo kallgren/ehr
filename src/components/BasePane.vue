@@ -8,7 +8,7 @@
         <slot name="controls"/>
       </div>
     </div>
-    <div class="pane-content">
+    <div :class="['pane-content', {'scrollable': scrollable}]">
       <slot name="content"/>
     </div>
   </div>
@@ -21,6 +21,10 @@ export default {
     title: {
       type: String,
       default: ""
+    },
+    scrollable: {
+      type: Boolean,
+      default: false
     }
   }
 };
@@ -29,6 +33,8 @@ export default {
 <style scoped lang="stylus">
 .base-pane
   base-border()
+  display flex
+  flex-direction column
   background $color-almost-white
   box-sizing border-box
 
@@ -46,4 +52,7 @@ export default {
 
 .pane-controls
   margin-left auto
+
+.scrollable
+  overflow-y auto
 </style>
