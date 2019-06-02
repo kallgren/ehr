@@ -67,6 +67,7 @@
                   </label>
                   <input
                     id="note-search"
+                    v-model="noteSearchQuery"
                     type="search"
                     class="input-note-search"
                     placeholder="Search..."
@@ -102,7 +103,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from "vuex";
+import { mapState, mapMutations } from "vuex";
 import LayoutSidebar from "@/layouts/LayoutSidebar.vue";
 import BasePane from "@/components/BasePane.vue";
 import PatientSelector from "@/components/PatientSelector.vue";
@@ -122,16 +123,14 @@ export default {
   },
   data() {
     return {
-      selectedDepartment: "all"
+      selectedDepartment: "all",
+      noteSearchQuery: ""
     };
   },
   computed: {
     ...mapState({
       departments: state => ["All", ...state.currentUser.departments],
       selectedPatient: "selectedPatient"
-    }),
-    ...mapGetters({
-      filteredNotes: "getNotesForSelectedProblems"
     }),
     problems() {
       if (!this.selectedPatient) return [];
@@ -164,6 +163,30 @@ export default {
         (acc, problem) => acc + problem.epicrisis_count,
         0
       );
+    },
+    filteredNotes() {
+      const filteredNotes = this.$store.getters.getNotesForSelectedProblems;
+      const searchQuery = this.noteSearchQuery.trim().toLowerCase();
+
+      if (searchQuery === "") return filteredNotes;
+
+      return filteredNotes.filter(note => {
+        const searchableFields = [
+          "#" + note.id_for_patient,
+          note.date,
+          note.chief_complaint,
+          note.history_of_present_illness,
+          note.physical_examination,
+          note.assessment,
+          note.plan,
+          note.diagnosis_description,
+          ...note.attachments.map(note => note.name)
+        ];
+
+        return searchableFields.filter(
+          field => field && field.toLowerCase().includes(searchQuery)
+        ).length;
+      });
     }
   },
   methods: {
