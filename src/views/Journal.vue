@@ -59,7 +59,25 @@
             title="Notes"
             class="pane--notes"
           >
-            <template slot="controls"/>
+            <template slot="controls">
+              <div class="controls">
+                <div class="note-search-wrapper">
+                  <label for="note-search">
+                    <i class="icon-search"/>
+                  </label>
+                  <input
+                    id="note-search"
+                    type="search"
+                    class="input-note-search"
+                    placeholder="Search..."
+                  >
+                </div>
+                <button class="button button-note-add">
+                  <i class="icon-plus"/>
+                  add new note
+                </button>
+              </div>
+            </template>
             <template slot="content">
               <ul class="note-list">
                 <NoteListItem
@@ -181,6 +199,10 @@ export default {
   margin-right 5px
   font-size $font-size--xsmall
 
+  .button
+    height 23px
+    padding 0 8px
+
 .radio-button-wrapper
   display inline-block
   margin-right 5px
@@ -212,6 +234,34 @@ export default {
   .button
     padding-left 45px
     padding-right 45px
+
+.note-search-wrapper
+  display inline-block
+  margin-right 10px
+  padding-left 4px
+  background white
+  border-radius 3px
+
+.icon-search
+.icon-plus
+  vertical-align middle
+
+.icon-search
+  margin-right 3px
+
+.input-note-search
+  width 133px
+  padding 0 3px
+  font-size $font-size--small
+  line-height 23px
+  border 0
+  border-radius 0 3px 3px 0
+
+.controls .button-note-add
+    padding-left 7px
+
+.icon-plus
+  margin-right 5px
 
 .note-list
   margin 0

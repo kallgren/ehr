@@ -150,6 +150,16 @@ i
     height 21px
     background-image url("assets/icons/star-filled.png")
 
+  &.icon-search
+    width 20px
+    height 20px
+    background-image url("assets/icons/search.png")
+
+  &.icon-plus
+    width 14px
+    height 14px
+    background-image url("assets/icons/plus.png")
+
   &.icon-a
     font-family $font-family--black
     font-size 28px
