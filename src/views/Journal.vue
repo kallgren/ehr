@@ -94,7 +94,9 @@
             class="pane--attachments"
           >
             <template slot="controls"/>
-            <template slot="content"/>
+            <template slot="content">
+              <AttachmentList :attachments="filteredAttachments"/>
+            </template>
           </BasePane>
         </div>
       </template>
@@ -110,6 +112,7 @@ import PatientSelector from "@/components/PatientSelector.vue";
 import PatientInfo from "@/components/PatientInfo.vue";
 import ProblemListItem from "@/components/ProblemListItem.vue";
 import NoteListItem from "@/components/NoteListItem.vue";
+import AttachmentList from "@/components/AttachmentList.vue";
 
 export default {
   name: "Journal",
@@ -119,7 +122,8 @@ export default {
     PatientSelector,
     PatientInfo,
     ProblemListItem,
-    NoteListItem
+    NoteListItem,
+    AttachmentList
   },
   data() {
     return {
@@ -180,13 +184,16 @@ export default {
           note.assessment,
           note.plan,
           note.diagnosis_description,
-          ...note.attachments.map(note => note.name)
+          ...note.attachments.map(attachment => attachment.type)
         ];
 
-        return searchableFields.filter(
+        return searchableFields.some(
           field => field && field.toLowerCase().includes(searchQuery)
-        ).length;
+        );
       });
+    },
+    filteredAttachments() {
+      return this.filteredNotes.map(note => note.attachments).flat();
     }
   },
   methods: {

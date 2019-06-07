@@ -1,6 +1,8 @@
 <template>
   <li
-    :class="['note-item', {'starred': note.is_starred}]"
+    :class="['note-item', {'starred': note.is_starred, 'highlighted': isHighlighted}]"
+    @mouseover="highlightNoteById(note)"
+    @mouseleave="resetNoteHighlight"
   >
     <div class="note-item-header">
       <span class="note-date">
@@ -62,7 +64,7 @@
             v-for="(attachment, index) in note.attachments"
             :key="attachment.id"
           >
-            <b>{{ attachment.name }}</b>
+            <b>{{ attachment.type }}</b>
             {{ attachment.date | moment("D-M-YY") }}<span v-if="index < note.attachments.length - 1">, </span>
           </span>
         </div>
@@ -82,18 +84,38 @@ export default {
       required: true
     }
   },
-  methods: mapActions(["toggleStarNoteById"])
+  computed: {
+    isHighlighted() {
+      const highlightedNote = this.$store.state.highlightedNote;
+
+      return highlightedNote && highlightedNote.id === this.note.id;
+    }
+  },
+  methods: {
+    ...mapActions(["toggleStarNoteById"]),
+    ...mapMutations(["highlightNoteById", "resetNoteHighlight"])
+  }
 };
 </script>
 
 <style scoped lang="stylus">
 .note-item
+  position relative
   margin-bottom 15px
   background white
   border 1px solid $color-grey-darker
 
   &:last-child
     margin-bottom 0
+
+.highlighted::after
+  selection-border()
+  content ""
+  position absolute
+  top -1px
+  right -1px
+  bottom -1px
+  left -1px
 
 .note-item-header
   position relative

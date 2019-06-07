@@ -13,6 +13,7 @@ export default new Vuex.Store({
     },
     selectedPatient: null,
     selectedProblems: [],
+    highlightedNote: null,
     patients: [
       {
         id: 1,
@@ -435,38 +436,42 @@ export default new Vuex.Store({
       {
         id: 1,
         note_id: 3,
-        name: "Referral, incoming",
-        date: "2018-09-06"
+        type: "Referral, incoming",
+        date: "2018-09-06",
+        comment: "GP"
       },
       {
         id: 2,
         note_id: 6,
-        name: "CT",
+        type: "CT",
         date: "2019-02-01"
       },
       {
         id: 3,
         note_id: 6,
-        name: "Referral",
-        date: "2019-02-02"
+        type: "Referral",
+        date: "2019-02-02",
+        comment: "Physiotherapy"
       },
       {
         id: 4,
         note_id: 7,
-        name: "X-Ray",
-        date: "2019-02-12"
+        type: "X-Ray",
+        date: "2019-02-12",
+        comment: "Left knee"
       },
       {
         id: 5,
         note_id: 8,
-        name: "Sick leave",
+        type: "Sick leave",
         date: "2019-02-17"
       },
       {
         id: 6,
         note_id: 8,
-        name: "X-Ray",
-        date: "2019-02-18T09:16:00Z"
+        type: "X-Ray",
+        date: "2019-02-18T09:16:00Z",
+        comment: "Left knee"
       }
     ]
   },
@@ -500,6 +505,12 @@ export default new Vuex.Store({
     unStarNoteById(state, payload) {
       const note = state.notes.find(note => note.id === payload.id);
       note.is_starred = false;
+    },
+    highlightNoteById(state, payload) {
+      state.highlightedNote = state.notes.find(note => note.id === payload.id);
+    },
+    resetNoteHighlight(state) {
+      state.highlightedNote = null;
     }
   },
   actions: {

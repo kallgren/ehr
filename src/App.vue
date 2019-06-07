@@ -160,6 +160,11 @@ i
     height 14px
     background-image url("assets/icons/plus.png")
 
+  &.icon-arrows-up-down
+    width 11px
+    height 15px
+    background-image url("assets/icons/arrows-up-down.png")
+
   &.icon-a
     font-family $font-family--black
     font-size 28px

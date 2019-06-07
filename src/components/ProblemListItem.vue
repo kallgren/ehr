@@ -129,14 +129,14 @@ export default {
 .age--older
   background $color-grey
 
-.selected::before
+.selected::after
+  selection-border()
   content ""
   position absolute
   top -1px
   right -3px
   bottom -1px
   left -3px
-  border 4px solid $color-blue
 
 .code
   display inline-block
