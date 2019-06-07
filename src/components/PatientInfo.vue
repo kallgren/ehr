@@ -72,7 +72,7 @@
           </div>
         </div>
         <p
-          v-if="!patient.medicines"
+          v-if="!patient.events"
           class="placeholder-text">
           No upcoming events.
         </p>
