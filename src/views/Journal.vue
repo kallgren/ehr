@@ -46,9 +46,9 @@
                 <div class="select-all-button-wrapper">
                   <button
                     class="button"
-                    @click="selectAllProblems()"
+                    @click="toggleSelectAllProblems()"
                   >
-                    Select all
+                    {{ allProblemsSelected ? "Deselect" : "Select" }} all
                   </button>
                 </div>
               </div>
@@ -168,6 +168,11 @@ export default {
         0
       );
     },
+    allProblemsSelected() {
+      return this.filteredProblems.every(problem =>
+        this.$store.state.selectedProblems.includes(problem.id)
+      );
+    },
     filteredNotes() {
       const filteredNotes = this.$store.getters.getNotesForSelectedProblems;
       const searchQuery = this.noteSearchQuery.trim().toLowerCase();
@@ -198,10 +203,12 @@ export default {
   },
   methods: {
     ...mapMutations(["selectProblemsByIds"]),
-    selectAllProblems() {
-      this.selectProblemsByIds({
-        ids: this.filteredProblems.map(problem => problem.id)
-      });
+    toggleSelectAllProblems() {
+      const ids = this.allProblemsSelected
+        ? []
+        : this.filteredProblems.map(problem => problem.id);
+
+      this.selectProblemsByIds({ ids });
     }
   }
 };
