@@ -116,6 +116,7 @@ export default {
   right -1px
   bottom -1px
   left -1px
+  pointer-events none
 
 .note-item-header
   position relative
