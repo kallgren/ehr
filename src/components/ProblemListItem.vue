@@ -74,7 +74,7 @@ export default {
     },
     notesIconClass() {
       if (this.problem.note_count < 1) return "";
-      if (this.problem.note_count > 1) return "icon-documents-four";
+      if (this.problem.note_count > 3) return "icon-documents-four";
 
       return "icon-documents-three";
     },
