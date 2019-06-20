@@ -57,6 +57,10 @@ button
   border 0
   cursor pointer
 
+  &:disabled
+    cursor default
+    opacity 0.5
+
 .button
   background $color-green-medium
   padding 4px 30px 5px

@@ -45,6 +45,7 @@
                 </ul>
                 <div class="select-all-button-wrapper">
                   <button
+                    :disabled="!filteredProblems.length"
                     class="button"
                     @click="toggleSelectAllProblems()"
                   >
@@ -169,8 +170,11 @@ export default {
       );
     },
     allProblemsSelected() {
-      return this.filteredProblems.every(problem =>
-        this.$store.state.selectedProblems.includes(problem.id)
+      return (
+        this.filteredProblems.length &&
+        this.filteredProblems.every(problem =>
+          this.$store.state.selectedProblems.includes(problem.id)
+        )
       );
     },
     filteredNotes() {
