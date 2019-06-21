@@ -25,9 +25,9 @@
         </div>
         <div class="counter-container">
           <div class="counter">
-            <div v-if="problem.note_count">
-              <i :class="[notesIconClass]"/>
-              <span>{{ problem.note_count }}</span>
+            <div v-if="problem.progress_note_count">
+              <i :class="[progressNotesIconClass]"/>
+              <span>{{ problem.progress_note_count }}</span>
             </div>
           </div>
           <div class="counter">
@@ -72,9 +72,9 @@ export default {
 
       return "";
     },
-    notesIconClass() {
-      if (this.problem.note_count < 1) return "";
-      if (this.problem.note_count > 3) return "icon-documents-four";
+    progressNotesIconClass() {
+      if (this.problem.progress_note_count < 1) return "";
+      if (this.problem.progress_note_count > 3) return "icon-documents-four";
 
       return "icon-documents-three";
     },

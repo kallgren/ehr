@@ -283,32 +283,28 @@ export default new Vuex.Store({
         patient_id: 1,
         icd10_code: "M25.562",
         start_date: "2017-02-22T10:00:00Z",
-        chronic: false,
-        epicrisis_count: 1
+        chronic: false
       },
       {
         id: 2,
         patient_id: 1,
         icd10_code: "I49.9",
         start_date: "2008-02-03T15:30:00Z",
-        chronic: false,
-        epicrisis_count: 0
+        chronic: false
       },
       {
         id: 3,
         patient_id: 1,
         icd10_code: "G80",
         start_date: "1975-06-13T02:34:00Z",
-        chronic: true,
-        epicrisis_count: 0
+        chronic: true
       },
       {
         id: 4,
         patient_id: 2,
         icd10_code: "M25.562",
         start_date: "2017-09-29T14:19:00Z",
-        chronic: false,
-        epicrisis_count: 0
+        chronic: false
       }
     ],
     diagnoses: [
@@ -328,18 +324,13 @@ export default new Vuex.Store({
         department: "Neurology"
       }
     ],
-    surgeries: [
-      {
-        id: 1,
-        problem_id: 1
-      }
-    ],
     notes: [
       {
         id: 1,
         id_for_patient: 1,
         problem_id: 2,
         date: "2009-11-22T14:12:00Z",
+        type: "progress",
         is_starred: false
       },
       {
@@ -347,6 +338,7 @@ export default new Vuex.Store({
         id_for_patient: 1,
         problem_id: 4,
         date: "2017-09-29T14:28:00Z",
+        type: "progress",
         is_starred: false
       },
       {
@@ -354,6 +346,7 @@ export default new Vuex.Store({
         id_for_patient: 2,
         problem_id: 1,
         date: "2018-09-14T09:01:00Z",
+        type: "progress",
         is_starred: false,
         chief_complaint: "Persistant pain in left knee",
         history_of_present_illness:
@@ -370,6 +363,7 @@ export default new Vuex.Store({
         id_for_patient: 3,
         problem_id: 2,
         date: "2018-10-16T14:26:00Z",
+        type: "progress",
         is_starred: false
       },
       {
@@ -377,6 +371,7 @@ export default new Vuex.Store({
         id_for_patient: 4,
         problem_id: 1,
         date: "2019-01-27T08:24:00Z",
+        type: "surgery",
         is_starred: false,
         chief_complaint: "",
         history_of_present_illness: "Sed tincidunt velit dignissim ut.",
@@ -389,6 +384,7 @@ export default new Vuex.Store({
         id_for_patient: 5,
         problem_id: 1,
         date: "2019-02-02T08:20:00Z",
+        type: "progress",
         is_starred: true,
         chief_complaint: "Patient experiencing palpitations",
         history_of_present_illness:
@@ -404,6 +400,7 @@ export default new Vuex.Store({
         id_for_patient: 6,
         problem_id: 1,
         date: "2019-02-10T11:13:00Z",
+        type: "epicrisis",
         is_starred: false,
         chief_complaint: "Pain and swelling in the left leg",
         history_of_present_illness:
@@ -420,6 +417,7 @@ export default new Vuex.Store({
         id_for_patient: 7,
         problem_id: 1,
         date: "2019-02-18T09:37:00Z",
+        type: "progress",
         is_starred: true,
         chief_complaint: "Persistant pain in left knee",
         history_of_present_illness:
@@ -532,8 +530,11 @@ export default new Vuex.Store({
           .map(problem => ({
             ...problem,
             ...getters.getDiagnosisByICD10Code(problem),
-            note_count: getters.getNotesByProblemId(problem).length,
-            surgery_count: getters.getSurgeriesByProblemId(problem).length,
+            progress_note_count: getters.getProgressNoteCountByProblemId(
+              problem
+            ),
+            surgery_count: getters.getSurgeryCountByProblemId(problem),
+            epicrisis_count: getters.getEpicrisisCountByProblemId(problem),
             last_activity_date: Math.max(
               new Date(problem.start_date),
               ...getters
@@ -542,9 +543,23 @@ export default new Vuex.Store({
             )
           }));
     },
-    getSurgeriesByProblemId(state) {
+    getProgressNoteCountByProblemId(state) {
       return payload =>
-        state.surgeries.filter(surgery => surgery.problem_id === payload.id);
+        state.notes.filter(
+          note => note.problem_id === payload.id && note.type === "progress"
+        ).length;
+    },
+    getSurgeryCountByProblemId(state) {
+      return payload =>
+        state.notes.filter(
+          note => note.problem_id === payload.id && note.type === "surgery"
+        ).length;
+    },
+    getEpicrisisCountByProblemId(state) {
+      return payload =>
+        state.notes.filter(
+          note => note.problem_id === payload.id && note.type === "epicrisis"
+        ).length;
     },
     getNotesByProblemId(state) {
       return payload =>

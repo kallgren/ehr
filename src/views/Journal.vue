@@ -32,7 +32,7 @@
               <div v-if="selectedPatient">
                 <div class="counters">
                   <span>Threads:<b>{{ filteredProblems.length }}</b></span>
-                  <span>Progress notes:<b>{{ noteCount }}</b></span>
+                  <span>Progress notes:<b>{{ progressNoteCount }}</b></span>
                   <span>Surgeries:<b>{{ surgeryCount }}</b></span>
                   <span>Epicrises:<b>{{ epicrisisCount }}</b></span>
                 </div>
@@ -151,9 +151,9 @@ export default {
         problem => problem.department.toLowerCase() === this.selectedDepartment
       );
     },
-    noteCount() {
+    progressNoteCount() {
       return this.filteredProblems.reduce(
-        (acc, problem) => acc + problem.note_count,
+        (acc, problem) => acc + problem.progress_note_count,
         0
       );
     },
