@@ -25,11 +25,15 @@
       <li
         v-for="attachment in sortedAttachments"
         :key="attachment.id"
-        :class="['attachment-item', {'highlighted': isHighlighted(attachment)}]"
       >
-        <div class="attachment-list-column">{{ attachment.type }}</div>
-        <div class="attachment-list-column">{{ attachment.comment }}</div>
-        <div class="attachment-list-column">{{ attachment.date | moment("D-M-YY") }}</div>
+        <a
+          :class="['attachment-item', {'highlighted': isHighlighted(attachment)}]"
+          href="javascript:void"
+        >
+          <div class="attachment-list-column">{{ attachment.type }}</div>
+          <div class="attachment-list-column">{{ attachment.comment }}</div>
+          <div class="attachment-list-column">{{ attachment.date | moment("D-M-YY") }}</div>
+        </a>
       </li>
     </ul>
   </div>
@@ -133,6 +137,8 @@ export default {
   position relative
   padding-top 9px
   padding-bottom 10px
+  color inherit
+  text-decoration none
   background white
   border-bottom 1px solid $color-grey-dark
 
