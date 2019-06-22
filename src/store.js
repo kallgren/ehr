@@ -11,6 +11,7 @@ export default new Vuex.Store({
       role: "Orthopedic, surgeon",
       departments: ["Orthopedics"]
     },
+    lastActiveAppointments: [],
     selectedPatient: null,
     selectedProblems: [],
     highlightedNote: null,
@@ -257,26 +258,6 @@ export default new Vuex.Store({
         reason: "ankle fracture repair"
       }
     ],
-    lastActivePatients: [
-      {
-        id: 1,
-        patient: {
-          id: 5,
-          first_name: "Anders",
-          last_name: "Andersson"
-        },
-        reason: "hip replacement followup"
-      },
-      {
-        id: 2,
-        patient: {
-          id: 4,
-          first_name: "Johan",
-          last_name: "Johansson"
-        },
-        reason: "ankle fracture repair"
-      }
-    ],
     problems: [
       {
         id: 1,
@@ -474,9 +455,17 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    selectPatientById(state, payload) {
+    selectAppointment(state, payload) {
+      let newLastActive = state.lastActiveAppointments.filter(
+        e => e.patient.id !== payload.appointment.patient.id
+      );
+      newLastActive.unshift(0);
+      newLastActive[0] = payload.appointment;
+
+      state.lastActiveAppointments = newLastActive;
+
       state.selectedPatient = state.patients.find(
-        patient => patient.id === payload.id
+        patient => patient.id === payload.appointment.patient.id
       );
 
       state.selectedProblems = [];

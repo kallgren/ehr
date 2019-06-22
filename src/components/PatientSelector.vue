@@ -18,12 +18,12 @@
         <table class="table">
           <tr
             v-for="item in tab.items"
-            :key="item.id"
+            :key="item.patient.id"
             :class="['table-row', {selected: selectedPatient && selectedPatient.id === item.patient.id}]"
-            @click="selectPatientById({id: item.patient.id})"
+            @click="selectAppointment({appointment: item})"
           >
             <td>{{ item.patient.first_name }} {{ item.patient.last_name }}</td>
-            <td v-if="item.start">{{ item.start | moment("HH:mm") }}</td>
+            <td v-if="tab.showTime">{{ item.start | moment("HH:mm") }}</td>
             <td>{{ item.reason }}</td>
           </tr>
         </table>
@@ -51,27 +51,31 @@ export default {
       {
         id: 0,
         name: "Today's list",
-        items: state.todaysAppointments
+        items: state.todaysAppointments,
+        showTime: true
       },
       {
         id: 1,
         name: "Yours",
-        items: state.myPatientsAppointments
+        items: state.myPatientsAppointments,
+        showTime: true
       },
       {
         id: 2,
         name: "Ward",
-        items: state.wardPatients
+        items: state.wardPatients,
+        showTime: false
       },
       {
         id: 3,
         name: "Last active",
-        items: state.lastActivePatients
+        items: state.lastActiveAppointments,
+        showTime: false
       }
     ],
     selectedPatient: "selectedPatient"
   }),
-  methods: mapMutations(["selectPatientById"])
+  methods: mapMutations(["selectAppointment"])
 };
 </script>
 
