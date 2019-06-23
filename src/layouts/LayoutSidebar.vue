@@ -27,10 +27,12 @@ export default {
 <style scoped lang="stylus">
 .layout-sidebar
   display flex
-  height 1030px // Hard coded temporarily to match design
+  height "calc(100vh - %s)" % $navbar-height
 
 .sidebar
   base-border()
+  display flex
+  flex-direction column
   width 300px
   min-width 300px
   background $color-almost-white

@@ -29,7 +29,10 @@
               </div>
             </template>
             <template slot="content">
-              <div v-if="selectedPatient">
+              <div
+                v-if="selectedPatient"
+                class="problem-list-wrapper"
+              >
                 <div class="counters">
                   <span>Threads:<b>{{ filteredProblems.length }}</b></span>
                   <span>Progress notes:<b>{{ progressNoteCount }}</b></span>
@@ -224,7 +227,6 @@ export default {
   height calc(100% - 32px) // Quick fix to match design, 32px is .content-heading height
 
 .pane--problem-list
-  position relative
   width 387px
   min-width 387px
 
@@ -249,6 +251,11 @@ export default {
   margin-right 5px
   margin-left 23px
 
+.problem-list-wrapper
+  display flex
+  flex-direction column
+  height 100%
+
 .counters
   display flex
   justify-content space-between
@@ -258,13 +265,13 @@ export default {
   border 1px solid $color-grey-darker
 
 .problem-list
+  flex-grow 1
   margin 0
   padding 0
   list-style-type none
+  overflow hidden auto
 
 .select-all-button-wrapper
-  position absolute
-  bottom 0
   width 100%
   padding-top 7px
   padding-bottom 5px

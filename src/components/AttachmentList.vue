@@ -94,6 +94,9 @@ export default {
 
 <style scoped lang="stylus">
 .attachment-list-wrapper
+  display flex
+  flex-direction column
+  height 100%
   font-size $font-size--small
 
 .attachment-list-header
@@ -129,9 +132,11 @@ export default {
   text-decoration underline
 
 .attachment-list
+  flex-grow 1
   margin 0
   padding 0
   list-style-type none
+  overflow-y auto
 
 .attachment-item
   position relative

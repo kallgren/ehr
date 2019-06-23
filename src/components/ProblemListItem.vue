@@ -134,9 +134,9 @@ export default {
   content ""
   position absolute
   top -1px
-  right -3px
+  right 0
   bottom -1px
-  left -3px
+  left 0
 
 .code
   display inline-block

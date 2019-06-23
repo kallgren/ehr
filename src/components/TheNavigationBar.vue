@@ -49,8 +49,6 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-$navbar-height = 50px
-
 #nav
   display flex
   font-size $font-size--small

@@ -136,6 +136,7 @@ export default {
 .patient-info
   padding 7px
   font-size $font-size--small
+  overflow-y auto
 
 .placeholder-text
   color $color-grey-dark

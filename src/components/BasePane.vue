@@ -53,6 +53,11 @@ export default {
 .pane-controls
   margin-left auto
 
+.pane-content
+  display flex
+  flex-direction column
+  flex-grow 1
+
 .scrollable
   overflow-y auto
 </style>
