@@ -48,6 +48,7 @@ export default {
 .pane-title
   margin-left 5px
   font-size 18px
+  font-weight bold
   line-height 1.5
 
 .pane-controls

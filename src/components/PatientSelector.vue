@@ -22,7 +22,7 @@
             :class="['table-row', {selected: selectedPatient && selectedPatient.id === item.patient.id}]"
             @click="selectAppointment({appointment: item})"
           >
-            <td>{{ item.patient.first_name }} {{ item.patient.last_name }}</td>
+            <td><b>{{ item.patient.first_name }} {{ item.patient.last_name }}</b></td>
             <td v-if="tab.showTime">{{ item.start | moment("HH:mm") }}</td>
             <td>{{ item.reason }}</td>
           </tr>

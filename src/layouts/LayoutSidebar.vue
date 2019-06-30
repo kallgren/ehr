@@ -45,7 +45,6 @@ export default {
   margin 0
   text-align center
   font-size 18px
-  font-weight normal
   line-height 1.8
   text-transform uppercase
 </style>

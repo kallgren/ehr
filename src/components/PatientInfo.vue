@@ -148,7 +148,6 @@ export default {
 .name
   display inline-block
   font-size $font-size--medium
-  font-weight normal
   font-style italic
   margin 0 0 3px
 

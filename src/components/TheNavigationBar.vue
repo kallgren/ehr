@@ -79,7 +79,9 @@ li
     color white
     text-align center
     text-decoration none
+
     &.router-link-exact-active
+      font-weight bold
       background $color-green-medium
 
   .user-info
@@ -96,6 +98,7 @@ li
 
   .user-name
     font-size $font-size--medium
+    font-weight bold
 
 .divider
   height 38px
