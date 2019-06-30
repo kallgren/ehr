@@ -305,6 +305,9 @@ export default {
   border 0
   border-radius 0 3px 3px 0
 
+  &::placeholder
+    font-style italic
+
 .controls .button-note-add
     padding-left 7px
 

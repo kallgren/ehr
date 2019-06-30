@@ -123,6 +123,8 @@ export default {
 
 .patient-search
   font-size $font-size--xsmall
-  font-style italic
   margin-bottom 4px
+
+  &::placeholder
+    font-style italic
 </style>
