@@ -89,6 +89,7 @@ export default {
   font-size $font-size--xsmall
   text-align center
   line-height 30px
+  background white
   border-bottom 1px solid $color-green-dark
   border-right 1px solid $color-green-dark
   box-sizing border-box
