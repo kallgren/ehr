@@ -98,9 +98,9 @@ export default {
     ...mapMutations(["selectProblemById", "toggleAddProblemToSelectById"]),
     selectProblem(e) {
       if (e.shiftKey) {
-        this.toggleAddProblemToSelectById({ id: this.problem.id });
+        this.toggleAddProblemToSelectById(this.problem);
       } else {
-        this.selectProblemById({ id: this.problem.id });
+        this.selectProblemById(this.problem);
       }
     }
   }
