@@ -116,8 +116,8 @@ export default new Vuex.Store({
         id: 2,
         first_name: "Anna",
         last_name: "Annasson",
-        ssn: "810222-3861",
-        date_of_birth: "1981-02-22T11:49:00Z",
+        ssn: "510222-3861",
+        date_of_birth: "1951-02-22T11:49:00Z",
         sex: "female",
         height_cm: 156,
         weight_kg: 67,
@@ -310,8 +310,15 @@ export default new Vuex.Store({
       {
         id: 4,
         patient_id: 2,
-        icd10_code: "M25.562",
-        start_date: "2017-09-29T14:19:00Z",
+        icd10_code: "M41",
+        start_date: "2007-09-29T14:19:00Z",
+        chronic: false
+      },
+      {
+        id: 5,
+        patient_id: 2,
+        icd10_code: "I25.810",
+        start_date: "2011-09-29T14:19:00Z",
         chronic: false
       }
     ],
@@ -330,28 +337,89 @@ export default new Vuex.Store({
         code: "G80",
         description: "Cerebral Palsy",
         department: "Neurology"
+      },
+      {
+        code: "M41",
+        description: "Scoliosis",
+        department: "Orthopedics"
+      },
+      {
+        code: "I25.810",
+        description: "Heart Bypass",
+        department: "Cardiology"
       }
     ],
     notes: [
       {
         id: 1,
         id_for_patient: 1,
-        problem_id: 2,
-        date: "2009-11-22T14:12:00Z",
+        problem_id: 3,
+        date: "1976-08-18T10:47:00Z",
         type: "progress",
-        is_starred: false
+        is_starred: false,
+        chief_complaint: "Yearly check up",
+        history_of_present_illness:
+          "Aliquam sit amet massa a justo placerat tempor nec id augue. Duis vel arcu euismod, tempus velit a, fermentum nibh. Suspendisse dignissim dolor a finibus tempus.",
+        physical_examination:
+          "Lungs: Clear, even with forced expiration. Heart: Regular rate and rhythm without murmur. Extremities: No edema.",
+        assessment:
+          "Praesent sit amet turpis ultricies, sollicitudin massa ac, dignissim tortor. Praesent vel dolor pretium, bibendum mauris eu, rhoncus neque. Proin id pharetra nibh. Suspendisse quis magna at tortor vehicula sagittis nec pulvinar ligula.",
+        plan: "Donec dictum porttitor nunc at vulputate"
       },
       {
         id: 2,
         id_for_patient: 1,
         problem_id: 4,
-        date: "2017-09-29T14:28:00Z",
+        date: "2007-09-29T14:28:00Z",
         type: "progress",
-        is_starred: false
+        is_starred: false,
+        chief_complaint: "Patient experiencing back pain",
+        history_of_present_illness:
+          "Maecenas at dignissim nisi, vel volutpat nulla. Cras porttitor, sem ac dapibus pulvinar, mi ex gravida orci, id consequat tellus erat sed dui. Curabitur vel lacus pharetra, sodales leo in, mollis turpis. Etiam laoreet nulla velit, id accumsan felis pretium ut. Cras nisi tortor, tristique et tortor id, facilisis accumsan neque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+        physical_examination:
+          "Quisque eleifend nisi ante, sit amet accumsan sapien dignissim sed. Duis a imperdiet lacus. Cras molestie quam id elit scelerisque pharetra. Mauris suscipit dolor vel magna ultrices, id fringilla turpis rhoncus.",
+        assessment:
+          "Duis sodales placerat lorem, nec fringilla mi consectetur vitae. In auctor neque quis magna ornare, vitae maximus risus porttitor. Fusce ac urna felis. Maecenas tincidunt dolor quis nulla commodo maximus. Maecenas ut risus malesuada, iaculis ante a, hendrerit libero. Maecenas eu viverra leo, a convallis lorem. Donec imperdiet facilisis vulputate. Proin hendrerit eros quis turpis mattis, vel efficitur lorem mollis. Proin ac mauris mi. Nam porta viverra tellus non posuere.",
+        plan:
+          "Quisque non pellentesque augue. Pellentesque sit amet dignissim nulla. Morbi eleifend mauris quis lectus tempor, eget efficitur magna sagittis. Pellentesque ac faucibus mauris, id efficitur nisi."
       },
       {
         id: 3,
         id_for_patient: 2,
+        problem_id: 2,
+        date: "2009-11-22T14:12:00Z",
+        type: "progress",
+        is_starred: true,
+        chief_complaint: "Problem of essential hypertension",
+        history_of_present_illness:
+          "Integer a dapibus lectus, at placerat nunc.",
+        physical_examination:
+          "Praesent nulla tellus, posuere eu gravida pulvinar, pellentesque nec ex.",
+        assessment:
+          "I49.9 Nunc hendrerit urna et ipsum euismod ornare. Vestibulum luctus erat ullamcorper imperdiet dapibus.",
+        plan:
+          "Fusce vestibulum dui elit, a congue tellus porta sed. Pellentesque mattis ex nec dui varius, ornare tincidunt lacus gravida. Mauris porta risus ac sapien fermentum dignissim."
+      },
+      {
+        id: 4,
+        id_for_patient: 2,
+        problem_id: 5,
+        date: "2011-10-05T11:27:00Z",
+        type: "surgery",
+        is_starred: false,
+        chief_complaint: "6 months surgery follow-up",
+        history_of_present_illness:
+          "Maecenas quis leo eu orci aliquet finibus a at quam. Suspendisse potenti.",
+        physical_examination:
+          "Nulla id mi ultrices, dictum elit non, venenatis magna. Pellentesque posuere metus sem. Phasellus ornare placerat lectus eget consectetur. Curabitur nulla nibh, iaculis semper elementum eu, ultricies non felis.",
+        assessment:
+          "Praesent et volutpat odio. Etiam auctor porttitor facilisis. In consectetur suscipit convallis. Proin ultricies nisl rutrum, sodales lectus eu, suscipit tortor.",
+        plan:
+          "1. Morbi sit amet libero ultrices, lacinia ex id, faucibus mi. 2. Nullam dapibus euismod leo, eget tristique enim tempor et. 3. Donec mi lorem, suscipit a elit a, aliquam dignissim libero. 4. Nunc varius pharetra quam, non convallis quam volutpat ut."
+      },
+      {
+        id: 5,
+        id_for_patient: 3,
         problem_id: 1,
         date: "2018-09-14T09:01:00Z",
         type: "progress",
@@ -367,16 +435,41 @@ export default new Vuex.Store({
           "Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
       },
       {
-        id: 4,
-        id_for_patient: 3,
+        id: 6,
+        id_for_patient: 4,
         problem_id: 2,
         date: "2018-10-16T14:26:00Z",
         type: "progress",
-        is_starred: false
+        is_starred: false,
+        chief_complaint: "Patient experiencing palpitations",
+        history_of_present_illness:
+          "Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.",
+        physical_examination: "Integer ornare est ac magna tempus accumsan.",
+        assessment:
+          "I49.9 In sapien leo, eleifend at faucibus vel, lobortis ac est. Sed nisl sapien, pharetra quis bibendum nec, ullamcorper sit amet nisl.",
+        plan:
+          "Fusce sodales, ante at pharetra volutpat, est quam consectetur nulla, at hendrerit sem ante quis arcu."
       },
       {
-        id: 5,
-        id_for_patient: 4,
+        id: 7,
+        id_for_patient: 3,
+        problem_id: 4,
+        date: "2019-01-03T08:11:00Z",
+        type: "progress",
+        is_starred: true,
+        chief_complaint: "Post surgery check up",
+        history_of_present_illness:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel consectetur nunc. Proin sit amet gravida nunc, ac ornare dolor. Curabitur tincidunt urna quis ex lobortis molestie id ut nunc. Morbi ut dolor egestas, molestie elit vestibulum, pulvinar diam.",
+        physical_examination:
+          "Sed sollicitudin pellentesque enim sit amet condimentum. Ut venenatis consequat risus nec pulvinar. Ut mollis mollis mattis. Nam gravida neque at nulla congue faucibus. Cras velit erat, tristique ut tincidunt fringilla, pellentesque vitae mi.",
+        assessment:
+          "Cras nisi ante, feugiat a dolor at, lacinia gravida ex. Suspendisse potenti.",
+        plan:
+          "1. Nunc id dolor quis neque suscipit consequat at quis quam. 2. Vivamus elementum, mauris quis porta scelerisque, libero sem euismod odio, nec viverra enim orci efficitur dui. 3. Nam vel gravida odio, vitae sagittis neque. 4. Pellentesque consectetur tellus et dui iaculis iaculis. 5. Donec semper, sapien id iaculis feugiat, metus ante convallis magna, vitae maximus purus nisi sed ligula."
+      },
+      {
+        id: 8,
+        id_for_patient: 5,
         problem_id: 1,
         date: "2019-01-27T08:24:00Z",
         type: "surgery",
@@ -388,8 +481,8 @@ export default new Vuex.Store({
         plan: "Quisque non nulla ornare velit mattis tincidunt"
       },
       {
-        id: 6,
-        id_for_patient: 5,
+        id: 9,
+        id_for_patient: 6,
         problem_id: 1,
         date: "2019-02-02T08:20:00Z",
         type: "progress",
@@ -404,8 +497,8 @@ export default new Vuex.Store({
           "Fusce sodales, ante at pharetra volutpat, est quam consectetur nulla, at hendrerit sem ante quis arcu."
       },
       {
-        id: 7,
-        id_for_patient: 6,
+        id: 10,
+        id_for_patient: 7,
         problem_id: 1,
         date: "2019-02-10T11:13:00Z",
         type: "epicrisis",
@@ -421,8 +514,8 @@ export default new Vuex.Store({
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo."
       },
       {
-        id: 8,
-        id_for_patient: 7,
+        id: 11,
+        id_for_patient: 8,
         problem_id: 1,
         date: "2019-02-18T09:37:00Z",
         type: "progress",
@@ -441,40 +534,66 @@ export default new Vuex.Store({
     attachments: [
       {
         id: 1,
+        note_id: 2,
+        type: "X-Ray",
+        date: "2007-09-29",
+        comment: "Back"
+      },
+      {
+        id: 2,
+        note_id: 2,
+        type: "Referral, incoming",
+        date: "2007-09-29",
+        comment: "GP"
+      },
+      {
+        id: 3,
         note_id: 3,
+        type: "ECG",
+        date: "2009-11-22"
+      },
+      {
+        id: 4,
+        note_id: 5,
         type: "Referral, incoming",
         date: "2018-09-06",
         comment: "GP"
       },
       {
-        id: 2,
+        id: 5,
         note_id: 6,
+        type: "ECG",
+        date: "2018-10-16"
+      },
+      {
+        id: 6,
+        note_id: 9,
         type: "CT",
         date: "2019-02-01"
       },
       {
-        id: 3,
-        note_id: 6,
+        id: 7,
+        note_id: 9,
         type: "Referral",
         date: "2019-02-02",
         comment: "Physiotherapy"
       },
       {
-        id: 4,
-        note_id: 7,
+        id: 8,
+        note_id: 10,
         type: "X-Ray",
         date: "2019-02-12",
         comment: "Left knee"
       },
       {
-        id: 5,
-        note_id: 8,
+        id: 9,
+        note_id: 11,
         type: "Sick leave",
         date: "2019-02-17"
       },
       {
-        id: 6,
-        note_id: 8,
+        id: 10,
+        note_id: 11,
         type: "X-Ray",
         date: "2019-02-18T09:16:00Z",
         comment: "Left knee"
