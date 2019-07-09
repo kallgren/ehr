@@ -1,7 +1,7 @@
 <template>
   <li
     :class="['note-item', {'starred': note.is_starred, 'highlighted': isHighlighted}]"
-    @mouseover="highlightNoteById(note)"
+    @mouseover="highlightNote(note)"
     @mouseleave="resetNoteHighlight"
   >
     <div class="note-item-header">
@@ -16,7 +16,7 @@
         </button>
         <button
           class="action-button button-star"
-          @click="toggleStarNoteById(note)"
+          @click="toggleStarNote(note)"
         >
           <i :class="[note.is_starred ? 'icon-star-filled' : 'icon-star-empty']"/>
         </button>
@@ -92,8 +92,8 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["toggleStarNoteById"]),
-    ...mapMutations(["highlightNoteById", "resetNoteHighlight"])
+    ...mapActions(["toggleStarNote"]),
+    ...mapMutations(["highlightNote", "resetNoteHighlight"])
   }
 };
 </script>

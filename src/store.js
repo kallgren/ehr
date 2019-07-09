@@ -616,13 +616,13 @@ export default new Vuex.Store({
 
       state.selectedProblems = [];
     },
-    selectProblemById(state, { id }) {
+    selectProblem(state, { id }) {
       state.selectedProblems = [id];
     },
-    selectProblemsByIds(state, { ids }) {
+    selectProblems(state, { ids }) {
       state.selectedProblems = [...ids];
     },
-    toggleAddProblemToSelectById(state, { id }) {
+    toggleAddProblemToSelect(state, { id }) {
       if (state.selectedProblems.includes(id)) {
         state.selectedProblems = state.selectedProblems.filter(
           sid => sid !== id
@@ -631,15 +631,15 @@ export default new Vuex.Store({
         state.selectedProblems.push(id);
       }
     },
-    starNoteById(state, { id }) {
+    starNote(state, { id }) {
       const note = state.notes.find(note => note.id === id);
       note.is_starred = true;
     },
-    unStarNoteById(state, { id }) {
+    unStarNote(state, { id }) {
       const note = state.notes.find(note => note.id === id);
       note.is_starred = false;
     },
-    highlightNoteById(state, { id }) {
+    highlightNote(state, { id }) {
       state.highlightedNote = state.notes.find(note => note.id === id);
     },
     resetNoteHighlight(state) {
@@ -647,13 +647,13 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    toggleStarNoteById({ commit, state }, { id }) {
+    toggleStarNote({ commit, state }, { id }) {
       const note = state.notes.find(note => note.id === id);
 
       if (note.is_starred) {
-        commit("unStarNoteById", note);
+        commit("unStarNote", note);
       } else {
-        commit("starNoteById", note);
+        commit("starNote", note);
       }
     }
   },

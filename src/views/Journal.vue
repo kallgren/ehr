@@ -209,13 +209,13 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(["selectProblemsByIds"]),
+    ...mapMutations(["selectProblems"]),
     toggleSelectAllProblems() {
       const ids = this.allProblemsSelected
         ? []
         : this.filteredProblems.map(problem => problem.id);
 
-      this.selectProblemsByIds({ ids });
+      this.selectProblems({ ids });
     }
   }
 };

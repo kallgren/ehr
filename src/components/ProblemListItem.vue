@@ -3,7 +3,7 @@
     <a
       :class="['problem-item', ageClass, {'selected': isSelected}]"
       href="javascript:void"
-      @click.prevent="selectProblem($event)"
+      @click.prevent="onProblemClick"
     >
       <b class="code">
         {{ problem.icd10_code }}
@@ -95,12 +95,12 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(["selectProblemById", "toggleAddProblemToSelectById"]),
-    selectProblem(e) {
+    ...mapMutations(["selectProblem", "toggleAddProblemToSelect"]),
+    onProblemClick(e) {
       if (e.shiftKey) {
-        this.toggleAddProblemToSelectById(this.problem);
+        this.toggleAddProblemToSelect(this.problem);
       } else {
-        this.selectProblemById(this.problem);
+        this.selectProblem(this.problem);
       }
     }
   }
