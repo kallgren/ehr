@@ -3,7 +3,7 @@
     <a
       :class="['problem-item', ageClass, {'selected': isSelected}]"
       href="javascript:void"
-      @click="selectProblem($event)"
+      @click.prevent="selectProblem($event)"
     >
       <b class="code">
         {{ problem.icd10_code }}
