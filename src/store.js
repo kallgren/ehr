@@ -601,54 +601,54 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    selectAppointment(state, payload) {
+    selectAppointment(state, { appointment }) {
       let newLastActive = state.lastActiveAppointments.filter(
-        e => e.patient.id !== payload.appointment.patient.id
+        e => e.patient.id !== appointment.patient.id
       );
       newLastActive.unshift(0);
-      newLastActive[0] = payload.appointment;
+      newLastActive[0] = appointment;
 
       state.lastActiveAppointments = newLastActive;
 
       state.selectedPatient = state.patients.find(
-        patient => patient.id === payload.appointment.patient.id
+        patient => patient.id === appointment.patient.id
       );
 
       state.selectedProblems = [];
     },
-    selectProblemById(state, payload) {
-      state.selectedProblems = [payload.id];
+    selectProblemById(state, { id }) {
+      state.selectedProblems = [id];
     },
-    selectProblemsByIds(state, payload) {
-      state.selectedProblems = [...payload.ids];
+    selectProblemsByIds(state, { ids }) {
+      state.selectedProblems = [...ids];
     },
-    toggleAddProblemToSelectById(state, payload) {
-      if (state.selectedProblems.includes(payload.id)) {
+    toggleAddProblemToSelectById(state, { id }) {
+      if (state.selectedProblems.includes(id)) {
         state.selectedProblems = state.selectedProblems.filter(
-          id => id !== payload.id
+          sid => sid !== id
         );
       } else {
-        state.selectedProblems.push(payload.id);
+        state.selectedProblems.push(id);
       }
     },
-    starNoteById(state, payload) {
-      const note = state.notes.find(note => note.id === payload.id);
+    starNoteById(state, { id }) {
+      const note = state.notes.find(note => note.id === id);
       note.is_starred = true;
     },
-    unStarNoteById(state, payload) {
-      const note = state.notes.find(note => note.id === payload.id);
+    unStarNoteById(state, { id }) {
+      const note = state.notes.find(note => note.id === id);
       note.is_starred = false;
     },
-    highlightNoteById(state, payload) {
-      state.highlightedNote = state.notes.find(note => note.id === payload.id);
+    highlightNoteById(state, { id }) {
+      state.highlightedNote = state.notes.find(note => note.id === id);
     },
     resetNoteHighlight(state) {
       state.highlightedNote = null;
     }
   },
   actions: {
-    toggleStarNoteById({ commit, state }, payload) {
-      const note = state.notes.find(note => note.id === payload.id);
+    toggleStarNoteById({ commit, state }, { id }) {
+      const note = state.notes.find(note => note.id === id);
 
       if (note.is_starred) {
         commit("unStarNoteById", note);
@@ -659,9 +659,9 @@ export default new Vuex.Store({
   },
   getters: {
     getProblemsByPatientId(state, getters) {
-      return payload =>
+      return ({ id }) =>
         state.problems
-          .filter(problem => problem.patient_id === payload.id)
+          .filter(problem => problem.patient_id === id)
           .map(problem => ({
             ...problem,
             ...getters.getDiagnosisByICD10Code(problem),
@@ -679,35 +679,34 @@ export default new Vuex.Store({
           }));
     },
     getProgressNoteCountByProblemId(state) {
-      return payload =>
+      return ({ id }) =>
         state.notes.filter(
-          note => note.problem_id === payload.id && note.type === "progress"
+          note => note.problem_id === id && note.type === "progress"
         ).length;
     },
     getSurgeryCountByProblemId(state) {
-      return payload =>
+      return ({ id }) =>
         state.notes.filter(
-          note => note.problem_id === payload.id && note.type === "surgery"
+          note => note.problem_id === id && note.type === "surgery"
         ).length;
     },
     getEpicrisisCountByProblemId(state) {
-      return payload =>
+      return ({ id }) =>
         state.notes.filter(
-          note => note.problem_id === payload.id && note.type === "epicrisis"
+          note => note.problem_id === id && note.type === "epicrisis"
         ).length;
     },
     getNotesByProblemId(state) {
-      return payload =>
-        state.notes.filter(note => note.problem_id === payload.id);
+      return ({ id }) => state.notes.filter(note => note.problem_id === id);
     },
     getDiagnosisByICD10Code(state) {
-      return payload =>
-        state.diagnoses.find(diagnose => diagnose.code === payload.icd10_code);
+      return ({ icd10_code }) =>
+        state.diagnoses.find(diagnose => diagnose.code === icd10_code);
     },
     getAttachmentsByNoteId(state) {
-      return payload =>
+      return ({ id }) =>
         state.attachments
-          .filter(attachment => attachment.note_id === payload.id)
+          .filter(attachment => attachment.note_id === id)
           .sort((a, b) => new Date(b.date) - new Date(a.date));
     },
     getNotesForSelectedProblems(state, getters) {
