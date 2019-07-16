@@ -73,22 +73,46 @@ export default {
       return "";
     },
     progressNotesIconClass() {
-      if (this.problem.progress_note_count < 1) return "";
-      if (this.problem.progress_note_count > 3) return "icon-documents-four";
-
-      return "icon-documents-three";
+      switch (this.problem.progress_note_count) {
+        case 0:
+          return "";
+        case 1:
+          return "icon-documents-one";
+        case 2:
+          return "icon-documents-two";
+        case 3:
+          return "icon-documents-three";
+        default:
+          return "icon-documents-four";
+      }
     },
     surgeriesIconClass() {
-      if (this.problem.surgery_count < 1) return "";
-      if (this.problem.surgery_count > 1) return "icon-surgeries-two";
-
-      return "icon-surgeries-one";
+      switch (this.problem.surgery_count) {
+        case 0:
+          return "";
+        case 1:
+          return "icon-surgeries-one";
+        case 2:
+          return "icon-surgeries-two";
+        case 3:
+          return "icon-surgeries-three";
+        default:
+          return "icon-surgeries-four";
+      }
     },
     epicrisesIconClass() {
-      if (this.problem.epicrisis_count < 1) return "";
-      if (this.problem.epicrisis_count > 1) return "icon-charts-two";
-
-      return "icon-charts-one";
+      switch (this.problem.epicrisis_count) {
+        case 0:
+          return "";
+        case 1:
+          return "icon-charts-one";
+        case 2:
+          return "icon-charts-two";
+        case 3:
+          return "icon-charts-three";
+        default:
+          return "icon-charts-four";
+      }
     },
     isSelected() {
       return this.selectedProblems.includes(this.problem.id);

@@ -68,6 +68,11 @@ button
   border-radius 5px
 
 /* Icons */
+counter-icon(name count)
+  width 21px
+  height 25px
+  background-image 'url("assets/icons/%s-%s.png")' % (name count)
+
 i
   display inline-block
   font-style normal
@@ -117,35 +122,35 @@ i
     height 20px
     background-image url("assets/icons/chronic.png")
 
-  &.icon-documents-three
-    width 21px
-    height 25px
-    background-image url("assets/icons/documents-three.png")
+  &.icon-documents
+    &-one
+      counter-icon(documents, one)
+    &-two
+      counter-icon(documents, two)
+    &-three
+      counter-icon(documents, three)
+    &-four
+      counter-icon(documents, four)
 
-  &.icon-documents-four
-    width 21px
-    height 25px
-    background-image url("assets/icons/documents-four.png")
+  &.icon-surgeries
+    &-one
+      counter-icon(surgeries, one)
+    &-two
+      counter-icon(surgeries, two)
+    &-three
+      counter-icon(surgeries, three)
+    &-four
+      counter-icon(surgeries, four)
 
-  &.icon-surgeries-one
-    width 21px
-    height 25px
-    background-image url("assets/icons/surgeries-one.png")
-
-  &.icon-surgeries-two
-    width 21px
-    height 25px
-    background-image url("assets/icons/surgeries-two.png")
-
-  &.icon-charts-one
-    width 21px
-    height 25px
-    background-image url("assets/icons/charts-one.png")
-
-  &.icon-charts-two
-    width 21px
-    height 25px
-    background-image url("assets/icons/charts-two.png")
+  &.icon-charts
+    &-one
+      counter-icon(charts, one)
+    &-two
+      counter-icon(charts, two)
+    &-three
+      counter-icon(charts, three)
+    &-four
+      counter-icon(charts, four)
 
   &.icon-paperclip
     width 30px
