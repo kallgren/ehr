@@ -124,6 +124,7 @@ export default {
 
 .button-sort
   margin-left 9px
+  background transparent
 
 .icon-arrows-up-down
   vertical-align middle
