@@ -81,8 +81,9 @@ i
     background-image url("assets/icons/male.png")
 
   &.icon-female
-    &:before
-      content "♀"
+    width 13px
+    height 20px
+    background-image url("assets/icons/female.png")
 
   &.icon-drop
     width 22px
