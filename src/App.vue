@@ -86,19 +86,31 @@ i
     background-image url("assets/icons/female.png")
 
   &.icon-drop
+  &.icon-drop-red
     width 22px
     height 22px
     background-image url("assets/icons/drop.png")
 
+  &.icon-drop-red
+    background-image url("assets/icons/drop-red.png")
+
   &.icon-warning
+  &.icon-warning-red
     width 22px
     height 22px
     background-image url("assets/icons/warning.png")
 
+  &.icon-warning-red
+    background-image url("assets/icons/warning-red.png")
+
   &.icon-hospital-bed
+  &.icon-hospital-bed-red
     width 35px
     height 22px
     background-image url("assets/icons/hospital-bed.png")
+
+  &.icon-hospital-bed-red
+    background-image url("assets/icons/hospital-bed-red.png")
 
   &.icon-chronic
     width 20px
@@ -171,6 +183,7 @@ i
     background-image url("assets/icons/arrows-up-down.png")
 
   &.icon-a
+  &.icon-a-red
     font-family $font-family--black
     font-size 28px
     font-weight bold
@@ -178,4 +191,7 @@ i
 
     &:before
       content "A"
+
+  &.icon-a-red
+    color $color-red-medium
 </style>

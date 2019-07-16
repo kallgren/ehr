@@ -17,19 +17,19 @@
       </div>
       <div class="patient-symbols">
         <i
-          :class="['patient-symbol', 'icon-a', {'active': patient.allergies.length}]"
+          :class="['patient-symbol', patient.allergies.length ? 'icon-a-red active' : 'icon-a']"
           :title="patient.allergies.length ? 'Allergic to ' + patient.allergies.join(', ') : 'No allergies'"
         />
         <i
-          :class="['patient-symbol', 'icon-drop', {'active': patient.blood_problems}]"
+          :class="['patient-symbol', patient.blood_problems ? 'icon-drop-red active' : 'icon-drop']"
           :title="patient.blood_problems ? 'Known blood problems' : 'No known blood problems'"
         />
         <i
-          :class="['patient-symbol', 'icon-warning', {'active': patient.other_warnings}]"
+          :class="['patient-symbol', patient.other_warnings ? 'icon-warning-red active' : 'icon-warning']"
           :title="patient.other_warnings ? 'Other warnings' : 'No other warnings'"
         />
         <i
-          :class="['patient-symbol', 'icon-hospital-bed', {'active': patient.admitted}]"
+          :class="['patient-symbol', patient.admitted ? 'icon-hospital-bed-red active' : 'icon-hospital-bed']"
           :title="patient.admitted ? 'Admitted to the hospital' : 'Not admitted to the hospital'"
         />
       </div>
@@ -166,7 +166,6 @@ export default {
   opacity 0.3
 
   &.active
-    color $color-red-medium
     opacity 1
 
 .section-heading
