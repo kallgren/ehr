@@ -2,7 +2,7 @@
   <li>
     <a
       :class="['problem-item', ageClass, {'selected': isSelected}]"
-      href="javascript:void"
+      href="javascript:void(0)"
       @click.prevent="onProblemClick"
     >
       <b class="code">

@@ -28,7 +28,7 @@
       >
         <a
           :class="['attachment-item', {'highlighted': isHighlighted(attachment)}]"
-          href="javascript:void"
+          href="javascript:void(0)"
         >
           <div class="attachment-list-column">{{ attachment.type }}</div>
           <div class="attachment-list-column">{{ attachment.comment }}</div>
