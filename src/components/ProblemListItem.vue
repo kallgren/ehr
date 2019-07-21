@@ -62,7 +62,7 @@ export default {
   computed: {
     ...mapState(["selectedProblems"]),
     lastActivityAgeMonths() {
-      return Math.ceil(
+      return Math.round(
         this.$moment().diff(this.problem.last_activity_date, "months", true)
       );
     },
