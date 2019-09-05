@@ -197,6 +197,9 @@ export default {
     font-size $font-size--xxxsmall
 
 .counter
+  width 33.33%
+  width calc(100% / 3)
+
   i
   span
     vertical-align middle
