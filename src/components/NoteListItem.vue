@@ -2,7 +2,6 @@
   <li
     :class="['note-item', {'starred': note.is_starred, 'highlighted': isHighlighted}]"
     @mouseover="highlightNote(note)"
-    @mouseleave="resetNoteHighlight"
   >
     <div class="note-item-header">
       <span class="note-date">
@@ -93,7 +92,7 @@ export default {
   },
   methods: {
     ...mapActions(["toggleStarNote"]),
-    ...mapMutations(["highlightNote", "resetNoteHighlight"])
+    ...mapMutations(["highlightNote"])
   }
 };
 </script>
