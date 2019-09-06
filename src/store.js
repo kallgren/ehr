@@ -178,55 +178,35 @@ export default new Vuex.Store({
         id: 1,
         start: "2018-01-01T08:00:00Z",
         end: "2018-01-01T08:30:00Z",
-        patient: {
-          id: 1,
-          first_name: "Sven",
-          last_name: "Svensson"
-        },
+        patient_id: 1,
         reason: "knee pain"
       },
       {
         id: 2,
         start: "2018-01-01T08:30:00Z",
         end: "2018-01-01T09:00:00Z",
-        patient: {
-          id: 2,
-          first_name: "Anna",
-          last_name: "Annasson"
-        },
+        patient_id: 2,
         reason: "1mo follow up"
       },
       {
         id: 3,
         start: "2018-01-01T09:30:00Z",
         end: "2018-01-01T09:45:00Z",
-        patient: {
-          id: 3,
-          first_name: "Karl",
-          last_name: "Karlsson"
-        },
+        patient_id: 3,
         reason: "elbow fracture"
       },
       {
         id: 4,
         start: "2018-01-01T10:00:00Z",
         end: "2018-01-01T10:30:00Z",
-        patient: {
-          id: 4,
-          first_name: "Johan",
-          last_name: "Johansson"
-        },
+        patient_id: 4,
         reason: "scoliosis"
       },
       {
         id: 5,
         start: "2018-01-01T10:30:00Z",
         end: "2018-01-01T11:00:00Z",
-        patient: {
-          id: 5,
-          first_name: "Anders",
-          last_name: "Andersson"
-        },
+        patient_id: 5,
         reason: "6mo follow up"
       }
     ],
@@ -235,53 +215,33 @@ export default new Vuex.Store({
         id: 6,
         start: "2018-01-01T14:00:00Z",
         end: "2018-01-01T14:20:00Z",
-        patient: {
-          id: 2,
-          first_name: "Anna",
-          last_name: "Annasson"
-        },
+        patient_id: 2,
         reason: "radius fracture"
       },
       {
         id: 7,
         start: "2018-01-01T14:30:00Z",
         end: "2018-01-01T14:50:00Z",
-        patient: {
-          id: 5,
-          first_name: "Anders",
-          last_name: "Andersson"
-        },
+        patient_id: 5,
         reason: "ankle fracture"
       },
       {
         id: 8,
         start: "2018-01-01T15:00:00Z",
         end: "2018-01-01T15:20:00Z",
-        patient: {
-          id: 4,
-          first_name: "Johan",
-          last_name: "Johansson"
-        },
+        patient_id: 4,
         reason: "hip replacement"
       }
     ],
     wardPatients: [
       {
         id: 1,
-        patient: {
-          id: 3,
-          first_name: "Karl",
-          last_name: "Karlsson"
-        },
+        patient_id: 3,
         reason: "bone tumor"
       },
       {
         id: 2,
-        patient: {
-          id: 1,
-          first_name: "Sven",
-          last_name: "Svensson"
-        },
+        patient_id: 1,
         reason: "ankle fracture repair"
       }
     ],
@@ -658,6 +618,30 @@ export default new Vuex.Store({
     }
   },
   getters: {
+    getTodaysAppointments(state) {
+      return state.todaysAppointments.map(appointment => ({
+        ...appointment,
+        patient: state.patients.find(
+          patient => patient.id == appointment.patient_id
+        )
+      }));
+    },
+    getMyPatientsAppointments(state) {
+      return state.myPatientsAppointments.map(appointment => ({
+        ...appointment,
+        patient: state.patients.find(
+          patient => patient.id == appointment.patient_id
+        )
+      }));
+    },
+    getWardPatients(state) {
+      return state.wardPatients.map(appointment => ({
+        ...appointment,
+        patient: state.patients.find(
+          patient => patient.id == appointment.patient_id
+        )
+      }));
+    },
     getProblemsByPatientId(state, getters) {
       return ({ id }) =>
         state.problems
