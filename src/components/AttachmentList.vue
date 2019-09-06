@@ -2,21 +2,21 @@
   <div class="attachment-list-wrapper">
     <div class="attachment-list-header">
       <div class="attachment-list-column">
-        <span :class="{'underlined': sortProperty === 'type'}">Type:</span>
         <button
           class="button-sort"
           @click="sortBy('type')"
         >
+          <span :class="{'underlined': sortProperty === 'type'}">Type:</span>
           <i class="icon-arrows-up-down"/>
         </button>
       </div>
       <div class="attachment-list-column">Comment:</div>
       <div class="attachment-list-column">
-        <span :class="{'underlined': sortProperty === 'date'}">Date:</span>
         <button
           class="button-sort"
           @click="sortBy('date')"
         >
+          <span :class="{'underlined': sortProperty === 'date'}">Date:</span>
           <i class="icon-arrows-up-down"/>
         </button>
       </div>
@@ -123,10 +123,11 @@ export default {
   border-bottom 1px solid $color-green-darkish
 
 .button-sort
-  margin-left 9px
+  font-size inherit
   background transparent
 
 .icon-arrows-up-down
+  margin-left 9px
   vertical-align middle
 
 .underlined
