@@ -7,7 +7,7 @@
           @click="sortBy('type')"
         >
           <span :class="{'underlined': sortProperty === 'type'}">Type:</span>
-          <i class="icon-arrows-up-down"/>
+          <i :class="[typeSortIconClass]"/>
         </button>
       </div>
       <div class="attachment-list-column">Comment:</div>
@@ -17,7 +17,7 @@
           @click="sortBy('date')"
         >
           <span :class="{'underlined': sortProperty === 'date'}">Date:</span>
-          <i class="icon-arrows-up-down"/>
+          <i :class="[dateSortIconClass]"/>
         </button>
       </div>
     </div>
@@ -72,6 +72,20 @@ export default {
       }
 
       return unSortedAttachments.sort(sortFunction);
+    },
+    typeSortIconClass() {
+      if (this.sortProperty === "type") {
+        return this.sortAscending ? "icon-sort-down" : "icon-sort-up";
+      }
+
+      return "icon-sort";
+    },
+    dateSortIconClass() {
+      if (this.sortProperty === "date") {
+        return this.sortAscending ? "icon-sort-down" : "icon-sort-up";
+      }
+
+      return "icon-sort";
     }
   },
   methods: {
@@ -126,9 +140,9 @@ export default {
   font-size inherit
   background transparent
 
-.icon-arrows-up-down
-  margin-left 9px
-  vertical-align middle
+  i
+    margin-left 9px
+    vertical-align middle
 
 .underlined
   text-decoration underline

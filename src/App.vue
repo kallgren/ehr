@@ -182,10 +182,20 @@ i
     height 14px
     background-image url("assets/icons/plus.png")
 
-  &.icon-arrows-up-down
+  &.icon-sort
     width 11px
     height 15px
-    background-image url("assets/icons/arrows-up-down.png")
+    background-image url("assets/icons/sort.png")
+
+  &.icon-sort-up
+    width 11px
+    height 15px
+    background-image url("assets/icons/sort-up.png")
+
+  &.icon-sort-down
+    width 11px
+    height 15px
+    background-image url("assets/icons/sort-down.png")
 
   &.icon-a
   &.icon-a-red
