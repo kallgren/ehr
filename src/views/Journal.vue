@@ -13,19 +13,12 @@
           >
             <template slot="controls">
               <div class="controls">
-                <div
-                  v-for="department in departments"
-                  :key="department"
-                  class="radio-button-wrapper"
+                <input
+                  id="only-show-specific-department"
+                  v-model="onlyShowSpecificDepartment"
+                  type="checkbox"
                 >
-                  <input
-                    :id="department.toLowerCase()"
-                    v-model="selectedDepartment"
-                    :value="department.toLowerCase()"
-                    type="radio"
-                  >
-                  <label :for="department.toLowerCase()">{{ department }}</label>
-                </div>
+                <label for="only-show-specific-department">Only {{ departments[0] }}</label>
               </div>
             </template>
             <template slot="content">
@@ -131,13 +124,13 @@ export default {
   },
   data() {
     return {
-      selectedDepartment: "all",
+      onlyShowSpecificDepartment: false,
       noteSearchQuery: ""
     };
   },
   computed: {
     ...mapState({
-      departments: state => ["All", ...state.currentUser.departments],
+      departments: state => state.currentUser.departments,
       selectedPatient: "selectedPatient"
     }),
     problems() {
@@ -148,10 +141,11 @@ export default {
       });
     },
     filteredProblems() {
-      if (this.selectedDepartment === "all") return this.problems;
+      if (!this.onlyShowSpecificDepartment) return this.problems;
 
       return this.problems.filter(
-        problem => problem.department.toLowerCase() === this.selectedDepartment
+        problem =>
+          problem.department.toLowerCase() === this.departments[0].toLowerCase()
       );
     },
     progressNoteCount() {
@@ -245,11 +239,6 @@ export default {
   .button
     height 23px
     padding 0 8px
-
-.radio-button-wrapper
-  display inline-block
-  margin-right 5px
-  margin-left 23px
 
 .problem-list-wrapper
   display flex
