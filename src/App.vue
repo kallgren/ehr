@@ -73,6 +73,11 @@ counter-icon(name count)
   height 25px
   background-image 'url("assets/icons/%s-%s.png")' % (name count)
 
+counter-icon-white(name count)
+  width 21px
+  height 25px
+  background-image 'url("assets/icons/%s-%s-white.png")' % (name count)
+
 i
   display inline-block
   font-style normal
@@ -141,6 +146,8 @@ i
       counter-icon(surgeries, three)
     &-four
       counter-icon(surgeries, four)
+    &-one-white
+      counter-icon-white(surgeries, one)
 
   &.icon-charts
     &-one
@@ -151,6 +158,8 @@ i
       counter-icon(charts, three)
     &-four
       counter-icon(charts, four)
+    &-one-white
+      counter-icon-white(charts, one)
 
   &.icon-paperclip
     width 30px

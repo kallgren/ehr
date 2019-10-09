@@ -1,12 +1,13 @@
 <template>
   <li
-    :class="['note-item', {'starred': note.is_starred, 'highlighted': isHighlighted}]"
+    :class="['note-item', 'type--' + note.type, {'starred': note.is_starred, 'highlighted': isHighlighted}]"
     @mouseover="highlightNote(note)"
   >
     <div class="note-item-header">
       <span class="note-date">
         {{ note.date | moment("D MMM Y") }}
       </span>
+      <i :class="['type-icon', typeIconClass]"/>
       #{{ note.id_for_patient }}
       <b>{{ note.diagnosis_description }}</b>
       <div class="action-buttons">
@@ -88,6 +89,20 @@ export default {
       const highlightedNote = this.$store.state.highlightedNote;
 
       return highlightedNote && highlightedNote.id === this.note.id;
+    },
+    typeIconClass() {
+      switch (this.note.type) {
+        case "surgery":
+          return this.note.is_starred
+            ? "icon-surgeries-one-white"
+            : "icon-surgeries-one";
+        case "epicrisis":
+          return this.note.is_starred
+            ? "icon-charts-one-white"
+            : "icon-charts-one";
+        default:
+          return "";
+      }
     }
   },
   methods: {
@@ -129,6 +144,16 @@ export default {
 
 .note-date
   margin-right 14px
+
+.type--surgery
+.type--epicrisis
+  .note-date
+    margin-right calc(14px + 21px + 5px)
+
+.type-icon
+  position absolute
+  margin-top -5px
+  margin-left -26px
 
 .action-buttons
   position absolute
