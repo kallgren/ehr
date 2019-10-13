@@ -497,7 +497,8 @@ export default new Vuex.Store({
         note_id: 2,
         type: "X-Ray",
         date: "2007-09-29",
-        comment: "Back"
+        comment: "Back",
+        image_name: "xray.jpg"
       },
       {
         id: 2,
@@ -543,7 +544,8 @@ export default new Vuex.Store({
         note_id: 10,
         type: "X-Ray",
         date: "2019-02-12",
-        comment: "Left knee"
+        comment: "Left knee",
+        image_name: "xray.jpg"
       },
       {
         id: 9,
@@ -556,7 +558,8 @@ export default new Vuex.Store({
         note_id: 11,
         type: "X-Ray",
         date: "2019-02-18T09:16:00Z",
-        comment: "Left knee"
+        comment: "Left knee",
+        image_name: "xray.jpg"
       }
     ]
   },

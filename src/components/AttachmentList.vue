@@ -29,6 +29,8 @@
         <a
           :class="['attachment-item', {'highlighted': isHighlighted(attachment)}]"
           href="javascript:void(0)"
+          @mouseover="attachmentToPreview = attachment"
+          @mouseleave="attachmentToPreview = null"
         >
           <div class="attachment-list-column">{{ attachment.type }}</div>
           <div class="attachment-list-column">{{ attachment.comment }}</div>
@@ -36,12 +38,21 @@
         </a>
       </li>
     </ul>
+    <AttachmentListPreviewWindow
+      v-if="attachmentToPreview && attachmentToPreview.image_name"
+      :attachment="attachmentToPreview"
+    />
   </div>
 </template>
 
 <script>
+import AttachmentListPreviewWindow from "@/components/AttachmentListPreviewWindow.vue";
+
 export default {
   name: "AttachmentList",
+  components: {
+    AttachmentListPreviewWindow
+  },
   props: {
     attachments: {
       type: Array,
@@ -52,7 +63,8 @@ export default {
   data() {
     return {
       sortProperty: null,
-      sortAscending: true
+      sortAscending: true,
+      attachmentToPreview: null
     };
   },
   computed: {
@@ -162,6 +174,9 @@ export default {
   text-decoration none
   background white
   border-bottom 1px solid $color-grey-dark
+
+  &:hover
+    background $color-grey-light
 
 .highlighted::after
   selection-border()
