@@ -8,6 +8,7 @@
       <template slot="content">
         <div class="content-inner">
           <BasePane
+            :scrollable="true"
             title="Problem list"
             class="pane--problem-list"
           >
@@ -87,6 +88,7 @@
             </template>
           </BasePane>
           <BasePane
+            :scrollable="true"
             title="Attachments"
             class="pane--attachments"
           >
