@@ -705,7 +705,10 @@ export default new Vuex.Store({
           attachments: getters.getAttachmentsByNoteId(note),
           diagnosis_description: getters.getDiagnosisByICD10Code(
             state.problems.find(problem => problem.id === note.problem_id)
-          ).description
+          ).description,
+          icd10_code: state.problems.find(
+            problem => problem.id === note.problem_id
+          ).icd10_code
         }))
         .sort((a, b) => new Date(b.date) - new Date(a.date));
     }

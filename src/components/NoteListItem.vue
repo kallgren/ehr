@@ -9,7 +9,7 @@
       </span>
       <i :class="['type-icon', typeIconClass]"/>
       #{{ note.id_for_patient }}
-      <b>{{ note.diagnosis_description }}</b>
+      <b>{{ note.icd10_code }} {{ note.diagnosis_description }}</b>
       <div class="action-buttons">
         <button class="action-button button-send">
           <i class="icon-paper-plane"/>
