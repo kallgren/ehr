@@ -143,12 +143,7 @@ export default {
   background $color-red-medium
 
 .note-date
-  margin-right 14px
-
-.type--surgery
-.type--epicrisis
-  .note-date
-    margin-right calc(14px + 21px + 5px)
+  margin-right 35px
 
 .type-icon
   position absolute
