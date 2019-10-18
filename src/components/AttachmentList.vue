@@ -150,6 +150,7 @@ export default {
 
 .button-sort
   font-size inherit
+  font-weight bold
   background transparent
 
   i
