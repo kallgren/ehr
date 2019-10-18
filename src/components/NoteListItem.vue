@@ -4,12 +4,16 @@
     @mouseover="highlightNote(note)"
   >
     <div class="note-item-header">
-      <span class="note-date">
-        {{ note.date | moment("D MMM Y") }}
-      </span>
-      <i :class="['type-icon', typeIconClass]"/>
-      #{{ note.id_for_patient }}
-      <b>{{ note.icd10_code }} {{ note.diagnosis_description }}</b>
+      <div class="note-info">
+        <span class="note-date">
+          {{ note.date | moment("D MMM Y") }}
+        </span>
+        <i :class="['type-icon', typeIconClass]"/>
+        #{{ note.id_for_patient }}
+      </div>
+      <div>
+        <b>{{ note.icd10_code }} {{ note.diagnosis_description }}</b>
+      </div>
       <div class="action-buttons">
         <button class="action-button button-send">
           <i class="icon-paper-plane"/>
@@ -133,6 +137,7 @@ export default {
   pointer-events none
 
 .note-item-header
+  display flex
   position relative
   padding 6px 75px 5px 9px
   background $color-red-light
@@ -141,6 +146,10 @@ export default {
 .starred .note-item-header
   color white
   background $color-red-medium
+
+.note-info
+  flex-shrink 0
+  margin-right 5px
 
 .note-date
   margin-right 35px
