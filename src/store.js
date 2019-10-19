@@ -250,62 +250,62 @@ export default new Vuex.Store({
         id: 1,
         patient_id: 1,
         icd10_code: "M25.562",
-        start_date: "2017-02-22T10:00:00Z",
-        chronic: false
+        start_date: "2017-02-22T10:00:00Z"
       },
       {
         id: 2,
         patient_id: 1,
         icd10_code: "I49.9",
-        start_date: "2008-02-03T15:30:00Z",
-        chronic: false
+        start_date: "2008-02-03T15:30:00Z"
       },
       {
         id: 3,
         patient_id: 1,
         icd10_code: "G80",
-        start_date: "1975-06-13T02:34:00Z",
-        chronic: true
+        start_date: "1975-06-13T02:34:00Z"
       },
       {
         id: 4,
         patient_id: 2,
         icd10_code: "M41",
-        start_date: "2007-09-29T14:19:00Z",
-        chronic: false
+        start_date: "2007-09-29T14:19:00Z"
       },
       {
         id: 5,
         patient_id: 2,
         icd10_code: "I25.810",
-        start_date: "2011-09-22T10:43:00Z",
-        chronic: false
+        start_date: "2011-09-22T10:43:00Z"
       }
     ],
     diagnoses: [
       {
         code: "I49.9",
         description: "Cardiac Arrythmia",
+        chronic: false,
         department: "Cardiology"
       },
       {
         code: "M25.562",
         description: "Left knee pain",
+        chronic: false,
         department: "Orthopedics"
       },
       {
         code: "G80",
         description: "Cerebral Palsy",
+        chronic: true,
         department: "Neurology"
       },
       {
         code: "M41",
         description: "Scoliosis",
+        chronic: false,
         department: "Orthopedics"
       },
       {
         code: "I25.810",
         description: "Heart Bypass",
+        chronic: false,
         department: "Cardiology"
       }
     ],
