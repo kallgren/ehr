@@ -249,32 +249,27 @@ export default new Vuex.Store({
       {
         id: 1,
         patient_id: 1,
-        icd10_code: "M25.562",
-        start_date: "2017-02-22T10:00:00Z"
+        icd10_code: "M25.562"
       },
       {
         id: 2,
         patient_id: 1,
-        icd10_code: "I49.9",
-        start_date: "2008-02-03T15:30:00Z"
+        icd10_code: "I49.9"
       },
       {
         id: 3,
         patient_id: 1,
-        icd10_code: "G80",
-        start_date: "1975-06-13T02:34:00Z"
+        icd10_code: "G80"
       },
       {
         id: 4,
         patient_id: 2,
-        icd10_code: "M41",
-        start_date: "2007-09-29T14:19:00Z"
+        icd10_code: "M41"
       },
       {
         id: 5,
         patient_id: 2,
-        icd10_code: "I25.810",
-        start_date: "2011-09-22T10:43:00Z"
+        icd10_code: "I25.810"
       }
     ],
     diagnoses: [
@@ -317,6 +312,7 @@ export default new Vuex.Store({
         date: "1976-08-18T10:47:00Z",
         type: "progress",
         is_starred: false,
+        start_date: "1975-06-13T02:34:00Z",
         chief_complaint: "Yearly check up",
         history_of_present_illness:
           "Aliquam sit amet massa a justo placerat tempor nec id augue. Duis vel arcu euismod, tempus velit a, fermentum nibh. Suspendisse dignissim dolor a finibus tempus.",
@@ -350,6 +346,7 @@ export default new Vuex.Store({
         date: "2009-11-22T14:12:00Z",
         type: "progress",
         is_starred: true,
+        start_date: "2008-02-03T15:30:00Z",
         chief_complaint: "Problem of essential hypertension",
         history_of_present_illness:
           "Integer a dapibus lectus, at placerat nunc.",
@@ -367,6 +364,7 @@ export default new Vuex.Store({
         date: "2011-10-05T11:27:00Z",
         type: "surgery",
         is_starred: false,
+        start_date: "2011-09-22T10:43:00Z",
         chief_complaint: "6 months surgery follow-up",
         history_of_present_illness:
           "Maecenas quis leo eu orci aliquet finibus a at quam. Suspendisse potenti.",
@@ -384,6 +382,7 @@ export default new Vuex.Store({
         date: "2018-09-14T09:01:00Z",
         type: "progress",
         is_starred: false,
+        start_date: "2017-02-22T10:00:00Z",
         chief_complaint: "Persistant pain in left knee",
         history_of_present_illness:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.",
@@ -657,8 +656,17 @@ export default new Vuex.Store({
             ),
             surgery_count: getters.getSurgeryCountByProblemId(problem),
             epicrisis_count: getters.getEpicrisisCountByProblemId(problem),
+            start_date: Math.min(
+              ...getters
+                .getNotesByProblemId(problem)
+                .map(
+                  note =>
+                    note.start_date
+                      ? new Date(note.start_date)
+                      : new Date(note.date)
+                )
+            ),
             last_activity_date: Math.max(
-              new Date(problem.start_date),
               ...getters
                 .getNotesByProblemId(problem)
                 .map(note => new Date(note.date))
