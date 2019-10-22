@@ -504,39 +504,70 @@ export default new Vuex.Store({
         note_id: 2,
         type: "Referral, incoming",
         date: "2007-09-29",
-        comment: "GP"
+        comment: "GP",
+        text: [
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consectetur nec diam non vestibulum. Proin consectetur elit sapien, sed mattis orci vulputate ut. Nam scelerisque, lacus vel sollicitudin aliquet, lacus velit convallis sapien, non ultrices augue felis facilisis ligula. Nam massa nibh, iaculis id lectus ac, aliquam ullamcorper felis. Ut feugiat turpis et turpis dapibus pellentesque. Donec convallis in metus eu dictum. Aliquam augue sem, blandit tempus purus in, tristique sodales lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas quis sem ut tortor fermentum efficitur in vestibulum turpis. Integer pulvinar enim ac lacus ultrices cursus. Nulla convallis finibus dui, eget iaculis ex varius a.",
+          "Proin vulputate pretium purus in volutpat. Vestibulum rutrum enim efficitur, laoreet justo in, euismod est. Phasellus suscipit velit posuere vulputate cursus. Cras sodales odio dui, et posuere nisi feugiat dignissim. Nullam egestas turpis ac augue malesuada, a sagittis erat mollis. Etiam dui libero, finibus sed turpis id, viverra porta nunc. Integer efficitur augue sed ullamcorper sagittis. Vestibulum ut est mi. Praesent pharetra urna dolor, sit amet gravida erat imperdiet ac. Sed eget leo ac leo fringilla elementum nec congue erat. Sed eu auctor diam. Maecenas mattis id eros vel ullamcorper. Vestibulum vulputate ultrices hendrerit. Quisque tincidunt quam in lectus varius, tincidunt pulvinar turpis porta. Cras fringilla eget diam in vulputate. Phasellus porta velit vel justo aliquet, non aliquam sem dictum.",
+          "Aliquam blandit arcu vitae egestas porta. Donec lacinia nibh quis lectus volutpat, ac sollicitudin tortor dapibus. Pellentesque eu fringilla nisi. Vestibulum blandit ex vitae nibh sagittis, eget rutrum diam mollis. Nunc ac ultrices justo. Fusce sit amet tellus id sem consectetur aliquet. Nullam vitae laoreet enim. Nullam in tempor enim. Duis tristique tristique lorem, quis varius leo volutpat id. Duis rutrum, ante eu dapibus viverra, sapien urna molestie orci, fermentum varius tortor quam id sem.",
+          "Duis dignissim condimentum elementum. Donec ornare mauris non arcu scelerisque, vitae condimentum urna faucibus. Ut lectus elit, euismod id viverra non, aliquet vitae dolor. Morbi in ex tortor. Mauris vestibulum risus ac diam porta vehicula. Sed iaculis nunc sed odio venenatis tristique. Quisque sed egestas urna. Phasellus ultricies diam nec enim porta ornare. Nunc metus metus, scelerisque eget nunc sed, aliquet interdum dui.",
+          "Pellentesque sed diam neque. Maecenas sagittis feugiat felis, at pulvinar nisl ultrices et. Integer lobortis vel turpis id pellentesque. Mauris porttitor tortor nec ligula lobortis egestas. Etiam in neque mattis, posuere massa sed, efficitur sem. Sed at mattis metus. Duis augue nulla, euismod dignissim nulla vitae, egestas pretium lectus. Curabitur in velit augue. Vivamus varius feugiat sollicitudin. Sed ultricies tristique mi quis cursus. Quisque pellentesque dapibus purus, eu finibus libero pulvinar fringilla. Praesent magna urna, maximus et augue et, malesuada tristique magna. Sed sollicitudin, magna et fermentum dapibus, nulla elit cursus augue, imperdiet aliquet ex turpis nec nisi. Quisque sed turpis erat. Etiam quis molestie orci. Integer libero libero, eleifend nec ultricies et, consequat et lacus."
+        ]
       },
       {
         id: 3,
         note_id: 3,
         type: "ECG",
-        date: "2009-11-22"
+        date: "2009-11-22",
+        text: [
+          "Proin vulputate pretium purus in volutpat. Vestibulum rutrum enim efficitur, laoreet justo in, euismod est. Phasellus suscipit velit posuere vulputate cursus. Cras sodales odio dui, et posuere nisi feugiat dignissim. Nullam egestas turpis ac augue malesuada, a sagittis erat mollis. Etiam dui libero, finibus sed turpis id, viverra porta nunc. Integer efficitur augue sed ullamcorper sagittis. Vestibulum ut est mi. Praesent pharetra urna dolor, sit amet gravida erat imperdiet ac. Sed eget leo ac leo fringilla elementum nec congue erat. Sed eu auctor diam. Maecenas mattis id eros vel ullamcorper. Vestibulum vulputate ultrices hendrerit. Quisque tincidunt quam in lectus varius, tincidunt pulvinar turpis porta. Cras fringilla eget diam in vulputate. Phasellus porta velit vel justo aliquet, non aliquam sem dictum.",
+          "Aliquam blandit arcu vitae egestas porta. Donec lacinia nibh quis lectus volutpat, ac sollicitudin tortor dapibus. Pellentesque eu fringilla nisi. Vestibulum blandit ex vitae nibh sagittis, eget rutrum diam mollis. Nunc ac ultrices justo. Fusce sit amet tellus id sem consectetur aliquet. Nullam vitae laoreet enim. Nullam in tempor enim. Duis tristique tristique lorem, quis varius leo volutpat id. Duis rutrum, ante eu dapibus viverra, sapien urna molestie orci, fermentum varius tortor quam id sem.",
+          "Duis dignissim condimentum elementum. Donec ornare mauris non arcu scelerisque, vitae condimentum urna faucibus. Ut lectus elit, euismod id viverra non, aliquet vitae dolor. Morbi in ex tortor. Mauris vestibulum risus ac diam porta vehicula. Sed iaculis nunc sed odio venenatis tristique. Quisque sed egestas urna. Phasellus ultricies diam nec enim porta ornare. Nunc metus metus, scelerisque eget nunc sed, aliquet interdum dui.",
+          "Pellentesque sed diam neque. Maecenas sagittis feugiat felis, at pulvinar nisl ultrices et. Integer lobortis vel turpis id pellentesque. Mauris porttitor tortor nec ligula lobortis egestas. Etiam in neque mattis, posuere massa sed, efficitur sem. Sed at mattis metus. Duis augue nulla, euismod dignissim nulla vitae, egestas pretium lectus. Curabitur in velit augue. Vivamus varius feugiat sollicitudin. Sed ultricies tristique mi quis cursus. Quisque pellentesque dapibus purus, eu finibus libero pulvinar fringilla. Praesent magna urna, maximus et augue et, malesuada tristique magna. Sed sollicitudin, magna et fermentum dapibus, nulla elit cursus augue, imperdiet aliquet ex turpis nec nisi. Quisque sed turpis erat. Etiam quis molestie orci. Integer libero libero, eleifend nec ultricies et, consequat et lacus."
+        ]
       },
       {
         id: 4,
         note_id: 5,
         type: "Referral, incoming",
         date: "2018-09-06",
-        comment: "GP"
+        comment: "GP",
+        text: [
+          "Pellentesque sed diam neque. Maecenas sagittis feugiat felis, at pulvinar nisl ultrices et. Integer lobortis vel turpis id pellentesque. Mauris porttitor tortor nec ligula lobortis egestas. Etiam in neque mattis, posuere massa sed, efficitur sem. Sed at mattis metus. Duis augue nulla, euismod dignissim nulla vitae, egestas pretium lectus. Curabitur in velit augue. Vivamus varius feugiat sollicitudin. Sed ultricies tristique mi quis cursus. Quisque pellentesque dapibus purus, eu finibus libero pulvinar fringilla. Praesent magna urna, maximus et augue et, malesuada tristique magna. Sed sollicitudin, magna et fermentum dapibus, nulla elit cursus augue, imperdiet aliquet ex turpis nec nisi. Quisque sed turpis erat. Etiam quis molestie orci. Integer libero libero, eleifend nec ultricies et, consequat et lacus."
+        ]
       },
       {
         id: 5,
         note_id: 6,
         type: "ECG",
-        date: "2018-10-16"
+        date: "2018-10-16",
+        text: [
+          "Aliquam blandit arcu vitae egestas porta. Donec lacinia nibh quis lectus volutpat, ac sollicitudin tortor dapibus. Pellentesque eu fringilla nisi. Vestibulum blandit ex vitae nibh sagittis, eget rutrum diam mollis. Nunc ac ultrices justo. Fusce sit amet tellus id sem consectetur aliquet. Nullam vitae laoreet enim. Nullam in tempor enim. Duis tristique tristique lorem, quis varius leo volutpat id. Duis rutrum, ante eu dapibus viverra, sapien urna molestie orci, fermentum varius tortor quam id sem.",
+          "Duis dignissim condimentum elementum. Donec ornare mauris non arcu scelerisque, vitae condimentum urna faucibus. Ut lectus elit, euismod id viverra non, aliquet vitae dolor. Morbi in ex tortor. Mauris vestibulum risus ac diam porta vehicula. Sed iaculis nunc sed odio venenatis tristique. Quisque sed egestas urna. Phasellus ultricies diam nec enim porta ornare. Nunc metus metus, scelerisque eget nunc sed, aliquet interdum dui."
+        ]
       },
       {
         id: 6,
         note_id: 9,
         type: "CT",
-        date: "2019-02-01"
+        date: "2019-02-01",
+        text: [
+          "Proin vulputate pretium purus in volutpat. Vestibulum rutrum enim efficitur, laoreet justo in, euismod est. Phasellus suscipit velit posuere vulputate cursus. Cras sodales odio dui, et posuere nisi feugiat dignissim. Nullam egestas turpis ac augue malesuada, a sagittis erat mollis. Etiam dui libero, finibus sed turpis id, viverra porta nunc. Integer efficitur augue sed ullamcorper sagittis. Vestibulum ut est mi. Praesent pharetra urna dolor, sit amet gravida erat imperdiet ac. Sed eget leo ac leo fringilla elementum nec congue erat. Sed eu auctor diam. Maecenas mattis id eros vel ullamcorper. Vestibulum vulputate ultrices hendrerit. Quisque tincidunt quam in lectus varius, tincidunt pulvinar turpis porta. Cras fringilla eget diam in vulputate. Phasellus porta velit vel justo aliquet, non aliquam sem dictum.",
+          "Aliquam blandit arcu vitae egestas porta. Donec lacinia nibh quis lectus volutpat, ac sollicitudin tortor dapibus. Pellentesque eu fringilla nisi. Vestibulum blandit ex vitae nibh sagittis, eget rutrum diam mollis. Nunc ac ultrices justo. Fusce sit amet tellus id sem consectetur aliquet. Nullam vitae laoreet enim. Nullam in tempor enim. Duis tristique tristique lorem, quis varius leo volutpat id. Duis rutrum, ante eu dapibus viverra, sapien urna molestie orci, fermentum varius tortor quam id sem.",
+          "Duis dignissim condimentum elementum. Donec ornare mauris non arcu scelerisque, vitae condimentum urna faucibus. Ut lectus elit, euismod id viverra non, aliquet vitae dolor. Morbi in ex tortor. Mauris vestibulum risus ac diam porta vehicula. Sed iaculis nunc sed odio venenatis tristique. Quisque sed egestas urna. Phasellus ultricies diam nec enim porta ornare. Nunc metus metus, scelerisque eget nunc sed, aliquet interdum dui.",
+          "Pellentesque sed diam neque. Maecenas sagittis feugiat felis, at pulvinar nisl ultrices et. Integer lobortis vel turpis id pellentesque. Mauris porttitor tortor nec ligula lobortis egestas. Etiam in neque mattis, posuere massa sed, efficitur sem. Sed at mattis metus. Duis augue nulla, euismod dignissim nulla vitae, egestas pretium lectus. Curabitur in velit augue. Vivamus varius feugiat sollicitudin. Sed ultricies tristique mi quis cursus. Quisque pellentesque dapibus purus, eu finibus libero pulvinar fringilla. Praesent magna urna, maximus et augue et, malesuada tristique magna. Sed sollicitudin, magna et fermentum dapibus, nulla elit cursus augue, imperdiet aliquet ex turpis nec nisi. Quisque sed turpis erat. Etiam quis molestie orci. Integer libero libero, eleifend nec ultricies et, consequat et lacus."
+        ]
       },
       {
         id: 7,
         note_id: 9,
         type: "Referral",
         date: "2019-02-02",
-        comment: "Physiotherapy"
+        comment: "Physiotherapy",
+        text: [
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consectetur nec diam non vestibulum. Proin consectetur elit sapien, sed mattis orci vulputate ut. Nam scelerisque, lacus vel sollicitudin aliquet, lacus velit convallis sapien, non ultrices augue felis facilisis ligula. Nam massa nibh, iaculis id lectus ac, aliquam ullamcorper felis. Ut feugiat turpis et turpis dapibus pellentesque. Donec convallis in metus eu dictum. Aliquam augue sem, blandit tempus purus in, tristique sodales lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas quis sem ut tortor fermentum efficitur in vestibulum turpis. Integer pulvinar enim ac lacus ultrices cursus. Nulla convallis finibus dui, eget iaculis ex varius a.",
+          "Proin vulputate pretium purus in volutpat. Vestibulum rutrum enim efficitur, laoreet justo in, euismod est. Phasellus suscipit velit posuere vulputate cursus. Cras sodales odio dui, et posuere nisi feugiat dignissim. Nullam egestas turpis ac augue malesuada, a sagittis erat mollis. Etiam dui libero, finibus sed turpis id, viverra porta nunc. Integer efficitur augue sed ullamcorper sagittis. Vestibulum ut est mi. Praesent pharetra urna dolor, sit amet gravida erat imperdiet ac. Sed eget leo ac leo fringilla elementum nec congue erat. Sed eu auctor diam. Maecenas mattis id eros vel ullamcorper. Vestibulum vulputate ultrices hendrerit. Quisque tincidunt quam in lectus varius, tincidunt pulvinar turpis porta. Cras fringilla eget diam in vulputate. Phasellus porta velit vel justo aliquet, non aliquam sem dictum.",
+          "Pellentesque sed diam neque. Maecenas sagittis feugiat felis, at pulvinar nisl ultrices et. Integer lobortis vel turpis id pellentesque. Mauris porttitor tortor nec ligula lobortis egestas. Etiam in neque mattis, posuere massa sed, efficitur sem. Sed at mattis metus. Duis augue nulla, euismod dignissim nulla vitae, egestas pretium lectus. Curabitur in velit augue. Vivamus varius feugiat sollicitudin. Sed ultricies tristique mi quis cursus. Quisque pellentesque dapibus purus, eu finibus libero pulvinar fringilla. Praesent magna urna, maximus et augue et, malesuada tristique magna. Sed sollicitudin, magna et fermentum dapibus, nulla elit cursus augue, imperdiet aliquet ex turpis nec nisi. Quisque sed turpis erat. Etiam quis molestie orci. Integer libero libero, eleifend nec ultricies et, consequat et lacus."
+        ]
       },
       {
         id: 8,
@@ -550,7 +581,12 @@ export default new Vuex.Store({
         id: 9,
         note_id: 11,
         type: "Sick leave",
-        date: "2019-02-17"
+        date: "2019-02-17",
+        text: [
+          "Pellentesque sed diam neque. Maecenas sagittis feugiat felis, at pulvinar nisl ultrices et. Integer lobortis vel turpis id pellentesque. Mauris porttitor tortor nec ligula lobortis egestas. Etiam in neque mattis, posuere massa sed, efficitur sem. Sed at mattis metus. Duis augue nulla, euismod dignissim nulla vitae, egestas pretium lectus. Curabitur in velit augue. Vivamus varius feugiat sollicitudin. Sed ultricies tristique mi quis cursus. Quisque pellentesque dapibus purus, eu finibus libero pulvinar fringilla. Praesent magna urna, maximus et augue et, malesuada tristique magna. Sed sollicitudin, magna et fermentum dapibus, nulla elit cursus augue, imperdiet aliquet ex turpis nec nisi. Quisque sed turpis erat. Etiam quis molestie orci. Integer libero libero, eleifend nec ultricies et, consequat et lacus.",
+          "Proin vulputate pretium purus in volutpat. Vestibulum rutrum enim efficitur, laoreet justo in, euismod est. Phasellus suscipit velit posuere vulputate cursus. Cras sodales odio dui, et posuere nisi feugiat dignissim. Nullam egestas turpis ac augue malesuada, a sagittis erat mollis. Etiam dui libero, finibus sed turpis id, viverra porta nunc. Integer efficitur augue sed ullamcorper sagittis. Vestibulum ut est mi. Praesent pharetra urna dolor, sit amet gravida erat imperdiet ac. Sed eget leo ac leo fringilla elementum nec congue erat. Sed eu auctor diam. Maecenas mattis id eros vel ullamcorper. Vestibulum vulputate ultrices hendrerit. Quisque tincidunt quam in lectus varius, tincidunt pulvinar turpis porta. Cras fringilla eget diam in vulputate. Phasellus porta velit vel justo aliquet, non aliquam sem dictum.",
+          "Duis dignissim condimentum elementum. Donec ornare mauris non arcu scelerisque, vitae condimentum urna faucibus. Ut lectus elit, euismod id viverra non, aliquet vitae dolor. Morbi in ex tortor. Mauris vestibulum risus ac diam porta vehicula. Sed iaculis nunc sed odio venenatis tristique. Quisque sed egestas urna. Phasellus ultricies diam nec enim porta ornare. Nunc metus metus, scelerisque eget nunc sed, aliquet interdum dui."
+        ]
       },
       {
         id: 10,

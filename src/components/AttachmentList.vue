@@ -39,7 +39,7 @@
       </li>
     </ul>
     <AttachmentListPreviewWindow
-      v-if="attachmentToPreview && attachmentToPreview.image_name"
+      v-if="attachmentToPreview"
       :attachment="attachmentToPreview"
     />
   </div>
