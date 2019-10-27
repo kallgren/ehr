@@ -12,7 +12,13 @@
         #{{ note.id_for_patient }}
       </div>
       <div>
-        <b>{{ note.icd10_code }} {{ note.diagnosis_description }}</b>
+        <b
+          v-for="diagnosis in note.diagnoses"
+          :key="diagnosis.code"
+        >
+          {{ diagnosis.code }} {{ diagnosis.description }}
+          <br>
+        </b>
       </div>
       <div class="action-buttons">
         <button class="action-button button-send">

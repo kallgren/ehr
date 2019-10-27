@@ -282,7 +282,7 @@ export default new Vuex.Store({
         id: 1,
         patient_id: 1,
         id_for_patient: 1,
-        icd10_code: "G80",
+        icd10_codes: ["G80"],
         date: "1976-08-18T10:47:00Z",
         type: "progress",
         is_starred: false,
@@ -300,7 +300,7 @@ export default new Vuex.Store({
         id: 2,
         patient_id: 2,
         id_for_patient: 1,
-        icd10_code: "M41",
+        icd10_codes: ["M41"],
         date: "2007-09-29T14:28:00Z",
         type: "progress",
         is_starred: false,
@@ -318,7 +318,7 @@ export default new Vuex.Store({
         id: 3,
         patient_id: 1,
         id_for_patient: 2,
-        icd10_code: "I49.9",
+        icd10_codes: ["I49.9"],
         date: "2009-11-22T14:12:00Z",
         type: "progress",
         is_starred: true,
@@ -337,7 +337,7 @@ export default new Vuex.Store({
         id: 4,
         patient_id: 2,
         id_for_patient: 2,
-        icd10_code: "I25.810",
+        icd10_codes: ["I25.810"],
         date: "2011-10-05T11:27:00Z",
         type: "surgery",
         is_starred: false,
@@ -356,7 +356,7 @@ export default new Vuex.Store({
         id: 5,
         patient_id: 1,
         id_for_patient: 3,
-        icd10_code: "M25.562",
+        icd10_codes: ["M25.562"],
         date: "2018-09-14T09:01:00Z",
         type: "progress",
         is_starred: false,
@@ -375,7 +375,7 @@ export default new Vuex.Store({
         id: 6,
         patient_id: 1,
         id_for_patient: 4,
-        icd10_code: "I49.9",
+        icd10_codes: ["I49.9"],
         date: "2018-10-16T14:26:00Z",
         type: "progress",
         is_starred: false,
@@ -392,7 +392,7 @@ export default new Vuex.Store({
         id: 7,
         patient_id: 2,
         id_for_patient: 3,
-        icd10_code: "M41",
+        icd10_codes: ["M41"],
         date: "2019-01-03T08:11:00Z",
         type: "progress",
         is_starred: true,
@@ -410,7 +410,7 @@ export default new Vuex.Store({
         id: 8,
         patient_id: 1,
         id_for_patient: 5,
-        icd10_code: "M25.562",
+        icd10_codes: ["M25.562"],
         date: "2019-01-27T08:24:00Z",
         type: "surgery",
         is_starred: false,
@@ -424,7 +424,7 @@ export default new Vuex.Store({
         id: 9,
         patient_id: 1,
         id_for_patient: 6,
-        icd10_code: "M25.562",
+        icd10_codes: ["M25.562"],
         date: "2019-02-02T08:20:00Z",
         type: "progress",
         is_starred: true,
@@ -441,7 +441,7 @@ export default new Vuex.Store({
         id: 10,
         patient_id: 1,
         id_for_patient: 7,
-        icd10_code: "M25.562",
+        icd10_codes: ["M25.562"],
         date: "2019-02-10T11:13:00Z",
         type: "epicrisis",
         is_starred: false,
@@ -459,7 +459,7 @@ export default new Vuex.Store({
         id: 11,
         patient_id: 1,
         id_for_patient: 8,
-        icd10_code: "M25.562",
+        icd10_codes: ["M25.562"],
         date: "2019-02-18T09:37:00Z",
         type: "progress",
         is_starred: true,
@@ -682,7 +682,7 @@ export default new Vuex.Store({
         state.notes.filter(
           note =>
             note.patient_id === parseInt(id.split("_")[0]) &&
-            note.icd10_code === id.split("_")[1]
+            note.icd10_codes.includes(id.split("_")[1])
         );
     },
     getDiagnosisByICD10Code(state) {
@@ -699,11 +699,13 @@ export default new Vuex.Store({
       return state.selectedProblems
         .map(id => getters.getNotesByProblemId({ id }))
         .flat()
+        .filter((v, i, s) => s.indexOf(v) === i) // Remove duplicates
         .map(note => ({
           ...note,
           attachments: getters.getAttachmentsByNoteId(note),
-          diagnosis_description: getters.getDiagnosisByICD10Code(note)
-            .description
+          diagnoses: note.icd10_codes.map(icd10_code =>
+            getters.getDiagnosisByICD10Code({ icd10_code })
+          )
         }))
         .sort((a, b) => new Date(b.date) - new Date(a.date));
     }
@@ -711,14 +713,15 @@ export default new Vuex.Store({
 });
 
 function groupNoteByDiagnosis(problems, note) {
-  const icd10_code = note.icd10_code;
-  const problem = problems.find(p => p.icd10_code === icd10_code);
+  note.icd10_codes.forEach(icd10_code => {
+    const problem = problems.find(p => p.icd10_code === icd10_code);
 
-  if (problem) {
-    problem.notes.push(note);
-  } else {
-    problems.push({ icd10_code, notes: [note] });
-  }
+    if (problem) {
+      problem.notes.push(note);
+    } else {
+      problems.push({ icd10_code, notes: [note] });
+    }
+  });
 
   return problems;
 }

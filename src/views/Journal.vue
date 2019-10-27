@@ -191,8 +191,9 @@ export default {
           note.physical_examination,
           note.assessment,
           note.plan,
-          note.diagnosis_description,
-          ...note.attachments.map(attachment => attachment.type)
+          ...note.diagnoses.map(d => d.code),
+          ...note.diagnoses.map(d => d.description),
+          ...note.attachments.map(a => a.type)
         ];
 
         return searchableFields.some(
