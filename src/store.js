@@ -668,42 +668,10 @@ export default new Vuex.Store({
       return ({ id }) =>
         state.notes
           .filter(note => note.patient_id === id)
-          .reduce((problems, note) => {
-            const icd10_code = note.icd10_code;
-            const problem = problems.find(p => p.icd10_code === icd10_code);
-
-            if (problem) {
-              problem.notes.push(note);
-            } else {
-              problems.push({ icd10_code, notes: [note] });
-            }
-
-            return problems;
-          }, [])
-          .map(problem => ({
-            id: `${id}_${problem.icd10_code}`,
-            ...problem,
-            ...getters.getDiagnosisByICD10Code(problem),
-            progress_note_count: problem.notes.filter(
-              note => note.type === "progress"
-            ).length,
-            surgery_count: problem.notes.filter(note => note.type === "surgery")
-              .length,
-            epicrisis_count: problem.notes.filter(
-              note => note.type === "epicrisis"
-            ).length,
-            start_date: Math.min(
-              ...problem.notes.map(
-                note =>
-                  note.start_date
-                    ? new Date(note.start_date)
-                    : new Date(note.date)
-              )
-            ),
-            last_activity_date: Math.max(
-              ...problem.notes.map(note => new Date(note.date))
-            )
-          }))
+          .reduce(groupNoteByDiagnosis, [])
+          .map(({ icd10_code, notes }) =>
+            constructProblem(id, icd10_code, notes, getters)
+          )
           .sort(
             (a, b) =>
               new Date(b.last_activity_date) - new Date(a.last_activity_date)
@@ -741,3 +709,29 @@ export default new Vuex.Store({
     }
   }
 });
+
+function groupNoteByDiagnosis(problems, note) {
+  const icd10_code = note.icd10_code;
+  const problem = problems.find(p => p.icd10_code === icd10_code);
+
+  if (problem) {
+    problem.notes.push(note);
+  } else {
+    problems.push({ icd10_code, notes: [note] });
+  }
+
+  return problems;
+}
+
+function constructProblem(patient_id, icd10_code, notes, getters) {
+  return {
+    id: `${patient_id}_${icd10_code}`,
+    icd10_code,
+    progress_note_count: notes.filter(n => n.type === "progress").length,
+    surgery_count: notes.filter(n => n.type === "surgery").length,
+    epicrisis_count: notes.filter(n => n.type === "epicrisis").length,
+    start_date: Math.min(...notes.map(n => new Date(n.start_date || n.date))),
+    last_activity_date: Math.max(...notes.map(n => new Date(n.date))),
+    ...getters.getDiagnosisByICD10Code({ icd10_code })
+  };
+}
