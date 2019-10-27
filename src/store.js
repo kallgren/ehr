@@ -711,18 +711,18 @@ export default new Vuex.Store({
   }
 });
 
-function groupNoteByDiagnosis(problems, note) {
-  note.diagnosis_codes.forEach(diagnosis_code => {
-    const problem = problems.find(p => p.diagnosis_code === diagnosis_code);
+function groupNoteByDiagnosis(groups, note) {
+  note.diagnosis_codes.forEach(code => {
+    const group = groups.find(p => p.diagnosis_code === code);
 
-    if (problem) {
-      problem.notes.push(note);
+    if (group) {
+      group.notes.push(note);
     } else {
-      problems.push({ diagnosis_code, notes: [note] });
+      groups.push({ diagnosis_code: code, notes: [note] });
     }
   });
 
-  return problems;
+  return groups;
 }
 
 function constructProblem(patient_id, diagnosis_code, notes, getters) {
