@@ -14,9 +14,9 @@
       <div>
         <b
           v-for="diagnosis in note.diagnoses"
-          :key="diagnosis.code"
+          :key="diagnosis.code_icd10"
         >
-          {{ diagnosis.code }} {{ diagnosis.description }}
+          {{ diagnosis.code_icd10 }} {{ diagnosis.description }}
           <br>
         </b>
       </div>

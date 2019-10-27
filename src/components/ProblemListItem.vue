@@ -6,7 +6,7 @@
       @click.prevent="onProblemClick"
     >
       <b class="code">
-        {{ problem.icd10_code }}
+        {{ problem.diagnosis_code }}
         <i
           v-if="problem.chronic"
           class="icon-chronic"/>
