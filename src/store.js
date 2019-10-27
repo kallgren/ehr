@@ -245,33 +245,6 @@ export default new Vuex.Store({
         reason: "ankle fracture repair"
       }
     ],
-    problems: [
-      {
-        id: 1,
-        patient_id: 1,
-        icd10_code: "M25.562"
-      },
-      {
-        id: 2,
-        patient_id: 1,
-        icd10_code: "I49.9"
-      },
-      {
-        id: 3,
-        patient_id: 1,
-        icd10_code: "G80"
-      },
-      {
-        id: 4,
-        patient_id: 2,
-        icd10_code: "M41"
-      },
-      {
-        id: 5,
-        patient_id: 2,
-        icd10_code: "I25.810"
-      }
-    ],
     diagnoses: [
       {
         code: "I49.9",
@@ -307,8 +280,9 @@ export default new Vuex.Store({
     notes: [
       {
         id: 1,
+        patient_id: 1,
         id_for_patient: 1,
-        problem_id: 3,
+        icd10_code: "G80",
         date: "1976-08-18T10:47:00Z",
         type: "progress",
         is_starred: false,
@@ -324,8 +298,9 @@ export default new Vuex.Store({
       },
       {
         id: 2,
+        patient_id: 2,
         id_for_patient: 1,
-        problem_id: 4,
+        icd10_code: "M41",
         date: "2007-09-29T14:28:00Z",
         type: "progress",
         is_starred: false,
@@ -341,8 +316,9 @@ export default new Vuex.Store({
       },
       {
         id: 3,
+        patient_id: 1,
         id_for_patient: 2,
-        problem_id: 2,
+        icd10_code: "I49.9",
         date: "2009-11-22T14:12:00Z",
         type: "progress",
         is_starred: true,
@@ -359,8 +335,9 @@ export default new Vuex.Store({
       },
       {
         id: 4,
+        patient_id: 2,
         id_for_patient: 2,
-        problem_id: 5,
+        icd10_code: "I25.810",
         date: "2011-10-05T11:27:00Z",
         type: "surgery",
         is_starred: false,
@@ -377,8 +354,9 @@ export default new Vuex.Store({
       },
       {
         id: 5,
+        patient_id: 1,
         id_for_patient: 3,
-        problem_id: 1,
+        icd10_code: "M25.562",
         date: "2018-09-14T09:01:00Z",
         type: "progress",
         is_starred: false,
@@ -395,8 +373,9 @@ export default new Vuex.Store({
       },
       {
         id: 6,
+        patient_id: 1,
         id_for_patient: 4,
-        problem_id: 2,
+        icd10_code: "I49.9",
         date: "2018-10-16T14:26:00Z",
         type: "progress",
         is_starred: false,
@@ -411,8 +390,9 @@ export default new Vuex.Store({
       },
       {
         id: 7,
+        patient_id: 2,
         id_for_patient: 3,
-        problem_id: 4,
+        icd10_code: "M41",
         date: "2019-01-03T08:11:00Z",
         type: "progress",
         is_starred: true,
@@ -428,8 +408,9 @@ export default new Vuex.Store({
       },
       {
         id: 8,
+        patient_id: 1,
         id_for_patient: 5,
-        problem_id: 1,
+        icd10_code: "M25.562",
         date: "2019-01-27T08:24:00Z",
         type: "surgery",
         is_starred: false,
@@ -441,8 +422,9 @@ export default new Vuex.Store({
       },
       {
         id: 9,
+        patient_id: 1,
         id_for_patient: 6,
-        problem_id: 1,
+        icd10_code: "M25.562",
         date: "2019-02-02T08:20:00Z",
         type: "progress",
         is_starred: true,
@@ -457,8 +439,9 @@ export default new Vuex.Store({
       },
       {
         id: 10,
+        patient_id: 1,
         id_for_patient: 7,
-        problem_id: 1,
+        icd10_code: "M25.562",
         date: "2019-02-10T11:13:00Z",
         type: "epicrisis",
         is_starred: false,
@@ -474,8 +457,9 @@ export default new Vuex.Store({
       },
       {
         id: 11,
+        patient_id: 1,
         id_for_patient: 8,
-        problem_id: 1,
+        icd10_code: "M25.562",
         date: "2019-02-18T09:37:00Z",
         type: "progress",
         is_starred: true,
@@ -682,53 +666,56 @@ export default new Vuex.Store({
     },
     getProblemsByPatientId(state, getters) {
       return ({ id }) =>
-        state.problems
-          .filter(problem => problem.patient_id === id)
+        state.notes
+          .filter(note => note.patient_id === id)
+          .reduce((problems, note) => {
+            const icd10_code = note.icd10_code;
+            const problem = problems.find(p => p.icd10_code === icd10_code);
+
+            if (problem) {
+              problem.notes.push(note);
+            } else {
+              problems.push({ icd10_code, notes: [note] });
+            }
+
+            return problems;
+          }, [])
           .map(problem => ({
+            id: `${id}_${problem.icd10_code}`,
             ...problem,
             ...getters.getDiagnosisByICD10Code(problem),
-            progress_note_count: getters.getProgressNoteCountByProblemId(
-              problem
-            ),
-            surgery_count: getters.getSurgeryCountByProblemId(problem),
-            epicrisis_count: getters.getEpicrisisCountByProblemId(problem),
+            progress_note_count: problem.notes.filter(
+              note => note.type === "progress"
+            ).length,
+            surgery_count: problem.notes.filter(note => note.type === "surgery")
+              .length,
+            epicrisis_count: problem.notes.filter(
+              note => note.type === "epicrisis"
+            ).length,
             start_date: Math.min(
-              ...getters
-                .getNotesByProblemId(problem)
-                .map(
-                  note =>
-                    note.start_date
-                      ? new Date(note.start_date)
-                      : new Date(note.date)
-                )
+              ...problem.notes.map(
+                note =>
+                  note.start_date
+                    ? new Date(note.start_date)
+                    : new Date(note.date)
+              )
             ),
             last_activity_date: Math.max(
-              ...getters
-                .getNotesByProblemId(problem)
-                .map(note => new Date(note.date))
+              ...problem.notes.map(note => new Date(note.date))
             )
-          }));
-    },
-    getProgressNoteCountByProblemId(state) {
-      return ({ id }) =>
-        state.notes.filter(
-          note => note.problem_id === id && note.type === "progress"
-        ).length;
-    },
-    getSurgeryCountByProblemId(state) {
-      return ({ id }) =>
-        state.notes.filter(
-          note => note.problem_id === id && note.type === "surgery"
-        ).length;
-    },
-    getEpicrisisCountByProblemId(state) {
-      return ({ id }) =>
-        state.notes.filter(
-          note => note.problem_id === id && note.type === "epicrisis"
-        ).length;
+          }))
+          .sort(
+            (a, b) =>
+              new Date(b.last_activity_date) - new Date(a.last_activity_date)
+          );
     },
     getNotesByProblemId(state) {
-      return ({ id }) => state.notes.filter(note => note.problem_id === id);
+      return ({ id }) =>
+        state.notes.filter(
+          note =>
+            note.patient_id === parseInt(id.split("_")[0]) &&
+            note.icd10_code === id.split("_")[1]
+        );
     },
     getDiagnosisByICD10Code(state) {
       return ({ icd10_code }) =>
@@ -747,12 +734,8 @@ export default new Vuex.Store({
         .map(note => ({
           ...note,
           attachments: getters.getAttachmentsByNoteId(note),
-          diagnosis_description: getters.getDiagnosisByICD10Code(
-            state.problems.find(problem => problem.id === note.problem_id)
-          ).description,
-          icd10_code: state.problems.find(
-            problem => problem.id === note.problem_id
-          ).icd10_code
+          diagnosis_description: getters.getDiagnosisByICD10Code(note)
+            .description
         }))
         .sort((a, b) => new Date(b.date) - new Date(a.date));
     }
