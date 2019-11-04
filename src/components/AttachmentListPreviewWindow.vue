@@ -49,8 +49,9 @@ export default {
   z-index $z-attachment-preview
 
 .preview-image
+  display block
   max-width 100%
-  margin-bottom 10px
+  margin 0 auto 13px
 
 .preview-description
   font-size $font-size--base
