@@ -5,14 +5,16 @@
       href="javascript:void(0)"
       @click.prevent="onProblemClick"
     >
-      <b class="code">
-        {{ problem.diagnosis_code }}
-        <i
-          v-if="problem.chronic"
-          class="icon-chronic"/>
-      </b>
-      {{ problem.description }}
-      <div class="problem-info">
+      <div class="problem-name-container">
+        <b class="problem-code">
+          {{ problem.diagnosis_code }}
+          <i
+            v-if="problem.chronic"
+            class="icon-chronic"/>
+        </b>
+        <span class="problem-description">{{ problem.description }}</span>
+      </div>
+      <div class="problem-info-container">
         <div class="time-container">
           <div class="time-col">
             <span class="time-label">Start:</span>
@@ -133,7 +135,8 @@ export default {
 
 <style scoped lang="stylus">
 .problem-item
-  display block
+  display flex
+  flex-direction column
   position relative
   height 56px
   padding 3px 15px
@@ -162,16 +165,26 @@ export default {
   bottom -1px
   left 0
 
-.code
-  display inline-block
+.problem-name-container
+  display flex
+
+.problem-code
   width 60px
+  min-width 60px
+  padding-right 4px
+
+.problem-description
+  word-break break-all
+  white-space nowrap
+  text-overflow ellipsis
+  overflow hidden
 
 .icon-chronic
   position absolute
   margin-left 7px
   margin-top -1px
 
-.problem-info
+.problem-info-container
   display flex
 
 .time-container
