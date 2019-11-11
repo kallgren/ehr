@@ -8,92 +8,11 @@ const patients = [
     sex: "male",
     height_cm: 178,
     weight_kg: 90,
-    allergies: ["peanuts"],
+    allergies: [],
     blood_problems: false,
     other_warnings: false,
     admitted: false,
-    important_remarks: [
-      "Heart bypass in 2012",
-      "Family history of prostate cancer"
-    ],
-    events: [
-      {
-        id: 1,
-        date: "2018-04-30T07:30:00Z",
-        type: "visit",
-        clinic: "Physiotherapy"
-      },
-      {
-        id: 2,
-        date: "2018-05-10T09:00:00Z",
-        type: "visit",
-        clinic: "Physiotherapy"
-      },
-      {
-        id: 3,
-        date: "2018-05-20T12:00:00Z",
-        type: "X-Ray",
-        clinic: "Radiology"
-      },
-      {
-        id: 4,
-        date: "2018-05-20T08:00:00Z",
-        type: "visit",
-        clinic: "Orthopedics"
-      }
-    ],
-    medicines: [
-      {
-        id: 1,
-        name: "Medicine One",
-        intake: "2 pills every morning"
-      },
-      {
-        id: 2,
-        name: "Medicine Two",
-        intake: "before meals"
-      },
-      {
-        id: 3,
-        name: "Painkiller",
-        intake: "When needed"
-      },
-      {
-        id: 4,
-        name: "Medicine One",
-        intake: "2 pills every morning"
-      },
-      {
-        id: 5,
-        name: "Medicine Two",
-        intake: "before meals"
-      },
-      {
-        id: 6,
-        name: "Painkiller",
-        intake: "When needed"
-      },
-      {
-        id: 7,
-        name: "Medicine One",
-        intake: "2 pills every morning"
-      },
-      {
-        id: 8,
-        name: "Medicine Two",
-        intake: "before meals"
-      },
-      {
-        id: 9,
-        name: "Painkiller",
-        intake: "When needed"
-      },
-      {
-        id: 10,
-        name: "Medicine One",
-        intake: "2 pills every morning"
-      }
-    ]
+    important_remarks: []
   },
   {
     id: 2,
@@ -105,10 +24,10 @@ const patients = [
     height_cm: 156,
     weight_kg: 67,
     allergies: [],
-    blood_problems: true,
+    blood_problems: false,
     other_warnings: false,
-    admitted: true,
-    important_remarks: []
+    admitted: false,
+    important_remarks: ["Mamma dog i bröstcancer"]
   },
   {
     id: 3,
@@ -119,7 +38,7 @@ const patients = [
     sex: "male",
     height_cm: 188,
     weight_kg: 78,
-    allergies: ["dogs"],
+    allergies: [],
     blood_problems: false,
     other_warnings: false,
     admitted: false,
@@ -134,9 +53,9 @@ const patients = [
     sex: "male",
     height_cm: 182,
     weight_kg: 79,
-    allergies: [],
+    allergies: ["Latex, Pc."],
     blood_problems: false,
-    other_warnings: true,
+    other_warnings: false,
     admitted: false,
     important_remarks: []
   },
@@ -147,13 +66,28 @@ const patients = [
     ssn: "670923-3115",
     date_of_birth: "1967-09-23T03:44:00Z",
     sex: "male",
-    height_cm: 177,
-    weight_kg: 83,
+    height_cm: 175,
+    weight_kg: 96,
     allergies: [],
     blood_problems: false,
     other_warnings: false,
-    admitted: true,
-    important_remarks: ["Family history of heart disease"]
+    admitted: false,
+    important_remarks: ["Hjärtinfarkt med PCI 2017", "Typ II-diabetes"]
+  },
+  {
+    id: 6,
+    first_name: "Sara",
+    last_name: "Lindén",
+    ssn: "580220-0187",
+    date_of_birth: "1958-02-20T21:38:00Z",
+    sex: "female",
+    height_cm: 169,
+    weight_kg: 71,
+    allergies: [],
+    blood_problems: false,
+    other_warnings: false,
+    admitted: false,
+    important_remarks: []
   }
 ];
 
@@ -163,105 +97,127 @@ const todaysAppointments = [
     start: "2018-01-01T08:00:00Z",
     end: "2018-01-01T08:30:00Z",
     patient_id: 1,
-    reason: "knee pain"
+    reason: "<ORSAK>"
   },
   {
     id: 2,
     start: "2018-01-01T08:30:00Z",
     end: "2018-01-01T09:00:00Z",
     patient_id: 2,
-    reason: "1mo follow up"
+    reason: "<ORSAK>"
   },
   {
     id: 3,
     start: "2018-01-01T09:30:00Z",
     end: "2018-01-01T09:45:00Z",
     patient_id: 3,
-    reason: "elbow fracture"
+    reason: "<ORSAK>"
   },
   {
     id: 4,
     start: "2018-01-01T10:00:00Z",
     end: "2018-01-01T10:30:00Z",
     patient_id: 4,
-    reason: "scoliosis"
+    reason: "<ORSAK>"
   },
   {
     id: 5,
     start: "2018-01-01T10:30:00Z",
     end: "2018-01-01T11:00:00Z",
     patient_id: 5,
-    reason: "6mo follow up"
-  }
-];
-
-const myPatientsAppointments = [
+    reason: "<ORSAK>"
+  },
   {
     id: 6,
-    start: "2018-01-01T14:00:00Z",
-    end: "2018-01-01T14:20:00Z",
-    patient_id: 2,
-    reason: "radius fracture"
-  },
-  {
-    id: 7,
-    start: "2018-01-01T14:30:00Z",
-    end: "2018-01-01T14:50:00Z",
-    patient_id: 5,
-    reason: "ankle fracture"
-  },
-  {
-    id: 8,
-    start: "2018-01-01T15:00:00Z",
-    end: "2018-01-01T15:20:00Z",
-    patient_id: 4,
-    reason: "hip replacement"
+    start: "2018-01-01T13:00:00Z",
+    end: "2018-01-01T13:30:00Z",
+    patient_id: 6,
+    reason: "<ORSAK>"
   }
 ];
 
-const wardPatients = [
-  {
-    id: 1,
-    patient_id: 3,
-    reason: "bone tumor"
-  },
-  {
-    id: 2,
-    patient_id: 1,
-    reason: "ankle fracture repair"
-  }
-];
+const myPatientsAppointments = [];
+
+const wardPatients = [];
 
 const diagnoses = [
   {
-    code_icd10: "I49.9",
-    description: "Cardiac Arrythmia",
+    code_icd10: "C43.5",
+    description: "Malignt melanom",
+    chronic: false,
+    department: "Unknown"
+  },
+  {
+    code_icd10: "I48.9",
+    description: "Förmaksflimmer och förmaksfladder, ospecificerat",
     chronic: false,
     department: "Cardiology"
   },
   {
-    code_icd10: "M25.562",
-    description: "Left knee pain",
+    code_icd10: "J09.9",
+    description: "Influensa",
+    chronic: false,
+    department: "General"
+  },
+  {
+    code_icd10: "M00.9",
+    description: "Purulent artrit, ospecificerad",
     chronic: false,
     department: "Orthopedics"
   },
   {
-    code_icd10: "G80",
-    description: "Cerebral Palsy",
-    chronic: true,
-    department: "Neurology"
-  },
-  {
-    code_icd10: "M41",
-    description: "Scoliosis",
+    code_icd10: "M24.B",
+    description: "Recidivluxation/subluxation i axelled",
     chronic: false,
     department: "Orthopedics"
   },
   {
-    code_icd10: "I25.810",
-    description: "Heart Bypass",
+    code_icd10: "M54.5",
+    description: "Lumbago",
     chronic: false,
-    department: "Cardiology"
+    department: "Orthopedics"
+  },
+  {
+    code_icd10: "S42.0",
+    description: "Nyckelbensfraktur",
+    chronic: false,
+    department: "Orthopedics"
+  },
+  {
+    code_icd10: "S43.0",
+    description: "Luxation i skulderled",
+    chronic: false,
+    department: "Orthopedics"
+  },
+  {
+    code_icd10: "S52.3",
+    description: "Fraktur på radiusskaftet",
+    chronic: false,
+    department: "Orthopedics"
+  },
+  {
+    code_icd10: "S52.4",
+    description: "Fraktur på skaften av både ulna och radius",
+    chronic: false,
+    department: "Orthopedics"
+  },
+  {
+    code_icd10: "S82.50",
+    description: "Fraktur på mediala malleolen, sluten",
+    chronic: false,
+    department: "Orthopedics"
+  },
+  {
+    code_icd10: "S82.60",
+    description: "Fraktur på laterala malleolen, sluten",
+    chronic: false,
+    department: "Orthopedics"
+  },
+  {
+    code_icd10: "S82.80",
+    description: "Frakturer på andra specificerade delar av underben, sluten",
+    chronic: false,
+    department: "Orthopedics"
   }
 ];
 
@@ -270,303 +226,530 @@ const notes = [
     id: 1,
     patient_id: 1,
     id_for_patient: 1,
-    diagnosis_codes: ["G80"],
-    date: "1976-08-18T10:47:00Z",
+    diagnosis_codes: ["J09.9"],
+    date: "2010-08-30T10:47:00Z",
     type: "progress",
     is_starred: false,
-    start_date: "1975-06-13T02:34:00Z",
-    chief_complaint: "Yearly check up",
-    history_of_present_illness:
-      "Aliquam sit amet massa a justo placerat tempor nec id augue. Duis vel arcu euismod, tempus velit a, fermentum nibh. Suspendisse dignissim dolor a finibus tempus.",
-    physical_examination:
-      "Lungs: Clear, even with forced expiration. Heart: Regular rate and rhythm without murmur. Extremities: No edema.",
-    assessment:
-      "Praesent sit amet turpis ultricies, sollicitudin massa ac, dignissim tortor. Praesent vel dolor pretium, bibendum mauris eu, rhoncus neque. Proin id pharetra nibh. Suspendisse quis magna at tortor vehicula sagittis nec pulvinar ligula.",
-    plan: "Donec dictum porttitor nunc at vulputate"
+    unit: "Vårdcentral",
+    reason: null,
+    current: "Söker för feber och ont i kroppen. Negerar andningsbesvär.",
+    social: null,
+    previous_history: null,
+    status: [
+      {
+        name: "AT",
+        value: "Feber 38.5"
+      },
+      {
+        name: "Cor",
+        value: "RR, Inga bi- eller blåsljud. HF 85, BT 120/80"
+      },
+      {
+        name: "Pulm",
+        value: "Ausk ua bilat."
+      },
+      {
+        name: "Buk",
+        value: "Mjuk och oöm"
+      }
+    ],
+    assessment: "Influensa. Alvedon 1 g x 4 i 5 dagar",
+    anesthesia: null,
+    operation: null,
+    medicines: ["Alvedon 1 g x 4 i 5 dagar"]
   },
   {
     id: 2,
-    patient_id: 2,
+    patient_id: 6,
     id_for_patient: 1,
-    diagnosis_codes: ["M41"],
-    date: "2007-09-29T14:28:00Z",
+    diagnosis_codes: ["I48.9"],
+    date: "2016-01-02T07:49:00Z",
     type: "progress",
     is_starred: false,
-    chief_complaint: "Patient experiencing back pain",
-    history_of_present_illness:
-      "Maecenas at dignissim nisi, vel volutpat nulla. Cras porttitor, sem ac dapibus pulvinar, mi ex gravida orci, id consequat tellus erat sed dui. Curabitur vel lacus pharetra, sodales leo in, mollis turpis. Etiam laoreet nulla velit, id accumsan felis pretium ut. Cras nisi tortor, tristique et tortor id, facilisis accumsan neque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-    physical_examination:
-      "Quisque eleifend nisi ante, sit amet accumsan sapien dignissim sed. Duis a imperdiet lacus. Cras molestie quam id elit scelerisque pharetra. Mauris suscipit dolor vel magna ultrices, id fringilla turpis rhoncus.",
+    unit: "Medicinakuten",
+    reason: "Tryck över bröstet",
+    current:
+      "Oregelbunden hjärtrytm och tryck över bröstet sedan inatt. Vaknade pga detta. Ej ätit frukost.",
+    social: "Förskolelärare. Bor i egen villa. Gift, 2 vuxna barn",
+    previous_history: "Väs frisk",
+    status: [
+      {
+        name: "AT",
+        value: "Orolig, Afebril"
+      },
+      {
+        name: "Hjärta",
+        value: "ORR, frekv ca 125. Ausk ORR, 0 hörbara biljud"
+      },
+      {
+        name: "Lungor",
+        value: "Ves andningsljud bilat"
+      },
+      {
+        name: "EKG",
+        value: "visar snabbt ffm"
+      }
+    ],
     assessment:
-      "Duis sodales placerat lorem, nec fringilla mi consectetur vitae. In auctor neque quis magna ornare, vitae maximus risus porttitor. Fusce ac urna felis. Maecenas tincidunt dolor quis nulla commodo maximus. Maecenas ut risus malesuada, iaculis ante a, hendrerit libero. Maecenas eu viverra leo, a convallis lorem. Donec imperdiet facilisis vulputate. Proin hendrerit eros quis turpis mattis, vel efficitur lorem mollis. Proin ac mauris mi. Nam porta viverra tellus non posuere.",
-    plan:
-      "Quisque non pellentesque augue. Pellentesque sit amet dignissim nulla. Morbi eleifend mauris quis lectus tempor, eget efficitur magna sagittis. Pellentesque ac faucibus mauris, id efficitur nisi."
+      "Nydebuterat förmaksflimmer. Fastande. Under sedering elkonverteras patienten framgångsrikt 1 gång 320 J. Sinusrytm därefter.",
+    anesthesia: null,
+    operation: null,
+    medicines: null
   },
   {
     id: 3,
     patient_id: 1,
     id_for_patient: 2,
-    diagnosis_codes: ["I49.9"],
-    date: "2009-11-22T14:12:00Z",
+    diagnosis_codes: ["S42.0", "S43.0", "S52.3"],
+    date: "2017-06-21T15:51:00Z",
     type: "progress",
-    is_starred: true,
-    start_date: "2008-02-03T15:30:00Z",
-    chief_complaint: "Problem of essential hypertension",
-    history_of_present_illness: "Integer a dapibus lectus, at placerat nunc.",
-    physical_examination:
-      "Praesent nulla tellus, posuere eu gravida pulvinar, pellentesque nec ex.",
+    is_starred: false,
+    unit: "Akuten",
+    reason: "Smärta höger axel",
+    current:
+      "Tidigare frisk man. Ramlade av mountainbike vid cykling downhill i sunnersta slalombacke. Slog i axel, knä och händer. Slog inte i huvud eller rygg/buk.",
+    social: null,
+    previous_history: null,
+    status: [
+      {
+        name: "AT",
+        value: "Gott"
+      },
+      {
+        name: "Cor",
+        value: "RR, Inga bi- eller blåsljud. HF 120, BT 140/75"
+      },
+      {
+        name: "Pulm",
+        value: "Ausk ua bilat."
+      },
+      {
+        name: "Buk",
+        value: "Mjuk och oöm"
+      },
+      {
+        name: "Skelett",
+        value:
+          "Blåmärke över höger nyckelben. Dislocerad höger axelled och bruten höger underarm."
+      },
+      {
+        name: "Neurologi",
+        value: "ua"
+      }
+    ],
     assessment:
-      "I49.9 Nunc hendrerit urna et ipsum euismod ornare. Vestibulum luctus erat ullamcorper imperdiet dapibus.",
-    plan:
-      "Fusce vestibulum dui elit, a congue tellus porta sed. Pellentesque mattis ex nec dui varius, ornare tincidunt lacus gravida. Mauris porta risus ac sapien fermentum dignissim."
+      "Radiusfraktur. Reponeras och gipsas. Erhåller smärtlindrande (morfin iv 3 mg) och axelluxationen reponeras ua. Åter till ortopedmottagningen för kontroll om 2 dagar.",
+    anesthesia: null,
+    operation: null,
+    medicines: ["Morfin iv 3 mg"]
   },
   {
     id: 4,
-    patient_id: 2,
-    id_for_patient: 2,
-    diagnosis_codes: ["I25.810"],
-    date: "2011-10-05T11:27:00Z",
-    type: "surgery",
+    patient_id: 1,
+    id_for_patient: 3,
+    diagnosis_codes: ["S42.0", "S43.0", "S52.3"],
+    date: "2017-06-24T09:35:00Z",
+    type: "progress",
     is_starred: false,
-    start_date: "2011-09-22T10:43:00Z",
-    chief_complaint: "6 months surgery follow-up",
-    history_of_present_illness:
-      "Maecenas quis leo eu orci aliquet finibus a at quam. Suspendisse potenti.",
-    physical_examination:
-      "Nulla id mi ultrices, dictum elit non, venenatis magna. Pellentesque posuere metus sem. Phasellus ornare placerat lectus eget consectetur. Curabitur nulla nibh, iaculis semper elementum eu, ultricies non felis.",
+    unit: "Mottagningsbesök",
+    reason: "Återbesök",
+    current:
+      "Tidigare frisk man som för 3 dagar sedan ramlade med cykel då han körde MBT downhill. Axellux och fraktur på clavicel och radius dx. Luxationen reponerades och radiusfrakturen reponerades och gipsades.",
+    social: null,
+    previous_history: null,
+    status: [
+      {
+        name: "AT",
+        value: "Gott"
+      },
+      {
+        name: "Lokalt",
+        value: "dx. Fin färg i fingrar. Känsel ua."
+      }
+    ],
     assessment:
-      "Praesent et volutpat odio. Etiam auctor porttitor facilisis. In consectetur suscipit convallis. Proin ultricies nisl rutrum, sodales lectus eu, suscipit tortor.",
-    plan:
-      "1. Morbi sit amet libero ultrices, lacinia ex id, faucibus mi. 2. Nullam dapibus euismod leo, eget tristique enim tempor et. 3. Donec mi lorem, suscipit a elit a, aliquam dignissim libero. 4. Nunc varius pharetra quam, non convallis quam volutpat ut."
+      "Clavicelfraktur behandlas konservativt. Fortsatt gips hö arm 6 veckor.",
+    anesthesia: null,
+    operation: null,
+    medicines: null
   },
   {
     id: 5,
-    patient_id: 1,
-    id_for_patient: 3,
-    diagnosis_codes: ["M25.562"],
-    date: "2018-09-14T09:01:00Z",
+    patient_id: 5,
+    id_for_patient: 1,
+    diagnosis_codes: ["M54.5"],
+    date: "2018-04-13T16:26:00Z",
     type: "progress",
     is_starred: false,
-    start_date: "2017-02-22T10:00:00Z",
-    chief_complaint: "Persistant pain in left knee",
-    history_of_present_illness:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.",
-    physical_examination:
-      "Nullam condimentum et dolor id ullamcorper. Aliquam leo velit, finibus sit amet eros et, sodales cursus tortor. Nulla sagittis tincidunt pharetra.",
+    unit: "Akuten",
+    reason: "Ryggvärk",
+    current:
+      "Arbetar som lastbilschafför. Idag lyft tung låda med verktyg varpå det högg till i ryggen och han har därefter inte kunna räta på ryggen pga smärtor. Förnekar utstrålande smärtor i benet. Har kunnat kissa.",
+    social: null,
+    previous_history: "Hjärtinfarkt med PCI 2017. Typ II-diabetes.",
+    status: [
+      {
+        name: "AT",
+        value: "Kraftigt överviktig. Går stapplande, framåtböjd med stöd."
+      },
+      {
+        name: "Lokalt",
+        value: "Palperas ömmande sakrolumbalt. Lasegue negativt."
+      }
+    ],
     assessment:
-      "M25.562 Donec vitae pellentesque quam. Nullam dapibus, erat ac efficitur consectetur, enim metus elementum nibh, vitae convallis turpis justo vitae massa.",
-    plan:
-      "Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+      "Lumbago. Rekommenderas smärtlindring med paracetamol och NSAID och mobilisering efter förmåga. Får träffa sjukgymnast för träningsprogram.",
+    anesthesia: null,
+    operation: null,
+    medicines: null
   },
   {
     id: 6,
-    patient_id: 1,
-    id_for_patient: 4,
-    diagnosis_codes: ["I49.9"],
-    date: "2018-10-16T14:26:00Z",
+    patient_id: 6,
+    id_for_patient: 2,
+    diagnosis_codes: ["M00.9"],
+    date: "2018-09-12T11:11:00Z",
     type: "progress",
     is_starred: false,
-    chief_complaint: "Patient experiencing palpitations",
-    history_of_present_illness:
-      "Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.",
-    physical_examination: "Integer ornare est ac magna tempus accumsan.",
+    unit: "Ortopedmottagningen",
+    reason: "Svullet knä",
+    current:
+      "Sedan några dagar allt mer svullet höger knä. Sedan igår även tilltagande värmeökning. Feber.",
+    social: null,
+    previous_history: null,
+    status: [
+      {
+        name: "AT",
+        value: "Feber 38,6 C"
+      },
+      {
+        name: "Lokalt",
+        value: "Svullet höger knä. Rodnat. Inskränkt rörlighet pga smärta."
+      }
+    ],
     assessment:
-      "I49.9 In sapien leo, eleifend at faucibus vel, lobortis ac est. Sed nisl sapien, pharetra quis bibendum nec, ullamcorper sit amet nisl.",
-    plan:
-      "Fusce sodales, ante at pharetra volutpat, est quam consectetur nulla, at hendrerit sem ante quis arcu."
+      "Efter lokalbedövning med 5 ml Xylocain 10 mg/ml punkteras knät. Aspirat ger misstanke om septisk artrit. Ledvätska till analys och odling. Inläggning med Kloxacillin 2g x 3 iv.",
+    anesthesia: null,
+    operation: null,
+    medicines: null
   },
   {
     id: 7,
     patient_id: 2,
-    id_for_patient: 3,
-    diagnosis_codes: ["M41"],
-    date: "2019-01-03T08:11:00Z",
+    id_for_patient: 1,
+    diagnosis_codes: ["C43.5"],
+    date: "2019-03-16T11:05:00Z",
     type: "progress",
-    is_starred: true,
-    chief_complaint: "Post surgery check up",
-    history_of_present_illness:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel consectetur nunc. Proin sit amet gravida nunc, ac ornare dolor. Curabitur tincidunt urna quis ex lobortis molestie id ut nunc. Morbi ut dolor egestas, molestie elit vestibulum, pulvinar diam.",
-    physical_examination:
-      "Sed sollicitudin pellentesque enim sit amet condimentum. Ut venenatis consequat risus nec pulvinar. Ut mollis mollis mattis. Nam gravida neque at nulla congue faucibus. Cras velit erat, tristique ut tincidunt fringilla, pellentesque vitae mi.",
+    is_starred: false,
+    unit: "Hudmottagning",
+    reason: "Hudförändring bål",
+    current:
+      "Noterat oregelbunden mörkpigmenterad fläck på bålen som senaste månaderna växt och blöder. Solar mycket.",
+    social: null,
+    previous_history: "Tidigare frisk",
+    status: [
+      {
+        name: "AT",
+        value: "Gott och opåverkad"
+      },
+      {
+        name: "Hjärta",
+        value: "RR, Inga bi eller blåsljud"
+      },
+      {
+        name: "Lungor",
+        value: "Normala andningsljud bilateralt"
+      },
+      {
+        name: "Buk",
+        value: "Mjuk och oöm"
+      },
+      {
+        name: "Hud",
+        value:
+          "På bålen noteras nevus oreglundet till form och färg. 8 mm diamater. Liten krusta dorsalt."
+      }
+    ],
     assessment:
-      "Cras nisi ante, feugiat a dolor at, lacinia gravida ex. Suspendisse potenti.",
-    plan:
-      "1. Nunc id dolor quis neque suscipit consequat at quis quam. 2. Vivamus elementum, mauris quis porta scelerisque, libero sem euismod odio, nec viverra enim orci efficitur dui. 3. Nam vel gravida odio, vitae sagittis neque. 4. Pellentesque consectetur tellus et dui iaculis iaculis. 5. Donec semper, sapien id iaculis feugiat, metus ante convallis magna, vitae maximus purus nisi sed ligula."
+      "Misstänkt malignt melanom hos tidigare frisk kvinna. Excision i lokalbedövning (10 ml Lidokain) med god marginal (>5 mm). Preparat till patolog.",
+    anesthesia: null,
+    operation: null,
+    medicines: null
   },
   {
     id: 8,
-    patient_id: 1,
-    id_for_patient: 5,
-    diagnosis_codes: ["M25.562"],
-    date: "2019-01-27T08:24:00Z",
-    type: "surgery",
+    patient_id: 2,
+    id_for_patient: 2,
+    diagnosis_codes: ["C43.5"],
+    date: "2019-03-25T08:39:00Z",
+    type: "progress",
     is_starred: false,
-    chief_complaint: "",
-    history_of_present_illness: "Sed tincidunt velit dignissim ut.",
-    physical_examination: "Fusce suscipit eleifend sapien.",
-    assessment: "",
-    plan: "Quisque non nulla ornare velit mattis tincidunt"
+    unit: "Hudmottagning",
+    reason: "Återbesök",
+    current: "Orolig. Inga besvär i övrigt.",
+    social: null,
+    previous_history: null,
+    status: [
+      {
+        name: "Hud",
+        value: "Fint och oretat i såret."
+      }
+    ],
+    assessment: "Malignt melanom. Remiss till onkolog.",
+    anesthesia: null,
+    operation: null,
+    medicines: null
   },
   {
     id: 9,
-    patient_id: 1,
-    id_for_patient: 6,
-    diagnosis_codes: ["M25.562"],
-    date: "2019-02-02T08:20:00Z",
+    patient_id: 2,
+    id_for_patient: 3,
+    diagnosis_codes: ["S82.50", "S82.60", "S82.80"],
+    date: "2019-03-27T12:12:00Z",
     type: "progress",
-    is_starred: true,
-    chief_complaint: "Patient experiencing palpitations",
-    history_of_present_illness:
-      "Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.",
-    physical_examination: "Integer ornare est ac magna tempus accumsan.",
+    is_starred: false,
+    unit: "Ortopedakuten",
+    reason: "Ridolycka",
+    current:
+      "Trillat av hästen under hopptävling. Fastnade med foten i stigbygeln. Slagit i huvudet men inte varit avsvimmad. Hade hjälm och ryggskydd. Inkommer med ambulans och vänster ben i vakumstöd.",
+    social: null,
+    previous_history: "Malignt melanom",
+    status: [
+      {
+        name: "AT",
+        value: "Orolig, smärtpåverkad"
+      },
+      {
+        name: "Hjärta",
+        value: "Takykard, HF 140. RR."
+      },
+      {
+        name: "Lungor",
+        value: "Normala andningsljud bilat"
+      },
+      {
+        name: "Buk",
+        value: "Mjuk och oöm"
+      },
+      {
+        name: "Lokalt",
+        value:
+          "Kraftig felställning med utåtrotation i vänster fotled. Smärtar."
+      }
+    ],
     assessment:
-      "I49.9 In sapien leo, eleifend at faucibus vel, lobortis ac est. Sed nisl sapien, pharetra quis bibendum nec, ullamcorper sit amet nisl.",
-    plan:
-      "Fusce sodales, ante at pharetra volutpat, est quam consectetur nulla, at hendrerit sem ante quis arcu."
+      "Erhåller smärtlindring. Grovreponeras. Stabiliseras. Inläggning i väntan på op fotledsfraktur",
+    anesthesia: null,
+    operation: null,
+    medicines: ["morfin 1mg/ml 3 ml"]
   },
   {
     id: 10,
-    patient_id: 1,
-    id_for_patient: 7,
-    diagnosis_codes: ["M25.562"],
-    date: "2019-02-10T11:13:00Z",
-    type: "epicrisis",
+    patient_id: 2,
+    id_for_patient: 4,
+    diagnosis_codes: ["S82.50", "S82.60", "S82.80"],
+    date: "2019-03-28T08:21:00Z",
+    type: "progress",
     is_starred: false,
-    chief_complaint: "Pain and swelling in the left leg",
-    history_of_present_illness:
-      "Knee has been hurting intermittently for past 3 months, swollen for a past week",
-    physical_examination:
-      "General: no immediate distress. Skin: There is an area of abrasion on the right lower leg, no erythema over painful area Lymph Nodes: There is no inguinal lymphadenopathy. Musculoskeletal: The right leg is swollen about 1 cm more than the left leg",
-    assessment:
-      "M25. 562 Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-    plan:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo."
+    unit: "Ortopedavdelningen",
+    reason: null,
+    current:
+      "Fotledsfraktur vänster. Fastar i väntan på operation senare under dagen. Fortsatt smärtlindring med morfin.",
+    social: null,
+    previous_history: null,
+    status: null,
+    assessment: null,
+    anesthesia: null,
+    operation: null,
+    medicines: null
   },
   {
     id: 11,
-    patient_id: 1,
-    id_for_patient: 8,
-    diagnosis_codes: ["M25.562"],
-    date: "2019-02-18T09:37:00Z",
+    patient_id: 4,
+    id_for_patient: 1,
+    diagnosis_codes: ["S52.4"],
+    date: "2019-07-30T10:45:00Z",
     type: "progress",
-    is_starred: true,
-    chief_complaint: "Persistant pain in left knee",
-    history_of_present_illness:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.",
-    physical_examination:
-      "Nullam condimentum et dolor id ullamcorper. Aliquam leo velit, finibus sit amet eros et, sodales cursus tortor. Nulla sagittis tincidunt pharetra.",
+    is_starred: false,
+    unit: "Akutmottagning",
+    reason: "Underarmsfraktur",
+    current:
+      "Kört motorcross på Rörken. Kört omkull och fått motorcykeln över armen. Har nu en öppen underarmsfraktur höger arm. Inkommer till akuten i kompisens bil och armen inlindad i en handduk.",
+    social: null,
+    previous_history: "Tidigare frisk",
+    status: [
+      {
+        name: "AT",
+        value: "Under omständigeheterna gott. Smärtpåverkad."
+      },
+      {
+        name: "Hjärta",
+        value: "HF 90. RR. Inga blåsljud"
+      },
+      {
+        name: "Lungor",
+        value: "ua"
+      },
+      {
+        name: "Buk",
+        value: "ua"
+      },
+      {
+        name: "Lokalt",
+        value:
+          "Öppen fraktur höger underarm. Distala pulsar ua. Distalt nervstatus ua."
+      }
+    ],
     assessment:
-      "M25.562 Donec vitae pellentesque quam. Nullam dapibus, erat ac efficitur consectetur, enim metus elementum nibh, vitae convallis turpis justo vitae massa.",
-    plan:
-      "Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+      "A3-fraktur. Smärtlindras. Fasta. Inläggning i väntan på operation",
+    anesthesia: null,
+    operation: null,
+    medicines: ["Morfin 1 mg/ml 5 ml"]
+  },
+  {
+    id: 12,
+    patient_id: 4,
+    id_for_patient: 2,
+    diagnosis_codes: ["S52.4"],
+    date: "2019-07-30T14:04:00Z",
+    type: "surgery",
+    is_starred: false,
+    unit: null,
+    reason: null,
+    current: null,
+    social: null,
+    previous_history: null,
+    status: null,
+    assessment: null,
+    anesthesia: "Plexusblockad, se narkosanteckning",
+    operation:
+      "Förbereds enligt gällande rutin. Öppen reposition med fixation med platta och skruvar. Röntgen postop visar acceptabelt läge. Stabilt efter fixation. Kontrollröntgen om 8 veckor.",
+    medicines: null
+  },
+  {
+    id: 13,
+    patient_id: 3,
+    id_for_patient: 1,
+    diagnosis_codes: ["M24.B"],
+    date: "2019-08-25T11:18:00Z",
+    type: "progress",
+    is_starred: false,
+    unit: "Ortopedmottagningen",
+    reason: "Axelbesvär vänster",
+    current:
+      "Har återkommande axelluxationer även vänster. Axeln hoppar ur led vid fysisk aktivitet men han kan reponera den själv. Önskar nu operation.",
+    social: null,
+    previous_history:
+      "Tidigare opererad i Sundsvall för recidiverande axelluxationer höger.",
+    status: [
+      {
+        name: "Lokalt",
+        value:
+          "Apprehension sign positivt. Relocation test postivt. Inskränkt utåtrotation."
+      }
+    ],
+    assessment:
+      "Axelinstabilitet. Beställer journal från Sundsvall och sätter upp patient till operation.",
+    anesthesia: null,
+    operation: null,
+    medicines: null
   }
 ];
 
 const attachments = [
   {
     id: 1,
-    note_id: 2,
-    type: "X-Ray",
-    date: "2007-09-29",
-    comment: "Back",
-    image_name: "xray.jpg"
-  },
-  {
-    id: 2,
-    note_id: 2,
-    type: "Referral, incoming",
-    date: "2007-09-29",
-    comment: "GP",
+    note_id: 1,
+    type: "Lab",
+    date: "2010-08-30",
+    comment: "Influensa A positivt",
     text: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consectetur nec diam non vestibulum. Proin consectetur elit sapien, sed mattis orci vulputate ut. Nam scelerisque, lacus vel sollicitudin aliquet, lacus velit convallis sapien, non ultrices augue felis facilisis ligula. Nam massa nibh, iaculis id lectus ac, aliquam ullamcorper felis. Ut feugiat turpis et turpis dapibus pellentesque. Donec convallis in metus eu dictum. Aliquam augue sem, blandit tempus purus in, tristique sodales lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas quis sem ut tortor fermentum efficitur in vestibulum turpis. Integer pulvinar enim ac lacus ultrices cursus. Nulla convallis finibus dui, eget iaculis ex varius a.",
       "Proin vulputate pretium purus in volutpat. Vestibulum rutrum enim efficitur, laoreet justo in, euismod est. Phasellus suscipit velit posuere vulputate cursus. Cras sodales odio dui, et posuere nisi feugiat dignissim. Nullam egestas turpis ac augue malesuada, a sagittis erat mollis. Etiam dui libero, finibus sed turpis id, viverra porta nunc. Integer efficitur augue sed ullamcorper sagittis. Vestibulum ut est mi. Praesent pharetra urna dolor, sit amet gravida erat imperdiet ac. Sed eget leo ac leo fringilla elementum nec congue erat. Sed eu auctor diam. Maecenas mattis id eros vel ullamcorper. Vestibulum vulputate ultrices hendrerit. Quisque tincidunt quam in lectus varius, tincidunt pulvinar turpis porta. Cras fringilla eget diam in vulputate. Phasellus porta velit vel justo aliquet, non aliquam sem dictum.",
       "Aliquam blandit arcu vitae egestas porta. Donec lacinia nibh quis lectus volutpat, ac sollicitudin tortor dapibus. Pellentesque eu fringilla nisi. Vestibulum blandit ex vitae nibh sagittis, eget rutrum diam mollis. Nunc ac ultrices justo. Fusce sit amet tellus id sem consectetur aliquet. Nullam vitae laoreet enim. Nullam in tempor enim. Duis tristique tristique lorem, quis varius leo volutpat id. Duis rutrum, ante eu dapibus viverra, sapien urna molestie orci, fermentum varius tortor quam id sem.",
       "Duis dignissim condimentum elementum. Donec ornare mauris non arcu scelerisque, vitae condimentum urna faucibus. Ut lectus elit, euismod id viverra non, aliquet vitae dolor. Morbi in ex tortor. Mauris vestibulum risus ac diam porta vehicula. Sed iaculis nunc sed odio venenatis tristique. Quisque sed egestas urna. Phasellus ultricies diam nec enim porta ornare. Nunc metus metus, scelerisque eget nunc sed, aliquet interdum dui.",
       "Pellentesque sed diam neque. Maecenas sagittis feugiat felis, at pulvinar nisl ultrices et. Integer lobortis vel turpis id pellentesque. Mauris porttitor tortor nec ligula lobortis egestas. Etiam in neque mattis, posuere massa sed, efficitur sem. Sed at mattis metus. Duis augue nulla, euismod dignissim nulla vitae, egestas pretium lectus. Curabitur in velit augue. Vivamus varius feugiat sollicitudin. Sed ultricies tristique mi quis cursus. Quisque pellentesque dapibus purus, eu finibus libero pulvinar fringilla. Praesent magna urna, maximus et augue et, malesuada tristique magna. Sed sollicitudin, magna et fermentum dapibus, nulla elit cursus augue, imperdiet aliquet ex turpis nec nisi. Quisque sed turpis erat. Etiam quis molestie orci. Integer libero libero, eleifend nec ultricies et, consequat et lacus."
+    ]
+  },
+  {
+    id: 2,
+    note_id: 2,
+    type: "Lab",
+    date: "2016-01-02",
+    comment: "Troponin ua",
+    text: [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consectetur nec diam non vestibulum. Proin consectetur elit sapien, sed mattis orci vulputate ut. Nam scelerisque, lacus vel sollicitudin aliquet, lacus velit convallis sapien, non ultrices augue felis facilisis ligula. Nam massa nibh, iaculis id lectus ac, aliquam ullamcorper felis. Ut feugiat turpis et turpis dapibus pellentesque. Donec convallis in metus eu dictum. Aliquam augue sem, blandit tempus purus in, tristique sodales lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas quis sem ut tortor fermentum efficitur in vestibulum turpis. Integer pulvinar enim ac lacus ultrices cursus. Nulla convallis finibus dui, eget iaculis ex varius a.",
+      "Proin vulputate pretium purus in volutpat. Vestibulum rutrum enim efficitur, laoreet justo in, euismod est. Phasellus suscipit velit posuere vulputate cursus. Cras sodales odio dui, et posuere nisi feugiat dignissim. Nullam egestas turpis ac augue malesuada, a sagittis erat mollis. Etiam dui libero, finibus sed turpis id, viverra porta nunc. Integer efficitur augue sed ullamcorper sagittis. Vestibulum ut est mi. Praesent pharetra urna dolor, sit amet gravida erat imperdiet ac. Sed eget leo ac leo fringilla elementum nec congue erat. Sed eu auctor diam. Maecenas mattis id eros vel ullamcorper. Vestibulum vulputate ultrices hendrerit. Quisque tincidunt quam in lectus varius, tincidunt pulvinar turpis porta. Cras fringilla eget diam in vulputate. Phasellus porta velit vel justo aliquet, non aliquam sem dictum."
     ]
   },
   {
     id: 3,
     note_id: 3,
-    type: "ECG",
-    date: "2009-11-22",
-    text: [
-      "Proin vulputate pretium purus in volutpat. Vestibulum rutrum enim efficitur, laoreet justo in, euismod est. Phasellus suscipit velit posuere vulputate cursus. Cras sodales odio dui, et posuere nisi feugiat dignissim. Nullam egestas turpis ac augue malesuada, a sagittis erat mollis. Etiam dui libero, finibus sed turpis id, viverra porta nunc. Integer efficitur augue sed ullamcorper sagittis. Vestibulum ut est mi. Praesent pharetra urna dolor, sit amet gravida erat imperdiet ac. Sed eget leo ac leo fringilla elementum nec congue erat. Sed eu auctor diam. Maecenas mattis id eros vel ullamcorper. Vestibulum vulputate ultrices hendrerit. Quisque tincidunt quam in lectus varius, tincidunt pulvinar turpis porta. Cras fringilla eget diam in vulputate. Phasellus porta velit vel justo aliquet, non aliquam sem dictum.",
-      "Aliquam blandit arcu vitae egestas porta. Donec lacinia nibh quis lectus volutpat, ac sollicitudin tortor dapibus. Pellentesque eu fringilla nisi. Vestibulum blandit ex vitae nibh sagittis, eget rutrum diam mollis. Nunc ac ultrices justo. Fusce sit amet tellus id sem consectetur aliquet. Nullam vitae laoreet enim. Nullam in tempor enim. Duis tristique tristique lorem, quis varius leo volutpat id. Duis rutrum, ante eu dapibus viverra, sapien urna molestie orci, fermentum varius tortor quam id sem.",
-      "Duis dignissim condimentum elementum. Donec ornare mauris non arcu scelerisque, vitae condimentum urna faucibus. Ut lectus elit, euismod id viverra non, aliquet vitae dolor. Morbi in ex tortor. Mauris vestibulum risus ac diam porta vehicula. Sed iaculis nunc sed odio venenatis tristique. Quisque sed egestas urna. Phasellus ultricies diam nec enim porta ornare. Nunc metus metus, scelerisque eget nunc sed, aliquet interdum dui.",
-      "Pellentesque sed diam neque. Maecenas sagittis feugiat felis, at pulvinar nisl ultrices et. Integer lobortis vel turpis id pellentesque. Mauris porttitor tortor nec ligula lobortis egestas. Etiam in neque mattis, posuere massa sed, efficitur sem. Sed at mattis metus. Duis augue nulla, euismod dignissim nulla vitae, egestas pretium lectus. Curabitur in velit augue. Vivamus varius feugiat sollicitudin. Sed ultricies tristique mi quis cursus. Quisque pellentesque dapibus purus, eu finibus libero pulvinar fringilla. Praesent magna urna, maximus et augue et, malesuada tristique magna. Sed sollicitudin, magna et fermentum dapibus, nulla elit cursus augue, imperdiet aliquet ex turpis nec nisi. Quisque sed turpis erat. Etiam quis molestie orci. Integer libero libero, eleifend nec ultricies et, consequat et lacus."
-    ]
+    type: "Röntgen",
+    date: "2017-06-21T15:43:00Z",
+    comment:
+      "Slätröntgen arm: Radiusfraktur lätt dislocerad höger. Slätröntgen axel: Axelluxation höger. Clavicelfraktur höger",
+    image_name: "xray.jpg"
   },
   {
     id: 4,
-    note_id: 5,
-    type: "Referral, incoming",
-    date: "2018-09-06",
-    comment: "GP",
-    text: [
-      "Pellentesque sed diam neque. Maecenas sagittis feugiat felis, at pulvinar nisl ultrices et. Integer lobortis vel turpis id pellentesque. Mauris porttitor tortor nec ligula lobortis egestas. Etiam in neque mattis, posuere massa sed, efficitur sem. Sed at mattis metus. Duis augue nulla, euismod dignissim nulla vitae, egestas pretium lectus. Curabitur in velit augue. Vivamus varius feugiat sollicitudin. Sed ultricies tristique mi quis cursus. Quisque pellentesque dapibus purus, eu finibus libero pulvinar fringilla. Praesent magna urna, maximus et augue et, malesuada tristique magna. Sed sollicitudin, magna et fermentum dapibus, nulla elit cursus augue, imperdiet aliquet ex turpis nec nisi. Quisque sed turpis erat. Etiam quis molestie orci. Integer libero libero, eleifend nec ultricies et, consequat et lacus."
-    ]
+    note_id: 4,
+    type: "Röntgen",
+    date: "2017-06-24T09:23:00Z",
+    comment: "Slätröntgen höger handled. Fraktur radius i gott läge.",
+    image_name: "xray.jpg"
   },
   {
     id: 5,
-    note_id: 6,
-    type: "ECG",
-    date: "2018-10-16",
+    note_id: 5,
+    type: "Lab",
+    date: "2018-04-13",
+    comment: "normalt",
     text: [
+      "Duis dignissim condimentum elementum. Donec ornare mauris non arcu scelerisque, vitae condimentum urna faucibus. Ut lectus elit, euismod id viverra non, aliquet vitae dolor. Morbi in ex tortor. Mauris vestibulum risus ac diam porta vehicula. Sed iaculis nunc sed odio venenatis tristique. Quisque sed egestas urna. Phasellus ultricies diam nec enim porta ornare. Nunc metus metus, scelerisque eget nunc sed, aliquet interdum dui.",
+      "Proin vulputate pretium purus in volutpat. Vestibulum rutrum enim efficitur, laoreet justo in, euismod est. Phasellus suscipit velit posuere vulputate cursus. Cras sodales odio dui, et posuere nisi feugiat dignissim. Nullam egestas turpis ac augue malesuada, a sagittis erat mollis. Etiam dui libero, finibus sed turpis id, viverra porta nunc. Integer efficitur augue sed ullamcorper sagittis. Vestibulum ut est mi. Praesent pharetra urna dolor, sit amet gravida erat imperdiet ac. Sed eget leo ac leo fringilla elementum nec congue erat. Sed eu auctor diam. Maecenas mattis id eros vel ullamcorper. Vestibulum vulputate ultrices hendrerit. Quisque tincidunt quam in lectus varius, tincidunt pulvinar turpis porta. Cras fringilla eget diam in vulputate. Phasellus porta velit vel justo aliquet, non aliquam sem dictum.",
       "Aliquam blandit arcu vitae egestas porta. Donec lacinia nibh quis lectus volutpat, ac sollicitudin tortor dapibus. Pellentesque eu fringilla nisi. Vestibulum blandit ex vitae nibh sagittis, eget rutrum diam mollis. Nunc ac ultrices justo. Fusce sit amet tellus id sem consectetur aliquet. Nullam vitae laoreet enim. Nullam in tempor enim. Duis tristique tristique lorem, quis varius leo volutpat id. Duis rutrum, ante eu dapibus viverra, sapien urna molestie orci, fermentum varius tortor quam id sem.",
-      "Duis dignissim condimentum elementum. Donec ornare mauris non arcu scelerisque, vitae condimentum urna faucibus. Ut lectus elit, euismod id viverra non, aliquet vitae dolor. Morbi in ex tortor. Mauris vestibulum risus ac diam porta vehicula. Sed iaculis nunc sed odio venenatis tristique. Quisque sed egestas urna. Phasellus ultricies diam nec enim porta ornare. Nunc metus metus, scelerisque eget nunc sed, aliquet interdum dui."
+      "Pellentesque sed diam neque. Maecenas sagittis feugiat felis, at pulvinar nisl ultrices et. Integer lobortis vel turpis id pellentesque. Mauris porttitor tortor nec ligula lobortis egestas. Etiam in neque mattis, posuere massa sed, efficitur sem. Sed at mattis metus. Duis augue nulla, euismod dignissim nulla vitae, egestas pretium lectus. Curabitur in velit augue. Vivamus varius feugiat sollicitudin. Sed ultricies tristique mi quis cursus. Quisque pellentesque dapibus purus, eu finibus libero pulvinar fringilla. Praesent magna urna, maximus et augue et, malesuada tristique magna. Sed sollicitudin, magna et fermentum dapibus, nulla elit cursus augue, imperdiet aliquet ex turpis nec nisi. Quisque sed turpis erat. Etiam quis molestie orci. Integer libero libero, eleifend nec ultricies et, consequat et lacus."
     ]
   },
   {
     id: 6,
     note_id: 9,
-    type: "CT",
-    date: "2019-02-01",
-    text: [
-      "Proin vulputate pretium purus in volutpat. Vestibulum rutrum enim efficitur, laoreet justo in, euismod est. Phasellus suscipit velit posuere vulputate cursus. Cras sodales odio dui, et posuere nisi feugiat dignissim. Nullam egestas turpis ac augue malesuada, a sagittis erat mollis. Etiam dui libero, finibus sed turpis id, viverra porta nunc. Integer efficitur augue sed ullamcorper sagittis. Vestibulum ut est mi. Praesent pharetra urna dolor, sit amet gravida erat imperdiet ac. Sed eget leo ac leo fringilla elementum nec congue erat. Sed eu auctor diam. Maecenas mattis id eros vel ullamcorper. Vestibulum vulputate ultrices hendrerit. Quisque tincidunt quam in lectus varius, tincidunt pulvinar turpis porta. Cras fringilla eget diam in vulputate. Phasellus porta velit vel justo aliquet, non aliquam sem dictum.",
-      "Aliquam blandit arcu vitae egestas porta. Donec lacinia nibh quis lectus volutpat, ac sollicitudin tortor dapibus. Pellentesque eu fringilla nisi. Vestibulum blandit ex vitae nibh sagittis, eget rutrum diam mollis. Nunc ac ultrices justo. Fusce sit amet tellus id sem consectetur aliquet. Nullam vitae laoreet enim. Nullam in tempor enim. Duis tristique tristique lorem, quis varius leo volutpat id. Duis rutrum, ante eu dapibus viverra, sapien urna molestie orci, fermentum varius tortor quam id sem.",
-      "Duis dignissim condimentum elementum. Donec ornare mauris non arcu scelerisque, vitae condimentum urna faucibus. Ut lectus elit, euismod id viverra non, aliquet vitae dolor. Morbi in ex tortor. Mauris vestibulum risus ac diam porta vehicula. Sed iaculis nunc sed odio venenatis tristique. Quisque sed egestas urna. Phasellus ultricies diam nec enim porta ornare. Nunc metus metus, scelerisque eget nunc sed, aliquet interdum dui.",
-      "Pellentesque sed diam neque. Maecenas sagittis feugiat felis, at pulvinar nisl ultrices et. Integer lobortis vel turpis id pellentesque. Mauris porttitor tortor nec ligula lobortis egestas. Etiam in neque mattis, posuere massa sed, efficitur sem. Sed at mattis metus. Duis augue nulla, euismod dignissim nulla vitae, egestas pretium lectus. Curabitur in velit augue. Vivamus varius feugiat sollicitudin. Sed ultricies tristique mi quis cursus. Quisque pellentesque dapibus purus, eu finibus libero pulvinar fringilla. Praesent magna urna, maximus et augue et, malesuada tristique magna. Sed sollicitudin, magna et fermentum dapibus, nulla elit cursus augue, imperdiet aliquet ex turpis nec nisi. Quisque sed turpis erat. Etiam quis molestie orci. Integer libero libero, eleifend nec ultricies et, consequat et lacus."
-    ]
-  },
-  {
-    id: 7,
-    note_id: 9,
-    type: "Referral",
-    date: "2019-02-02",
-    comment: "Physiotherapy",
-    text: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consectetur nec diam non vestibulum. Proin consectetur elit sapien, sed mattis orci vulputate ut. Nam scelerisque, lacus vel sollicitudin aliquet, lacus velit convallis sapien, non ultrices augue felis facilisis ligula. Nam massa nibh, iaculis id lectus ac, aliquam ullamcorper felis. Ut feugiat turpis et turpis dapibus pellentesque. Donec convallis in metus eu dictum. Aliquam augue sem, blandit tempus purus in, tristique sodales lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas quis sem ut tortor fermentum efficitur in vestibulum turpis. Integer pulvinar enim ac lacus ultrices cursus. Nulla convallis finibus dui, eget iaculis ex varius a.",
-      "Proin vulputate pretium purus in volutpat. Vestibulum rutrum enim efficitur, laoreet justo in, euismod est. Phasellus suscipit velit posuere vulputate cursus. Cras sodales odio dui, et posuere nisi feugiat dignissim. Nullam egestas turpis ac augue malesuada, a sagittis erat mollis. Etiam dui libero, finibus sed turpis id, viverra porta nunc. Integer efficitur augue sed ullamcorper sagittis. Vestibulum ut est mi. Praesent pharetra urna dolor, sit amet gravida erat imperdiet ac. Sed eget leo ac leo fringilla elementum nec congue erat. Sed eu auctor diam. Maecenas mattis id eros vel ullamcorper. Vestibulum vulputate ultrices hendrerit. Quisque tincidunt quam in lectus varius, tincidunt pulvinar turpis porta. Cras fringilla eget diam in vulputate. Phasellus porta velit vel justo aliquet, non aliquam sem dictum.",
-      "Pellentesque sed diam neque. Maecenas sagittis feugiat felis, at pulvinar nisl ultrices et. Integer lobortis vel turpis id pellentesque. Mauris porttitor tortor nec ligula lobortis egestas. Etiam in neque mattis, posuere massa sed, efficitur sem. Sed at mattis metus. Duis augue nulla, euismod dignissim nulla vitae, egestas pretium lectus. Curabitur in velit augue. Vivamus varius feugiat sollicitudin. Sed ultricies tristique mi quis cursus. Quisque pellentesque dapibus purus, eu finibus libero pulvinar fringilla. Praesent magna urna, maximus et augue et, malesuada tristique magna. Sed sollicitudin, magna et fermentum dapibus, nulla elit cursus augue, imperdiet aliquet ex turpis nec nisi. Quisque sed turpis erat. Etiam quis molestie orci. Integer libero libero, eleifend nec ultricies et, consequat et lacus."
-    ]
-  },
-  {
-    id: 8,
-    note_id: 10,
-    type: "X-Ray",
-    date: "2019-02-12",
-    comment: "Left knee",
+    type: "Röntgen",
+    date: "2019-03-27T12:18:00Z",
+    comment: "Trimalleolär fotledsfraktur sin.",
     image_name: "xray.jpg"
   },
   {
-    id: 9,
-    note_id: 11,
-    type: "Sick leave",
-    date: "2019-02-17",
+    id: 7,
+    note_id: 8,
+    type: "Lab",
+    date: "2019-03-25",
+    comment: "Patologi visar malignt melanom",
     text: [
-      "Pellentesque sed diam neque. Maecenas sagittis feugiat felis, at pulvinar nisl ultrices et. Integer lobortis vel turpis id pellentesque. Mauris porttitor tortor nec ligula lobortis egestas. Etiam in neque mattis, posuere massa sed, efficitur sem. Sed at mattis metus. Duis augue nulla, euismod dignissim nulla vitae, egestas pretium lectus. Curabitur in velit augue. Vivamus varius feugiat sollicitudin. Sed ultricies tristique mi quis cursus. Quisque pellentesque dapibus purus, eu finibus libero pulvinar fringilla. Praesent magna urna, maximus et augue et, malesuada tristique magna. Sed sollicitudin, magna et fermentum dapibus, nulla elit cursus augue, imperdiet aliquet ex turpis nec nisi. Quisque sed turpis erat. Etiam quis molestie orci. Integer libero libero, eleifend nec ultricies et, consequat et lacus.",
       "Proin vulputate pretium purus in volutpat. Vestibulum rutrum enim efficitur, laoreet justo in, euismod est. Phasellus suscipit velit posuere vulputate cursus. Cras sodales odio dui, et posuere nisi feugiat dignissim. Nullam egestas turpis ac augue malesuada, a sagittis erat mollis. Etiam dui libero, finibus sed turpis id, viverra porta nunc. Integer efficitur augue sed ullamcorper sagittis. Vestibulum ut est mi. Praesent pharetra urna dolor, sit amet gravida erat imperdiet ac. Sed eget leo ac leo fringilla elementum nec congue erat. Sed eu auctor diam. Maecenas mattis id eros vel ullamcorper. Vestibulum vulputate ultrices hendrerit. Quisque tincidunt quam in lectus varius, tincidunt pulvinar turpis porta. Cras fringilla eget diam in vulputate. Phasellus porta velit vel justo aliquet, non aliquam sem dictum.",
       "Duis dignissim condimentum elementum. Donec ornare mauris non arcu scelerisque, vitae condimentum urna faucibus. Ut lectus elit, euismod id viverra non, aliquet vitae dolor. Morbi in ex tortor. Mauris vestibulum risus ac diam porta vehicula. Sed iaculis nunc sed odio venenatis tristique. Quisque sed egestas urna. Phasellus ultricies diam nec enim porta ornare. Nunc metus metus, scelerisque eget nunc sed, aliquet interdum dui."
     ]
   },
   {
-    id: 10,
+    id: 8,
     note_id: 11,
-    type: "X-Ray",
-    date: "2019-02-18T09:16:00Z",
-    comment: "Left knee",
+    type: "Röntgen",
+    date: "2019-07-30T10:57:00Z",
+    comment: "Fraktur av både radius och ulna, typ A3.",
     image_name: "xray.jpg"
+  },
+  {
+    id: 9,
+    note_id: 11,
+    type: "Lab",
+    date: "2019-07-30",
+    comment: "Blodstatus ua",
+    text: [
+      "Pellentesque sed diam neque. Maecenas sagittis feugiat felis, at pulvinar nisl ultrices et. Integer lobortis vel turpis id pellentesque. Mauris porttitor tortor nec ligula lobortis egestas. Etiam in neque mattis, posuere massa sed, efficitur sem. Sed at mattis metus. Duis augue nulla, euismod dignissim nulla vitae, egestas pretium lectus. Curabitur in velit augue. Vivamus varius feugiat sollicitudin. Sed ultricies tristique mi quis cursus. Quisque pellentesque dapibus purus, eu finibus libero pulvinar fringilla. Praesent magna urna, maximus et augue et, malesuada tristique magna. Sed sollicitudin, magna et fermentum dapibus, nulla elit cursus augue, imperdiet aliquet ex turpis nec nisi. Quisque sed turpis erat. Etiam quis molestie orci. Integer libero libero, eleifend nec ultricies et, consequat et lacus.",
+      "Aliquam blandit arcu vitae egestas porta. Donec lacinia nibh quis lectus volutpat, ac sollicitudin tortor dapibus. Pellentesque eu fringilla nisi. Vestibulum blandit ex vitae nibh sagittis, eget rutrum diam mollis. Nunc ac ultrices justo. Fusce sit amet tellus id sem consectetur aliquet. Nullam vitae laoreet enim. Nullam in tempor enim. Duis tristique tristique lorem, quis varius leo volutpat id. Duis rutrum, ante eu dapibus viverra, sapien urna molestie orci, fermentum varius tortor quam id sem.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consectetur nec diam non vestibulum. Proin consectetur elit sapien, sed mattis orci vulputate ut. Nam scelerisque, lacus vel sollicitudin aliquet, lacus velit convallis sapien, non ultrices augue felis facilisis ligula. Nam massa nibh, iaculis id lectus ac, aliquam ullamcorper felis. Ut feugiat turpis et turpis dapibus pellentesque. Donec convallis in metus eu dictum. Aliquam augue sem, blandit tempus purus in, tristique sodales lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas quis sem ut tortor fermentum efficitur in vestibulum turpis. Integer pulvinar enim ac lacus ultrices cursus. Nulla convallis finibus dui, eget iaculis ex varius a."
+    ]
   }
 ];
 

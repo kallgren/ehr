@@ -35,31 +35,75 @@
     <div class="note-item-content">
       <div class="content-left">
         <div class="content-section">
-          <b>Chief complaint:</b>
-          <br>
-          {{ note.chief_complaint || "-" }}
+          <b>{{ note.reason || "(Sökorsak saknas)" }}</b>
         </div>
         <div class="content-section">
-          <b>History of present illness:</b>
-          <br>
-          {{ note.history_of_present_illness || "-" }}
+          <span class="unit">{{ note.unit }}</span>
         </div>
         <div class="content-section">
-          <b>Physical examination:</b>
+          {{ note.current }}
+        </div>
+        <div class="content-section">
+          <b>Socialt:</b>
           <br>
-          {{ note.physical_examination || "-" }}
+          {{ note.social || "-" }}
+        </div>
+        <div class="content-section">
+          <b>Tidigare hälsoproblem:</b>
+          <br>
+          {{ note.previous_history || "-" }}
         </div>
       </div>
       <div class="content-right">
         <div class="content-section">
-          <b>Assessment:</b>
+          <b>Status:</b>
+          <br>
+          <span v-if="!note.status">-</span>
+          <table v-if="note.status">
+            <tr
+              v-for="{name, value} in note.status"
+              :key="name"
+            >
+              <td class="status-measurement">{{ name }}</td>
+              <td>{{ value }}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="content-section">
+          <b>Bedömning:</b>
           <br>
           {{ note.assessment || "-" }}
         </div>
-        <div class="content-section">
-          <b>Plan:</b>
+        <div
+          v-if="note.type === 'surgery'"
+          class="content-section"
+        >
+          <b>Anesteti:</b>
           <br>
-          {{ note.plan || "-" }}
+          {{ note.anesthesia || "-" }}
+        </div>
+        <div
+          v-if="note.type === 'surgery'"
+          class="content-section"
+        >
+          <b>Operation:</b>
+          <br>
+          {{ note.operation || "-" }}
+        </div>
+        <div
+          v-if="note.medicines"
+          class="content-section"
+        >
+          <b>Medicin:</b>
+          <br>
+          <ul>
+            <li
+              v-for="medicine in note.medicines"
+              :key="medicine"
+            >
+              {{ medicine }}
+            </li>
+          </ul>
         </div>
       </div>
       <div
@@ -202,8 +246,15 @@ export default {
 .content-section
   margin-bottom 18px
 
+  td
+    vertical-align top
+
   &:last-child
     margin-bottom 5px
+
+.unit
+.status-measurement
+  font-style italic
 
 .content-bottom
   margin-top 7px
