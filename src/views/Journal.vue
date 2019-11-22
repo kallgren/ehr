@@ -186,12 +186,18 @@ export default {
         const searchableFields = [
           "#" + note.id_for_patient,
           note.date,
-          note.chief_complaint,
-          note.history_of_present_illness,
-          note.physical_examination,
+          note.unit,
+          note.reason,
+          note.current,
+          note.social,
+          note.previous_history,
+          ...(note.status || []).map(s => s.name),
+          ...(note.status || []).map(s => s.value),
           note.assessment,
-          note.plan,
-          ...note.diagnoses.map(d => d.code),
+          note.anesthesia,
+          note.operation,
+          ...(note.medicines || []),
+          ...note.diagnoses.map(d => d.code_icd10),
           ...note.diagnoses.map(d => d.description),
           ...note.attachments.map(a => a.type)
         ];
