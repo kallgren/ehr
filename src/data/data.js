@@ -687,12 +687,19 @@ const attachments = [
     note_id: 3,
     type: "Röntgen",
     date: "2017-06-21T15:43:00Z",
-    comment:
-      "Slätröntgen arm: Radiusfraktur lätt dislocerad höger. Slätröntgen axel: Axelluxation höger. Clavicelfraktur höger",
+    comment: "Slätröntgen arm: Radiusfraktur lätt dislocerad höger.",
     image_name: "xray.jpg"
   },
   {
     id: 4,
+    note_id: 3,
+    type: "Röntgen",
+    date: "2017-06-21T15:46:00Z",
+    comment: "Slätröntgen axel: Axelluxation höger. Clavicelfraktur höger",
+    image_name: "xray.jpg"
+  },
+  {
+    id: 5,
     note_id: 4,
     type: "Röntgen",
     date: "2017-06-24T09:23:00Z",
@@ -700,7 +707,7 @@ const attachments = [
     image_name: "xray.jpg"
   },
   {
-    id: 5,
+    id: 6,
     note_id: 5,
     type: "Lab",
     date: "2018-04-13",
@@ -713,7 +720,7 @@ const attachments = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     note_id: 9,
     type: "Röntgen",
     date: "2019-03-27T12:18:00Z",
@@ -721,7 +728,7 @@ const attachments = [
     image_name: "xray.jpg"
   },
   {
-    id: 7,
+    id: 8,
     note_id: 8,
     type: "Lab",
     date: "2019-03-25",
@@ -732,7 +739,7 @@ const attachments = [
     ]
   },
   {
-    id: 8,
+    id: 9,
     note_id: 11,
     type: "Röntgen",
     date: "2019-07-30T10:57:00Z",
@@ -740,7 +747,7 @@ const attachments = [
     image_name: "xray.jpg"
   },
   {
-    id: 9,
+    id: 10,
     note_id: 11,
     type: "Lab",
     date: "2019-07-30",
