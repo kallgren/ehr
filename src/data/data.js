@@ -688,7 +688,7 @@ const attachments = [
     type: "Röntgen",
     date: "2017-06-21T15:43:00Z",
     comment: "Slätröntgen arm: Radiusfraktur lätt dislocerad höger.",
-    image_name: "xray.jpg"
+    image_name: "xray-wrist-right-radius-fracture.jpg"
   },
   {
     id: 4,
@@ -696,7 +696,7 @@ const attachments = [
     type: "Röntgen",
     date: "2017-06-21T15:46:00Z",
     comment: "Slätröntgen axel: Axelluxation höger. Clavicelfraktur höger",
-    image_name: "xray.jpg"
+    image_name: "xray-shoulder-right-clavicle-fracture.jpg"
   },
   {
     id: 5,
@@ -704,7 +704,7 @@ const attachments = [
     type: "Röntgen",
     date: "2017-06-24T09:23:00Z",
     comment: "Slätröntgen höger handled. Fraktur radius i gott läge.",
-    image_name: "xray.jpg"
+    image_name: "xray-wrist-right-healthy.png"
   },
   {
     id: 6,
@@ -725,7 +725,7 @@ const attachments = [
     type: "Röntgen",
     date: "2019-03-27T12:18:00Z",
     comment: "Trimalleolär fotledsfraktur sin.",
-    image_name: "xray.jpg"
+    image_name: "xray-ankle-left-trimalleolar-fracture.jpeg"
   },
   {
     id: 8,
@@ -744,7 +744,7 @@ const attachments = [
     type: "Röntgen",
     date: "2019-07-30T10:57:00Z",
     comment: "Fraktur av både radius och ulna, typ A3.",
-    image_name: "xray.jpg"
+    image_name: "xray-arm-right-radius-and-ulnar-fractures.jpg"
   },
   {
     id: 10,
