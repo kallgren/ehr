@@ -29,7 +29,7 @@
           :title="patient.other_warnings ? 'Other warnings' : 'No other warnings'"
         />
         <i
-          :class="['patient-symbol', patient.admitted ? 'icon-hospital-bed-red active' : 'icon-hospital-bed']"
+          :class="['patient-symbol', 'patient-symbol--admitted', patient.admitted ? 'icon-hospital-bed-green active' : 'icon-hospital-bed']"
           :title="patient.admitted ? 'Admitted to the hospital' : 'Not admitted to the hospital'"
         />
       </div>
@@ -163,7 +163,10 @@ export default {
 
 .patient-symbol
   margin-right 6px
-  opacity 0.3
+  opacity 0.15
+
+  &--admitted
+    margin-left 20px
 
   &.active
     opacity 1

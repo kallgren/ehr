@@ -114,13 +114,13 @@ i
     background-image url("assets/icons/warning-red.png")
 
   &.icon-hospital-bed
-  &.icon-hospital-bed-red
+  &.icon-hospital-bed-green
     width 35px
     height 22px
     background-image url("assets/icons/hospital-bed.png")
 
-  &.icon-hospital-bed-red
-    background-image url("assets/icons/hospital-bed-red.png")
+  &.icon-hospital-bed-green
+    background-image url("assets/icons/hospital-bed-green.png")
 
   &.icon-chronic
     width 20px
