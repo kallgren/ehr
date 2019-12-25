@@ -150,23 +150,23 @@ export default {
           problem.department.toLowerCase() === this.departments[0].toLowerCase()
       );
     },
+    notesForFilteredProblems() {
+      return this.filteredProblems
+        .map(p => this.$store.getters.getNotesByProblemId({ id: p.id }))
+        .flat()
+        .filter((v, i, s) => s.indexOf(v) === i);
+    },
     progressNoteCount() {
-      return this.filteredProblems.reduce(
-        (acc, problem) => acc + problem.progress_note_count,
-        0
-      );
+      return this.notesForFilteredProblems.filter(n => n.type === "progress")
+        .length;
     },
     surgeryCount() {
-      return this.filteredProblems.reduce(
-        (acc, problem) => acc + problem.surgery_count,
-        0
-      );
+      return this.notesForFilteredProblems.filter(n => n.type === "surgery")
+        .length;
     },
     epicrisisCount() {
-      return this.filteredProblems.reduce(
-        (acc, problem) => acc + problem.epicrisis_count,
-        0
-      );
+      return this.notesForFilteredProblems.filter(n => n.type === "epicrisis")
+        .length;
     },
     allProblemsSelected() {
       return (
