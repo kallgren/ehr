@@ -33,6 +33,16 @@ export default new Vuex.Store({
     attachments
   },
   mutations: {
+    syncUserInfo(state) {
+      if (localStorage.getItem("currentUser")) {
+        state.currentUser = {
+          ...state.currentUser,
+          ...JSON.parse(localStorage.getItem("currentUser"))
+        };
+      } else {
+        localStorage.setItem("currentUser", JSON.stringify(state.currentUser));
+      }
+    },
     selectAppointment(state, { appointment }) {
       let newLastActive = state.lastActiveAppointments.filter(
         e => e.patient.id !== appointment.patient.id

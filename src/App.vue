@@ -13,7 +13,10 @@ export default {
   components: {
     TheNavigationBar
   },
-  created: function() {
+  beforeCreate() {
+    this.$store.commit("syncUserInfo");
+  },
+  created() {
     this.$moment.updateLocale("en", {
       relativeTime: {
         future: "in %s",
