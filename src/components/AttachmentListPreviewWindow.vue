@@ -8,7 +8,7 @@
     <div class="preview-description">
       <b>{{ attachment.type }}</b><br>
       {{ attachment.comment }}<br v-if="attachment.comment">
-      {{ attachment.date | moment("D-M-YY") }}
+      {{ attachment.date | moment("DD-MM-YYYY") }}
     </div>
     <div
       v-if="attachment.text && attachment.text.length"
