@@ -8,7 +8,7 @@ import {
   diagnoses,
   notes,
   attachments
-} from "./data/data.js";
+} from "./data/data_demo.js";
 
 Vue.use(Vuex);
 

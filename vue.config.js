@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   baseUrl: process.env.NODE_ENV === "production"
-    ? "/ehr/"
+    ? "/ehr-demo/"
     : "/",
   css: {
     loaderOptions: {
