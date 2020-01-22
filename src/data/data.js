@@ -17,7 +17,7 @@ const patients = [
   {
     id: 2,
     first_name: "Anna",
-    last_name: "Annasson",
+    last_name: "Andersson",
     ssn: "510222-8367",
     date_of_birth: "1951-02-22T11:49:00Z",
     sex: "female",
@@ -26,7 +26,7 @@ const patients = [
     allergies: [],
     blood_problems: false,
     other_warnings: false,
-    admitted: false,
+    admitted: true,
     important_remarks: ["Mamma dog i bröstcancer"]
   },
   {
@@ -97,48 +97,83 @@ const todaysAppointments = [
     start: "2018-01-01T08:00:00Z",
     end: "2018-01-01T08:30:00Z",
     patient_id: 1,
-    reason: "<ORSAK>"
+    reason: "Huvudvärk"
   },
   {
     id: 2,
     start: "2018-01-01T08:30:00Z",
     end: "2018-01-01T09:00:00Z",
     patient_id: 2,
-    reason: "<ORSAK>"
+    reason: "Operation"
   },
   {
     id: 3,
     start: "2018-01-01T09:30:00Z",
     end: "2018-01-01T09:45:00Z",
     patient_id: 3,
-    reason: "<ORSAK>"
+    reason: "Nackspärr"
   },
   {
     id: 4,
     start: "2018-01-01T10:00:00Z",
     end: "2018-01-01T10:30:00Z",
     patient_id: 4,
-    reason: "<ORSAK>"
+    reason: "Uppföljning fraktur 8v"
   },
   {
     id: 5,
     start: "2018-01-01T10:30:00Z",
     end: "2018-01-01T11:00:00Z",
     patient_id: 5,
-    reason: "<ORSAK>"
+    reason: "Ryggont"
   },
   {
     id: 6,
     start: "2018-01-01T13:00:00Z",
     end: "2018-01-01T13:30:00Z",
     patient_id: 6,
-    reason: "<ORSAK>"
+    reason: "Ont i knä"
   }
 ];
 
-const myPatientsAppointments = [];
+const myPatientsAppointments = [
+  {
+    id: 1,
+    start: "2018-01-01T08:30:00Z",
+    end: "2018-01-01T09:00:00Z",
+    patient_id: 2,
+    reason: "Operation"
+  },
+  {
+    id: 2,
+    start: "2018-01-01T10:00:00Z",
+    end: "2018-01-01T10:30:00Z",
+    patient_id: 4,
+    reason: "Uppföljning fraktur 8v"
+  },
+  {
+    id: 3,
+    start: "2018-01-01T10:30:00Z",
+    end: "2018-01-01T11:00:00Z",
+    patient_id: 5,
+    reason: "Ryggont"
+  },
+  {
+    id: 4,
+    start: "2018-01-01T13:00:00Z",
+    end: "2018-01-01T13:30:00Z",
+    patient_id: 6,
+    reason: "Ont i knä"
+  }
+];
 
-const wardPatients = [];
+const wardPatients = [
+  {
+    id: 1,
+    patient_id: 2,
+    reason: "Benbrott"
+  }
+];
 
 const diagnoses = [
   {
@@ -410,7 +445,7 @@ const notes = [
     diagnosis_codes: ["M00.9"],
     date: "2018-09-12T11:11:00Z",
     type: "progress",
-    is_starred: false,
+    is_starred: true,
     unit: "Ortopedmottagningen",
     reason: "Svullet knä",
     current:
@@ -483,7 +518,7 @@ const notes = [
     diagnosis_codes: ["C43.5"],
     date: "2019-03-25T08:39:00Z",
     type: "progress",
-    is_starred: false,
+    is_starred: true,
     unit: "Hudmottagning",
     reason: "Återbesök",
     current: "Orolig. Inga besvär i övrigt.",
@@ -613,7 +648,7 @@ const notes = [
     diagnosis_codes: ["S52.4"],
     date: "2019-07-30T14:04:00Z",
     type: "surgery",
-    is_starred: false,
+    is_starred: true,
     unit: null,
     reason: null,
     current: null,
