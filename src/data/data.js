@@ -27,7 +27,15 @@ const patients = [
     blood_problems: false,
     other_warnings: false,
     admitted: true,
-    important_remarks: ["Mamma dog i bröstcancer"]
+    important_remarks: ["Mamma dog i bröstcancer"],
+    events: [
+      {
+        id: 1,
+        date: "2020-01-23T14:30:00Z",
+        type: "Surgery",
+        clinic: "Orthopedics"
+      }
+    ]
   },
   {
     id: 3,
