@@ -17,7 +17,7 @@ const patients = [
   {
     id: 2,
     first_name: "Anna",
-    last_name: "Annasson",
+    last_name: "Andersson",
     ssn: "510222-8367",
     date_of_birth: "1951-02-22T11:49:00Z",
     sex: "female",
@@ -26,7 +26,7 @@ const patients = [
     allergies: [],
     blood_problems: false,
     other_warnings: false,
-    admitted: false,
+    admitted: true,
     important_remarks: ["Mamma dog i bröstcancer"]
   },
   {
@@ -97,48 +97,83 @@ const todaysAppointments = [
     start: "2018-01-01T08:00:00Z",
     end: "2018-01-01T08:30:00Z",
     patient_id: 1,
-    reason: "<ORSAK>"
+    reason: "Huvudvärk"
   },
   {
     id: 2,
     start: "2018-01-01T08:30:00Z",
     end: "2018-01-01T09:00:00Z",
     patient_id: 2,
-    reason: "<ORSAK>"
+    reason: "Operation"
   },
   {
     id: 3,
     start: "2018-01-01T09:30:00Z",
     end: "2018-01-01T09:45:00Z",
     patient_id: 3,
-    reason: "<ORSAK>"
+    reason: "Nackspärr"
   },
   {
     id: 4,
     start: "2018-01-01T10:00:00Z",
     end: "2018-01-01T10:30:00Z",
     patient_id: 4,
-    reason: "<ORSAK>"
+    reason: "Uppföljning fraktur 8v"
   },
   {
     id: 5,
     start: "2018-01-01T10:30:00Z",
     end: "2018-01-01T11:00:00Z",
     patient_id: 5,
-    reason: "<ORSAK>"
+    reason: "Ryggont"
   },
   {
     id: 6,
     start: "2018-01-01T13:00:00Z",
     end: "2018-01-01T13:30:00Z",
     patient_id: 6,
-    reason: "<ORSAK>"
+    reason: "Ont i knä"
   }
 ];
 
-const myPatientsAppointments = [];
+const myPatientsAppointments = [
+  {
+    id: 1,
+    start: "2018-01-01T08:30:00Z",
+    end: "2018-01-01T09:00:00Z",
+    patient_id: 2,
+    reason: "Operation"
+  },
+  {
+    id: 2,
+    start: "2018-01-01T10:00:00Z",
+    end: "2018-01-01T10:30:00Z",
+    patient_id: 4,
+    reason: "Uppföljning fraktur 8v"
+  },
+  {
+    id: 3,
+    start: "2018-01-01T10:30:00Z",
+    end: "2018-01-01T11:00:00Z",
+    patient_id: 5,
+    reason: "Ryggont"
+  },
+  {
+    id: 4,
+    start: "2018-01-01T13:00:00Z",
+    end: "2018-01-01T13:30:00Z",
+    patient_id: 6,
+    reason: "Ont i knä"
+  }
+];
 
-const wardPatients = [];
+const wardPatients = [
+  {
+    id: 1,
+    patient_id: 2,
+    reason: "Benbrott"
+  }
+];
 
 const diagnoses = [
   {
@@ -301,7 +336,7 @@ const notes = [
     patient_id: 1,
     id_for_patient: 2,
     diagnosis_codes: ["S42.0", "S43.0", "S52.3"],
-    date: "2017-06-21T15:51:00Z",
+    date: "2019-11-21T15:51:00Z",
     type: "progress",
     is_starred: false,
     unit: "Akuten",
@@ -348,7 +383,7 @@ const notes = [
     patient_id: 1,
     id_for_patient: 3,
     diagnosis_codes: ["S42.0", "S43.0", "S52.3"],
-    date: "2017-06-24T09:35:00Z",
+    date: "2019-11-24T09:35:00Z",
     type: "progress",
     is_starred: false,
     unit: "Mottagningsbesök",
@@ -408,9 +443,9 @@ const notes = [
     patient_id: 6,
     id_for_patient: 2,
     diagnosis_codes: ["M00.9"],
-    date: "2018-09-12T11:11:00Z",
+    date: "2019-04-12T11:11:00Z",
     type: "progress",
-    is_starred: false,
+    is_starred: true,
     unit: "Ortopedmottagningen",
     reason: "Svullet knä",
     current:
@@ -483,7 +518,7 @@ const notes = [
     diagnosis_codes: ["C43.5"],
     date: "2019-03-25T08:39:00Z",
     type: "progress",
-    is_starred: false,
+    is_starred: true,
     unit: "Hudmottagning",
     reason: "Återbesök",
     current: "Orolig. Inga besvär i övrigt.",
@@ -505,7 +540,7 @@ const notes = [
     patient_id: 2,
     id_for_patient: 3,
     diagnosis_codes: ["S82.50", "S82.60", "S82.80"],
-    date: "2019-03-27T12:12:00Z",
+    date: "2020-01-22T12:12:00Z",
     type: "progress",
     is_starred: false,
     unit: "Ortopedakuten",
@@ -548,7 +583,7 @@ const notes = [
     patient_id: 2,
     id_for_patient: 4,
     diagnosis_codes: ["S82.50", "S82.60", "S82.80"],
-    date: "2019-03-28T08:21:00Z",
+    date: "2020-01-23T08:21:00Z",
     type: "progress",
     is_starred: false,
     unit: "Ortopedavdelningen",
@@ -613,7 +648,7 @@ const notes = [
     diagnosis_codes: ["S52.4"],
     date: "2019-07-30T14:04:00Z",
     type: "surgery",
-    is_starred: false,
+    is_starred: true,
     unit: null,
     reason: null,
     current: null,
@@ -686,7 +721,7 @@ const attachments = [
     id: 3,
     note_id: 3,
     type: "Röntgen",
-    date: "2017-06-21T15:43:00Z",
+    date: "2019-11-21T15:43:00Z",
     comment: "Slätröntgen arm: Radiusfraktur lätt dislocerad höger.",
     image_name: "xray-wrist-right-radius-fracture.jpg"
   },
@@ -694,7 +729,7 @@ const attachments = [
     id: 4,
     note_id: 3,
     type: "Röntgen",
-    date: "2017-06-21T15:46:00Z",
+    date: "2019-11-21T15:46:00Z",
     comment: "Slätröntgen axel: Axelluxation höger. Clavicelfraktur höger",
     image_name: "xray-shoulder-right-clavicle-fracture.jpg"
   },
@@ -702,7 +737,7 @@ const attachments = [
     id: 5,
     note_id: 4,
     type: "Röntgen",
-    date: "2017-06-24T09:23:00Z",
+    date: "2019-11-24T09:23:00Z",
     comment: "Slätröntgen höger handled. Fraktur radius i gott läge.",
     image_name: "xray-wrist-right-healthy.png"
   },
@@ -723,7 +758,7 @@ const attachments = [
     id: 7,
     note_id: 9,
     type: "Röntgen",
-    date: "2019-03-27T12:18:00Z",
+    date: "2020-01-22T12:18:00Z",
     comment: "Trimalleolär fotledsfraktur sin.",
     image_name: "xray-ankle-left-trimalleolar-fracture.jpeg"
   },

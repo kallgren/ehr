@@ -90,7 +90,7 @@ const myPatientsAppointments = [
 const wardPatients = [
   {
     id: 1,
-    patient_id: 1,
+    patient_id: 2,
     reason: "ankle fracture repair"
   }
 ];
