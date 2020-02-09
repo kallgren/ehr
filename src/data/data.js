@@ -31,7 +31,7 @@ const patients = [
     events: [
       {
         id: 1,
-        date: "2020-01-23T14:30:00Z",
+        date: "2020-02-10T14:30:00Z",
         type: "Surgery",
         clinic: "Orthopedics"
       }
@@ -548,7 +548,7 @@ const notes = [
     patient_id: 2,
     id_for_patient: 3,
     diagnosis_codes: ["S82.50", "S82.60", "S82.80"],
-    date: "2020-01-22T12:12:00Z",
+    date: "2020-02-09T12:12:00Z",
     type: "progress",
     is_starred: false,
     unit: "Ortopedakuten",
@@ -591,7 +591,7 @@ const notes = [
     patient_id: 2,
     id_for_patient: 4,
     diagnosis_codes: ["S82.50", "S82.60", "S82.80"],
-    date: "2020-01-23T08:21:00Z",
+    date: "2020-02-10T08:21:00Z",
     type: "progress",
     is_starred: false,
     unit: "Ortopedavdelningen",
@@ -611,7 +611,7 @@ const notes = [
     patient_id: 4,
     id_for_patient: 1,
     diagnosis_codes: ["S52.4"],
-    date: "2019-07-30T10:45:00Z",
+    date: "2019-07-09T10:45:00Z",
     type: "progress",
     is_starred: false,
     unit: "Akutmottagning",
@@ -654,7 +654,7 @@ const notes = [
     patient_id: 4,
     id_for_patient: 2,
     diagnosis_codes: ["S52.4"],
-    date: "2019-07-30T14:04:00Z",
+    date: "2019-07-09T14:04:00Z",
     type: "surgery",
     is_starred: true,
     unit: null,
@@ -766,7 +766,7 @@ const attachments = [
     id: 7,
     note_id: 9,
     type: "Röntgen",
-    date: "2020-01-22T12:18:00Z",
+    date: "2020-02-09T12:18:00Z",
     comment: "Trimalleolär fotledsfraktur sin.",
     image_name: "xray-ankle-left-trimalleolar-fracture.jpeg"
   },
@@ -785,7 +785,7 @@ const attachments = [
     id: 9,
     note_id: 11,
     type: "Röntgen",
-    date: "2019-07-30T10:57:00Z",
+    date: "2019-07-09T10:57:00Z",
     comment: "Fraktur av både radius och ulna, typ A3.",
     image_name: "xray-arm-right-radius-and-ulnar-fractures.jpg"
   },
@@ -793,7 +793,7 @@ const attachments = [
     id: 10,
     note_id: 11,
     type: "Lab",
-    date: "2019-07-30",
+    date: "2019-07-09",
     comment: "Blodstatus ua",
     text: [
       "Pellentesque sed diam neque. Maecenas sagittis feugiat felis, at pulvinar nisl ultrices et. Integer lobortis vel turpis id pellentesque. Mauris porttitor tortor nec ligula lobortis egestas. Etiam in neque mattis, posuere massa sed, efficitur sem. Sed at mattis metus. Duis augue nulla, euismod dignissim nulla vitae, egestas pretium lectus. Curabitur in velit augue. Vivamus varius feugiat sollicitudin. Sed ultricies tristique mi quis cursus. Quisque pellentesque dapibus purus, eu finibus libero pulvinar fringilla. Praesent magna urna, maximus et augue et, malesuada tristique magna. Sed sollicitudin, magna et fermentum dapibus, nulla elit cursus augue, imperdiet aliquet ex turpis nec nisi. Quisque sed turpis erat. Etiam quis molestie orci. Integer libero libero, eleifend nec ultricies et, consequat et lacus.",
