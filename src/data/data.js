@@ -739,7 +739,7 @@ const attachments = [
     type: "Röntgen",
     date: "2019-11-21T15:46:00Z",
     comment: "Slätröntgen axel: Axelluxation höger. Clavicelfraktur höger",
-    image_name: "xray-shoulder-right-clavicle-fracture.jpg"
+    image_name: "xray-shoulder-right-clavicle-fracture.jpg" // https://en.wikipedia.org/wiki/File:Clavicle_fracture_right.jpg
   },
   {
     id: 5,
@@ -747,7 +747,7 @@ const attachments = [
     type: "Röntgen",
     date: "2019-11-24T09:23:00Z",
     comment: "Slätröntgen höger handled. Fraktur radius i gott läge.",
-    image_name: "xray-wrist-right-healthy.png"
+    image_name: "xray-wrist-right-healthy.png" // https://www.researchgate.net/figure/Plain-X-ray-of-right-wrist-anterior-posterior-view-and-lateral-view-No-evident_fig2_317076617
   },
   {
     id: 6,
