@@ -31,7 +31,7 @@ const patients = [
     events: [
       {
         id: 1,
-        date: "2020-02-10T14:30:00Z",
+        date: "2020-02-14T14:30:00Z",
         type: "Surgery",
         clinic: "Orthopedics"
       }
@@ -548,7 +548,7 @@ const notes = [
     patient_id: 2,
     id_for_patient: 3,
     diagnosis_codes: ["S82.50", "S82.60", "S82.80"],
-    date: "2020-02-09T12:12:00Z",
+    date: "2020-02-13T12:12:00Z",
     type: "progress",
     is_starred: false,
     unit: "Ortopedakuten",
@@ -591,7 +591,7 @@ const notes = [
     patient_id: 2,
     id_for_patient: 4,
     diagnosis_codes: ["S82.50", "S82.60", "S82.80"],
-    date: "2020-02-10T08:21:00Z",
+    date: "2020-02-14T08:21:00Z",
     type: "progress",
     is_starred: false,
     unit: "Ortopedavdelningen",
@@ -766,7 +766,7 @@ const attachments = [
     id: 7,
     note_id: 9,
     type: "Röntgen",
-    date: "2020-02-09T12:18:00Z",
+    date: "2020-02-13T12:18:00Z",
     comment: "Trimalleolär fotledsfraktur sin.",
     image_name: "xray-ankle-left-trimalleolar-fracture.jpeg"
   },
